@@ -66,107 +66,113 @@
 
       <main>
         <div class="tab">
-          <h1>Dashboard</h1>
+          <div class="news-tab">
+            <h1 class="tab-title">Dashboard</h1>
 
-          <div class="date">
-            <input type="date" />
-          </div>
-
-          <div class="insights">
-            <div class="credit">
-              <span class="material-icons-sharp"> analytics </span>
-              <div class="middle">
-                <h3>Credit Score</h3>
-                <h1>800</h1>
-                <small class="text-muted"> All Time </small>
-              </div>
+            <div class="date">
+              <input type="date" />
             </div>
-            <!-- Credit End -->
 
-            <div class="balance">
-              <span class="material-icons-sharp"> account_balance </span>
-              <div class="middle">
-                <h3>Account Balance</h3>
-                <h1>$20,000</h1>
-                <small class="text-muted"> All Time </small>
+            <div class="insights">
+              <div class="credit">
+                <span class="material-icons-sharp"> analytics </span>
+                <div class="middle">
+                  <h3>Credit Score</h3>
+                  <h1>800</h1>
+                  <small class="text-muted"> All Time </small>
+                </div>
               </div>
-            </div>
-            <!-- Account Balance End -->
+              <!-- Credit End -->
 
-            <div class="expenses">
-              <span class="material-icons-sharp"> bar_chart </span>
-              <div class="middle">
-                <h3>Expenses</h3>
-                <h1>$14,160</h1>
-                <small class="text-muted"> Last 24 Hours </small>
+              <div class="balance">
+                <span class="material-icons-sharp"> account_balance </span>
+                <div class="middle">
+                  <h3>Account Balance</h3>
+                  <h1>$20,000</h1>
+                  <small class="text-muted"> All Time </small>
+                </div>
               </div>
-            </div>
-            <!-- Expenses End -->
-          </div>
-          <!-- End of Insights  -->
+              <!-- Account Balance End -->
 
-          <div class="visuals">
-            <h2>Visual Analytics</h2>
-            <div class="carousel">
-              <canvas class="carousel__item"></canvas>
-              <canvas class="carousel__item" style="display:none;"></canvas>
-              <canvas class="carousel__item" style="display:none;"></canvas>
-              <span class="material-icons-sharp left-arrow arrow">
-                arrow_back_ios
-              </span>
-              <span class="material-icons-sharp right-arrow arrow">
-                arrow_forward_ios
-              </span>
+              <div class="expenses">
+                <span class="material-icons-sharp"> bar_chart </span>
+                <div class="middle">
+                  <h3>Expenses</h3>
+                  <h1>$14,160</h1>
+                  <small class="text-muted"> Last 24 Hours </small>
+                </div>
+              </div>
+              <!-- Expenses End -->
+            </div>
+            <!-- End of Insights  -->
+
+            <div class="visuals">
+              <h2>Visual Analytics</h2>
+              <div class="carousel">
+                <canvas class="carousel__item"></canvas>
+                <canvas class="carousel__item" style="display:none;"></canvas>
+                <canvas class="carousel__item" style="display:none;"></canvas>
+                <span class="material-icons-sharp left-arrow arrow">
+                  arrow_back_ios
+                </span>
+                <span class="material-icons-sharp right-arrow arrow">
+                  arrow_forward_ios
+                </span>
+              </div>
             </div>
           </div>
         </div>
 
         <!-- Expense Tracker -->
         <div class="tab" style="display:none;">
-          <h2 class="tab-title">Expense Tracker</h2>
-          <div class="expense-container">
-            <h4>Your Balance</h4>
-            <h1>$0.00</h1>
-            <div class="inc-exp-container">
-              <div>
-                <h4>Income</h4>
-                <p id="money-plus" class="money plus">+$0.00</p>
+          <div class="news-tab">
+            <h1 class="tab-title">Expense Tracker</h1>
+            <div class="expense-container">
+              <h4>Your Balance</h4>
+              <h1>$0.00</h1>
+              <div class="inc-exp-container">
+                <div>
+                  <h4>Income</h4>
+                  <p id="money-plus" class="money plus">+$0.00</p>
+                </div>
+                <div>
+                  <h4>Expense</h4>
+                  <p id="money-minus" class="money minus">-$0.00</p>
+                </div>
               </div>
-              <div>
-                <h4>Expense</h4>
-                <p id="money-minus" class="money minus">-$0.00</p>
+              <h3>History</h3>
+              <div class="recent-orders">
+                <h2>Recent Transactions</h2>
+                <table>
+                  <thead>
+                    <tr>
+                      <th>Transaction Origin</th>
+                      <th>Order Number</th>
+                      <th>Payment Amount</th>
+                      <th>Status</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    <tr>
+                      <td>UC Davis Tuition</td>
+                      <td>92013</td>
+                      <td>$15,000</td>
+                      <td class="warning">Pending</td>
+                      <td class="primary">Details</td>
+                    </tr>
+                  </tbody>
+                </table>
+                <a href="#">Show All</a>
               </div>
-            </div>
-            <h3>History</h3>
-            <div class="recent-orders">
-              <h2>Recent Transactions</h2>
-              <table>
-                <thead>
-                  <tr>
-                    <th>Transaction Origin</th>
-                    <th>Order Number</th>
-                    <th>Payment Amount</th>
-                    <th>Status</th>
-                  </tr>
-                </thead>
-                <tbody>
-                  <tr>
-                    <td>UC Davis Tuition</td>
-                    <td>92013</td>
-                    <td>$15,000</td>
-                    <td class="warning">Pending</td>
-                    <td class="primary">Details</td>
-                  </tr>
-                </tbody>
-              </table>
-              <a href="#">Show All</a>
             </div>
           </div>
         </div>
             
         <!-- Analytics -->
         <div class="tab" style="display:none;">
-          <h1>Analytics</h1>
+          <div class="news-tab">
+            <h1 class="tab-title">Analytics</h1>
+          </div>
         </div>
 
         <!-- Notifications -->
@@ -222,7 +228,9 @@
 
         <!-- Settings -->
         <div class="tab" style="display:none;">
-          <h1>Settings</h1>
+          <div class="news-tab">
+            <h1 class="tab-title">Settings</h1>
+          </div>
         </div>
       </main>
       <!-- End of Main Section -->
