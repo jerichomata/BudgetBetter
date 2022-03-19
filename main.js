@@ -75,6 +75,7 @@ const themeToggler = document.querySelector(".theme-toggler");
 const sideBar = document.querySelectorAll(".sidebar a");
 const mainMenu = document.querySelectorAll("main .tab");
 const carousels = document.querySelectorAll(".carousel__item");
+const newsArticles = document.querySelectorAll(".news-article");
 
 //show sidebar
 menuBtn.addEventListener("click", () => {
@@ -113,6 +114,18 @@ sideBar.forEach( function( sideTab, index )
       sideTab.classList.add("active");
     })
   }
+})
+
+newsArticles.forEach( function( article, index )
+{
+  article.addEventListener("click", () => {
+    if( index == 0 )
+      window.open('https://www.nytimes.com/2022/03/18/obituaries/don-young-obituary-alaska.html', '_blank');
+    else if( index == 1 )
+      window.open('https://www.cnbc.com/2022/03/15/why-the-federal-reserve-raises-interest-rates-to-combat-inflation-.html', '_blank');
+    else
+      window.open('https://www.cnbc.com/2022/03/11/federal-reserve-expected-to-raise-interest-rates-in-week-ahead.html', '_blank');
+  })
 })
 
 const labels = [

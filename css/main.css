@@ -503,6 +503,7 @@ main .recent-orders a {
   display: flex;
   align-items: center;
   justify-content: space-between;
+  cursor: pointer;
 }
 
 .news-tab .news-article-info {
