@@ -601,7 +601,7 @@ main .recent-orders a {
   display: none;
 }
 
-.right .theme-toggler {
+.settings .theme-toggler {
   background: var(--color-light);
   display: flex;
   justify-content: space-between;
@@ -612,7 +612,7 @@ main .recent-orders a {
   border-radius: var(--border-radius-1);
 }
 
-.right .theme-toggler span {
+.settings .theme-toggler span {
   font-size: 1.2rem;
   width: 50%;
   height: 100%;
@@ -621,7 +621,7 @@ main .recent-orders a {
   justify-content: center;
 }
 
-.right .theme-toggler span.active {
+.settings .theme-toggler span.active {
   background: var(--color-primary);
   color: white;
   border-radius: var(--border-radius-1);
@@ -762,6 +762,10 @@ main .recent-orders a {
     grid-template-columns: 1fr;
     gap: 0;
   }
+  main .settings {
+    grid-template-columns: 1fr;
+    gap: 0;
+  }
   main .visuals {
     width: 94%;
     position: absolute;
@@ -773,6 +777,53 @@ main .recent-orders a {
   main .visuals .carousel {
     width: 83vw;
   }
+}
+
+main .settings {
+  display: flex;
+  flex-direction: column;
+  margin-top: 5rem;
+}
+
+main .settings > div {
+  background: var(--color-white);
+  padding: var(--card-padding);
+  border-radius: var(--card-border-radius);
+  margin: 1rem;
+  box-shadow: var(--box-shadow);
+  transition: all 300ms ease;
+}
+
+main .settings > div:hover {
+  box-shadow: none;
+}
+
+main .settings > div span {
+  background: var(--color-primary);
+  padding: 0.5rem;
+  border-radius: 50%;
+  color: var(--color-white);
+  font-size: 2rem;
+}
+
+main .settings > div.expenses span {
+  background: var(--color-danger);
+}
+
+main .settings > div.balance span {
+  background: var(--color-success);
+}
+
+main .settings > div .middle {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+main .settings h3 {
+  margin: 1rem 0 0.6rem;
+  font-size: 1rem;
 }
 
 /* Media Query for Phones  */
@@ -863,7 +914,7 @@ main .recent-orders a {
     box-shadow: 0 1rem 1rem var(--color-light);
   }
 
-  .right .top .theme-toggler {
+  .settings .theme-toggler {
     width: 4.4rem;
   }
 
