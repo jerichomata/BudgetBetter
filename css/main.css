@@ -289,59 +289,14 @@ main .insights > div.balance span {
 
 main .insights > div .middle {
   display: flex;
+  flex-direction: column;
   align-items: center;
-  justify-content: space-between;
+  justify-content: center;
 }
 
 main .insights h3 {
   margin: 1rem 0 0.6rem;
   font-size: 1rem;
-}
-
-main .insights .progress {
-  position: relative;
-  width: 92px;
-  height: 92px;
-  border-radius: 50%;
-}
-
-main .insights svg {
-  width: 7rem;
-  height: 7rem;
-}
-
-main .insights svg circle {
-  fill: none;
-  stroke: var(--color-primary);
-  stroke-width: 14;
-  stroke-linecap: round;
-  transform: translate(5px, 5px);
-}
-
-main .insights .credit svg circle {
-  stroke-dashoffset: -30;
-  stroke-dasharray: 200;
-}
-
-main .insights .expenses svg circle {
-  stroke-dashoffset: 20;
-  stroke-dasharray: 80;
-}
-
-main .insights .balance svg circle {
-  stroke-dashoffset: 35;
-  stroke-dasharray: 110;
-}
-
-main .insights .progress .number {
-  position: absolute;
-  top: 0;
-  left: 0;
-  height: 100%;
-  width: 100%;
-  display: flex;
-  justify-content: center;
-  align-items: center;
 }
 
 main .insights small {
@@ -366,6 +321,7 @@ main .visuals h2 {
 .carousel__item {
   height: 375px;
   width: 100%;
+  margin-bottom: 100px;
   border-radius: var(--card-border-radius);
   padding: var(--card-padding);
   text-align: center;
@@ -856,8 +812,6 @@ main .recent-orders a {
 
   .right .top .theme-toggler {
     width: 4.4rem;
-    position: absolute;
-    left: 66%;
   }
 
   .right .profile .info {
