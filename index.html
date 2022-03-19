@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="./css/login.css" />
+    <title>Document</title>
+  </head>
+  <body>
+    <div class="container" id="container">
+      <!-- sign in page -->
+      <div class="form-container sign-in-container">
+        <form method="POST" action="#" class="form" id="login">
+          <img
+            src="https://cdn-icons.flaticon.com/png/128/4192/premium/4192746.png?token=exp=1646382954~hmac=8bbb234a020e7a6cd774ccb5d8a9b8c2"
+            alt="key icon"
+          />
+          <h1>Bank Analyzer</h1>
+          <div class="form__input-group">
+            <label for="username">Username: </label>
+            <input
+              type="text"
+              class="form__input"
+              name="username"
+              id="username"
+              maxlength="20"
+              required
+              autofocus="autofocus"
+            />
+          </div>
+          <div class="form__input-group">
+            <label for="pass">Password: </label>
+            <input
+              type="password"
+              class="form__input"
+              name="pass"
+              id="pass"
+              maxlength="20"
+              required
+            />
+          </div>
+          <div class="form__input-group">
+            <button
+              type="submit"
+              class="form__button"
+              onclick="location.href='main.html'"
+            >
+              Log In
+            </button>
+          </div>
+          <div class="register-container">
+            <p class="no-account">Don't have an account?</p>
+            <button
+              class="register-button"
+              onclick="location.href='register.html'"
+            >
+              Register
+            </button>
+          </div>
+        </form>
+      </div>
+
+      <div class="overlay-container">
+        <div class="overlay">
+          <div class="overlay-panel overlay-right">
+            <h1>Keeping you financially stable...</h1>
+            <p>
+              Lorem ipsum dolor sit amet consectetur adipisicing elit. Adipisci,
+              ex! Delectus ipsam iste pariatur nam praesentium expedita,
+              laudantium nisi eum.
+            </p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </body>
+</html>
