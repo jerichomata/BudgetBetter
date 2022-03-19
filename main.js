@@ -144,4 +144,3 @@ const myChart = new Chart(
   carousels[0],
   config
 );
-
