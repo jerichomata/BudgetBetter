@@ -473,6 +473,57 @@ main .recent-orders a {
   color: var(--color-primary);
 }
 
+/* Notifications */
+.notifications-tab .inbox {
+  border-bottom: 1px solid #bbb;
+  padding-bottom: 10px;
+  margin: 20px 0 10px;
+}
+
+.notifications-tab .message-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+.notifications-tab .inbox-message {
+  height: 150px;
+  width: 85%;
+  /* margin-top: 20px; */
+  background-color: #fff;
+  box-shadow: var(--box-shadow);
+  padding: 20px;
+  border-radius: 10px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  cursor: pointer;
+}
+
+.notifications-tab .msg-info {
+  display: flex;
+  flex-direction: column;
+  width: 80%;
+}
+
+.notifications-tab .msg-title {
+  margin-top: 10px;
+  color: black;
+  font-weight: bold;
+  font-size: 20px;
+}
+
+.notifications-tab .msg-description {
+  margin-top: 10px;
+}
+
+.notifications-tab .separation-line-inbox {
+  /* margin-top: 15px; */
+  border: 1px solid grey;
+  width: 85%;
+}
+
 /* News */
 
 .tab-title {
@@ -665,6 +716,7 @@ main .recent-orders a {
   display: flex;
   align-items: center;
   justify-content: center;
+  cursor: pointer;
 }
 
 .right .sales-analytics .add-product:hover {
