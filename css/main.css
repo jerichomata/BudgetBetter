@@ -586,6 +586,17 @@ main .recent-orders a {
   width: 90%;
 }
 
+/* Settings */
+
+.account-info-title {
+  margin-bottom: 10px;
+}
+
+.account-info {
+  font-size: 1rem;
+  margin: 10px 0;
+}
+
 /* Right */
 
 .right {
