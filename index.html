@@ -11,50 +11,47 @@
     <div class="container" id="container">
       <!-- sign in page -->
       <div class="form-container sign-in-container">
-        <form method="POST" action="#" class="form">
-          <h1>Bank Analyzer</h1>
-          <div class="form__input-group">
-            <label for="email">Email: </label>
-            <input
-              type="text"
-              class="form__input"
-              name="email"
-              id="email"
-              required
-              autofocus="autofocus"
-            />
-          </div>
-          <div class="form__input-group">
-            <label for="pass">Password: </label>
-            <input
-              type="password"
-              class="form__input"
-              name="pass"
-              id="pass"
-              maxlength="20"
-              required
-            />
-          </div>
-          <div class="form__input-group">
-            <button
-              type="submit"
-              class="form__button"
-              id="login"
-              onclick="location.href='main.html'"
-            >
-              Log In
-            </button>
-          </div>
-          <div class="register-container">
-            <p class="no-account">Don't have an account?</p>
-            <button
-              class="register-button"
-              onclick="location.href='register.html'"
-            >
-              Register
-            </button>
-          </div>
-        </form>
+        <h1>Bank Analyzer</h1>
+        <div class="form__input-group">
+          <label for="email">Email: </label>
+          <input
+            type="text"
+            class="form__input"
+            name="email"
+            id="email"
+            required
+            autofocus="autofocus"
+          />
+        </div>
+        <div class="form__input-group">
+          <label for="pass">Password: </label>
+          <input
+            type="password"
+            class="form__input"
+            name="pass"
+            id="pass"
+            maxlength="20"
+            required
+          />
+        </div>
+        <div class="form__input-group">
+          <button
+            type="submit"
+            class="form__button"
+            id="login"
+          >
+            Log In
+          </button>
+        </div>
+        <div class="register-container">
+          <p class="no-account">Don't have an account?</p>
+          <button
+            class="register-button"
+            onclick="location.href='register.html'"
+          >
+            Register
+          </button>
+        </div>
       </div>
 
       <div class="overlay-container">
@@ -71,6 +68,5 @@
       </div>
     </div>
   </body>
-  <script src="https://www.gstatic.com/firebasejs/9.6.9/firebase-app.js"></script>
   <script type="module" src="js/account.js"></script>
 </html>

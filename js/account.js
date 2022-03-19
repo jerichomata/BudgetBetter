@@ -5,11 +5,15 @@ import {
   set,
   ref,
   update,
+  get,
+  child,
 } from "https://www.gstatic.com/firebasejs/9.6.9/firebase-database.js";
 import {
   getAuth,
   createUserWithEmailAndPassword,
   signInWithEmailAndPassword,
+  signOut,
+  onAuthStateChanged,
 } from "https://www.gstatic.com/firebasejs/9.6.9/firebase-auth.js";
 // TODO: Add SDKs for Firebase products that you want to use
 // https://firebase.google.com/docs/web/setup#available-libraries
@@ -28,6 +32,7 @@ const firebaseConfig = {
 // Initialize Firebase
 const app = initializeApp(firebaseConfig);
 const database = getDatabase(app);
+const dbRef = ref(getDatabase());
 const auth = getAuth();
 
 if (window.location.pathname == "/register.html") {
@@ -62,32 +67,63 @@ if (window.location.pathname == "/register.html") {
   });
 }
 
-if (window.location.pathname == "/index.html") {
-  login.addEventListener("click", (e) => {
-    var email = document.getElementById("email").value;
-    console.log(email);
-    var password = document.getElementById("pass").value;
-    console.log(password);
+if( window.location.pathname == '/index.html')
+{
+  login.addEventListener('click', (e) => {
+
+    var email = document.getElementById('email').value;
+    var password = document.getElementById('pass').value;
 
     signInWithEmailAndPassword(auth, email, password)
-      .then((userCredential) => {
-        // Signed in
+    .then((userCredential) => {
+      // Signed in
+      var user = userCredential.user;
 
-        const user = userCredential.user;
+      var dt = new Date();
+      update(ref(database, 'users/' + user.uid), {
+          last_login: dt
+        })
+      
+      // ...
+    })
+    .catch((error) => {
+      const errorCode = error.code;
+      const errorMessage = error.message;
 
-        const dt = new Date();
-        update(ref(database, "users/" + user.id), {
-          last_login: dt,
+      alert(errorMessage);
+    });
+    onAuthStateChanged(auth, (user) => {
+      if (user) {
+        // User is signed in, see docs for a list of available properties
+        // https://firebase.google.com/docs/reference/js/firebase.User
+        const uid = user.uid;
+        get(child(dbRef, `users/${user.uid}`)).then((snapshot) => {
+          if (snapshot.exists()) {
+            console.log(snapshot.val());
+            window.location.href = 'main.html'
+          } else {
+            console.log("No data available");
+          }
+        }).catch((error) => {
+          console.error(error);
         });
-
-        alert("-- user logged in --");
         // ...
-      })
-      .catch((error) => {
-        const errorCode = error.code;
-        const errorMessage = error.message;
+      } else {
+        // User is signed out
+        // ...
+        console.log('not logged in')
+      }
+    });
+  });
 
-        alert(errorMessage);
-      });
+}
+
+if( window.location.pathname != '/main.html')
+{
+  signOut(auth).then(() => {
+    // Sign-out successful.
+    console.log('no user logged in')
+  }).catch((error) => {
+    // An error happened.
   });
 }

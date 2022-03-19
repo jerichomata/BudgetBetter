@@ -42,16 +42,16 @@ body {
   background: #27408b;
 }
 
-.container form {
+.container {
   margin-top: 25px;
 }
 
-.container form .input-box {
+.container .input-box {
   height: 52px;
   margin: 18px 0;
 }
 
-form .input-box input {
+.input-box input {
   height: 100%;
   width: 100%;
   outline: none;
@@ -70,7 +70,7 @@ form .input-box input {
   border-color: #27408b;
 }
 
-form .policy {
+.policy {
   display: flex;
   align-items: center;
 }
@@ -94,17 +94,17 @@ form .policy {
   background: #0e4bf1;
 }
 
-form .text h3 {
+.text h3 {
   color: #333;
   width: 100%;
   text-align: center;
 }
 
-form .text h3 a {
+.text h3 a {
   text-decoration: none;
   color: #4070f4;
 }
 
-form .text h3 a:hover {
+.text h3 a:hover {
   text-decoration: underline;
 }
