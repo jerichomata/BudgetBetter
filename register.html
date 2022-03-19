@@ -12,43 +12,23 @@
       <h2>Registration Form</h2>
       <form action="#">
         <div class="input-box">
-          <input
-            type="text"
-            id="firstName"
-            placeholder="Enter your first name"
-            required
-          />
+          <input type="text" id="firstName" placeholder="Enter your first name" required />
         </div>
         <div class="input-box">
-          <input
-            type="text"
-            id="lastName"
-            placeholder="Enter your last name"
-            required
-          />
+          <input type="text" id="lastName" placeholder="Enter your last name" required />
         </div>
         <div class="input-box">
-          <input
-            type="email"
-            id="email"
-            placeholder="Enter your email"
-            required
-          />
+          <input type="email" id="email" placeholder="Enter your email" required />
         </div>
         <div class="input-box">
-          <input
-            type="password"
-            id="password"
-            placeholder="Create password"
-            required
-          />
+          <input type="password" id="password" placeholder="Create password" required />
         </div>
 
         <!-- implement confirm passord jQuery function if extra time -->
         <!-- <div class="input-box">
           <input type="password" id="confirmPassword" placeholder="Confirm password" required />
         </div> -->
-
+        
         <div class="policy">
           <input type="checkbox" />
           <h3 class="terms">I accept all terms & conditions</h3>
@@ -63,98 +43,86 @@
     </div>
   </body>
   <script type="module">
-      // Import the functions you need from the SDKs you need
-      import { initializeApp } from "https://www.gstatic.com/firebasejs/9.6.9/firebase-app.js";
-      import {
-        getDatabase,
-        set,
-        ref,
-        update,
-      } from "https://www.gstatic.com/firebasejs/9.6.9/firebase-database.js";
-      import {
-        getAuth,
-        createUserWithEmailAndPassword,
-      } from "https://www.gstatic.com/firebasejs/9.6.9/firebase-auth.js";
-      // TODO: Add SDKs for Firebase products that you want to use
-      // https://firebase.google.com/docs/web/setup#available-libraries
+    // Import the functions you need from the SDKs you need
+    import { initializeApp } from "https://www.gstatic.com/firebasejs/9.6.9/firebase-app.js";
+    import { getDatabase, set, ref, update } from "https://www.gstatic.com/firebasejs/9.6.9/firebase-database.js";
+    import { getAuth, createUserWithEmailAndPassword} from "https://www.gstatic.com/firebasejs/9.6.9/firebase-auth.js";
+    // TODO: Add SDKs for Firebase products that you want to use
+    // https://firebase.google.com/docs/web/setup#available-libraries
+  
+    // Your web app's Firebase configuration
+    const firebaseConfig = {
+      apiKey: "AIzaSyA4yfts8CSlHDEpsEXpp7UBUnMSWHmKVgs",
+      authDomain: "hackcwru-2022.firebaseapp.com",
+      databaseURL: "https://hackcwru-2022-default-rtdb.firebaseio.com",
+      projectId: "hackcwru-2022",
+      storageBucket: "hackcwru-2022.appspot.com",
+      messagingSenderId: "311088466895",
+      appId: "1:311088466895:web:bdd0617921c98edb0e60ba"
+    };
+  
+    // Initialize Firebase
+    const app = initializeApp(firebaseConfig);
+    const database = getDatabase(app);
+    const auth = getAuth();
+  
+  signUp.addEventListener('click', (e) => {
+  
+    var firstName = document.getElementById('firstName').value;
+    var lastName = document.getElementById('lastName').value;
+    var email = document.getElementById('email').value;
+    var password = document.getElementById('password').value;
 
-      // Your web app's Firebase configuration
-      const firebaseConfig = {
-        apiKey: "AIzaSyA4yfts8CSlHDEpsEXpp7UBUnMSWHmKVgs",
-        authDomain: "hackcwru-2022.firebaseapp.com",
-        databaseURL: "https://hackcwru-2022-default-rtdb.firebaseio.com",
-        projectId: "hackcwru-2022",
-        storageBucket: "hackcwru-2022.appspot.com",
-        messagingSenderId: "311088466895",
-        appId: "1:311088466895:web:bdd0617921c98edb0e60ba",
-      };
-
-      // Initialize Firebase
-      const app = initializeApp(firebaseConfig);
-      const database = getDatabase(app);
-      const auth = getAuth();
-
-      // let signUp = document.getElementById("signUp");
-
-      signUp.addEventListener("click", (e) => {
-        var firstName = document.getElementById("firstName").value;
-        var lastName = document.getElementById("lastName").value;
-        var email = document.getElementById("email").value;
-        var password = document.getElementById("password").value;
-
-        createUserWithEmailAndPassword(auth, email, password)
-          .then((userCredential) => {
-            // Signed in
-            const user = userCredential.user;
-
-            set(ref(database, "users/" + user.uid), {
-              firstName: firstName,
-              lastName: lastName,
-              email: email,
-              password: password,
-            });
-
-            alert("-- user created --");
-            // ...
-          })
-
-          alert('-- user created --')
-          // ...
+  
+    createUserWithEmailAndPassword(auth, email, password)
+      .then((userCredential) => {
+        // Signed in 
+        const user = userCredential.user;
+        
+        set(ref(database, 'users/' + user.uid), {
+          firstName: firstName,
+          lastName: lastName,
+          email: email, 
+          password: password
         })
-        .catch((error) => {
-          const errorCode = error.code;
-          const errorMessage = error.message;
+        
+        alert('-- user created --')
+        // ...
+      })
+      .catch((error) => {
+        const errorCode = error.code;
+        const errorMessage = error.message;
 
-          alert(errorMessage);
-          // ..
-        });
+        alert(errorMessage);
+        // ..
+      });
 
-    });
-    // login.addEventListener('click', (e) => {
+  });
+  // login.addEventListener('click', (e) => {
 
-    //   var email = document.getElementById('email').value;
-    //   var password = document.getElementById('password').value;
+  //   var email = document.getElementById('email').value;
+  //   var password = document.getElementById('password').value;
 
-    //   signInWithEmailAndPassword(auth, email, password)
-    //   .then((userCredential) => {
-    //     // Signed in
-    //     const user = userCredential.user;
+  //   signInWithEmailAndPassword(auth, email, password)
+  //   .then((userCredential) => {
+  //     // Signed in 
+  //     const user = userCredential.user;
 
-    //     const dt = new Date();
-    //     update(ref(database, 'users/' + user.id), {
-    //         last_login: userName
-    //       })
+  //     const dt = new Date();
+  //     update(ref(database, 'users/' + user.id), {
+  //         last_login: userName
+  //       })
 
-    //         alert('-- user logged in --')
-    //     // ...
-    //   })
-    //   .catch((error) => {
-    //     const errorCode = error.code;
-    //     const errorMessage = error.message;
+  //         alert('-- user logged in --')
+  //     // ...
+  //   })
+  //   .catch((error) => {
+  //     const errorCode = error.code;
+  //     const errorMessage = error.message;
 
-    //     alert(errorMessage);
-    //   });
-
-    // });
+  //     alert(errorMessage);
+  //   });
+    
+  // });
   </script>
 </html>
