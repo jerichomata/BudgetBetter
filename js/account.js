@@ -30,8 +30,7 @@ const app = initializeApp(firebaseConfig);
 const database = getDatabase(app);
 const auth = getAuth();
 
-if( window.location.pathname == '/register.html')
-{
+if (window.location.pathname == "/register.html") {
   signUp.addEventListener("click", (e) => {
     var firstName = document.getElementById("firstName").value;
     var lastName = document.getElementById("lastName").value;
@@ -63,34 +62,32 @@ if( window.location.pathname == '/register.html')
   });
 }
 
-if( window.location.pathname == '/index.html')
-{
-  login.addEventListener('click', (e) => {
-
-    var email = document.getElementById('email').value;
-    console.log(email)
-    var password = document.getElementById('pass').value;
-    console.log(password)
+if (window.location.pathname == "/index.html") {
+  login.addEventListener("click", (e) => {
+    var email = document.getElementById("email").value;
+    console.log(email);
+    var password = document.getElementById("pass").value;
+    console.log(password);
 
     signInWithEmailAndPassword(auth, email, password)
-    .then((userCredential) => {
-      // Signed in
-      const user = userCredential.user;
+      .then((userCredential) => {
+        // Signed in
 
-      const dt = new Date();
-      update(ref(database, 'users/' + user.id), {
-          last_login: dt
-        })
+        const user = userCredential.user;
 
-          alert('-- user logged in --')
-      // ...
-    })
-    .catch((error) => {
-      const errorCode = error.code;
-      const errorMessage = error.message;
+        const dt = new Date();
+        update(ref(database, "users/" + user.id), {
+          last_login: dt,
+        });
 
-      alert(errorMessage);
-    });
+        alert("-- user logged in --");
+        // ...
+      })
+      .catch((error) => {
+        const errorCode = error.code;
+        const errorMessage = error.message;
 
+        alert(errorMessage);
+      });
   });
 }

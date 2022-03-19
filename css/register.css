@@ -11,8 +11,7 @@ body {
   align-items: center;
   justify-content: center;
   /* background: #4070f4; */
-  background-color: #2a2a72;
-  background-image: linear-gradient(315deg, #2a2a72 0%, #009ffd 74%);
+  background-color: #e8e8e8;
 }
 
 .container {
