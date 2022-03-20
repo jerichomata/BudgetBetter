@@ -5,43 +5,6 @@
         "type": "depository",
         "subtype": "checking",
         "starting_balance":1500,
-        "transactions": [
-          {
-            "date_transacted": "2012-11-01",
-            "date_posted": "2021-11-03",
-            "amount": 120,
-            "description": "1 year Netflix subscription",
-            "currency": "USD"
-          },
-          {
-            "date_transacted": "2022-12-01",
-            "date_posted": "2021-12-02",
-            "amount": 100,
-            "description": "1 year mobile subscription",
-            "currency": "USD"
-          },
-          {
-            "date_transacted": "2022-01-15",
-            "date_posted": "2022-01-15",
-            "amount": 20,
-            "description": "ATM Withdrawal",
-            "currency": "USD"
-          },
-          {
-            "date_transacted": "2022-02-01",
-            "date_posted": "2022-02-02",
-            "amount": 80,
-            "description": "1 year Spotify subscription",
-            "currency": "USD"
-          },
-          {
-            "date_transacted": "2021-03-01",
-            "date_posted": "2022-03-01",
-            "amount": 30,
-            "description": "Hair subscription",
-            "currency": "USD"
-          }
-        ],
         "identity": {
           "names": [
             "John Doe"
@@ -63,105 +26,121 @@
         }
       },
       {
-        "type": "loan",
-        "subtype": "student",
-        "liability": {
-          "type": "student",
-          "origination_date": "2020-01-01",
-          "principal": 10000,
-          "nominal_apr": 6.25,
-          "loan_name": "Plaid Student Loan",
-          "repayment_model": {
-            "type": "standard",
-            "non_repayment_months": 12,
-            "repayment_months": 120
-          }
+        "type": "other",
+        "subtype": "other",
+        "meta": {
+          "name": "Netflix subscription",
+          "official_name": "2021-11-01",
+          "limit": -120
         }
       },
       {
-        "type": "credit",
-        "subtype": "credit card",
-        "starting_balance": 3000,
-        "transactions": [
-          {
-            "date_transacted": "2021-12-15",
-            "date_posted": "2021-11-15",
-            "amount": 28,
-            "description": "Wingstop Davis, CA",
-            "currency": "USD"
-          },
-          {
-            "date_transacted": "2021-12-22",
-            "date_posted": "2021-12-22",
-            "amount": 800,
-            "description": "Amazon Macbook Air",
-            "currency": "USD"
-          },
-          {
-            "date_transacted": "2022-01-21",
-            "date_posted": "2022-01-21",
-            "amount": 120,
-            "description": "Restaurant Dine In",
-            "currency": "USD"
-          },
-          {
-            "date_transacted": "2022-02-17",
-            "date_posted": "2022-02-17",
-            "amount": 300,
-            "description": "BestBuy Nintendo Switch",
-            "currency": "USD"
-          },
-          {
-            "date_transacted": "2022-03-12",
-            "date_posted": "2022-03-12",
-            "amount": 150,
-            "description": "Philips Three Blade Shaver",
-            "currency": "USD"
-          }
-        ],
-        "inflow_model": {
-          "type": "monthly-interest-only-payment",
-          "payment_day_of_month": 15,
-          "statement_day_of_month": 13,
-          "transaction_name": "Interest Payment"
+        "type": "other",
+        "subtype": "other",
+        "meta": {
+          "name": "Amazon Order",
+          "official_name": "2021-01-01",
+          "limit": -50
         }
       },
       {
-        "type": "payroll",
-        "subtype": "payroll",
-        "income": {
-          "paystubs": [
-            {
-              "employer": {
-                "name": "Heartland Software Company"
-              },
-              "employee": {
-                "name": "Chip Hazard",
-                "address": {
-                  "city": "Burbank",
-                  "region": "NY",
-                  "street": "411 N Hollywood Way",
-                  "postal_code": "91505",
-                  "country": "US"
-                }
-              },
-              "income_breakdown": [
-                {
-                  "type": "regular",
-                  "rate": 42,
-                  "hours": 40,
-                  "total": 1680
-                }
-              ],
-              "pay_period_details": {
-                "start_date": "2021-02-04",
-                "end_date": "2021-02-18",
-                "gross_earnings": 5000,
-                "check_amount": 2800
-              }
-            }
-          ]
+        "type": "other",
+        "subtype": "other",
+        "meta": {
+          "name": "Income",
+          "official_name": "2022-01-09",
+          "limit": 800
         }
-      }    
+      },
+      {
+        "type": "other",
+        "subtype": "other",
+        "meta": {
+          "name": "Wingstop",
+          "official_name": "2022-01-10",
+          "limit": -25
+        }
+      },
+      {
+        "type": "other",
+        "subtype": "other",
+        "meta": {
+          "name": "Leatherbys",
+          "official_name": "2022-01-23",
+          "limit": -15
+        }
+      },
+      {
+        "type": "other",
+        "subtype": "other",
+        "meta": {
+          "name": "Income",
+          "official_name": "2022-02-16",
+          "limit": 800
+        }
+      },
+      {
+        "type": "other",
+        "subtype": "other",
+        "meta": {
+          "name": "Hair Subscription",
+          "official_name": "2022-02-03",
+          "limit": -90
+        }
+      },
+      {
+        "type": "other",
+        "subtype": "other",
+        "meta": {
+          "name": "Income",
+          "official_name": "2022-02-23",
+          "limit": 800
+        }
+      },
+      {
+        "type": "other",
+        "subtype": "other",
+        "meta": {
+          "name": "Spotify Subscription",
+          "official_name": "2022-02-27",
+          "limit": -80
+        }
+      },
+      {
+        "type": "other",
+        "subtype": "other",
+        "meta": {
+          "name": "Income",
+          "official_name": "2022-03-02",
+          "limit": 800
+        }
+      },
+      {
+        "type": "other",
+        "subtype": "other",
+        "meta": {
+          "name": "Ice Skating",
+          "official_name": "2022-03-03",
+          "limit": -40
+        }
+      },
+      {
+        "type": "other",
+        "subtype": "other",
+        "meta": {
+          "name": "Mobile Payament",
+          "official_name": "2022-03-11",
+          "limit": -100
+        }
+      },
+      {
+        "type": "other",
+        "subtype": "other",
+        "meta": {
+          "name": "Income",
+          "official_name": "2022-03-16",
+          "limit": 800
+        }
+      }  
     ]
   }

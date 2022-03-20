@@ -10,7 +10,9 @@ body {
   font-family: "Montserrat", sans-serif;
   height: 100vh;
   margin: 0 auto;
-  background-color: #e8e8e8;
+  background-image: url(bb2.jpg);
+  background-size: 600px 600px;
+  background-position: top;
 }
 
 img {
@@ -32,11 +34,11 @@ p {
 
 button {
   border-radius: 5px;
-  border: 1px solid #1e90ff;
-  background-color: #1e90ff;
-  background-image: linear-gradient(#1652f0, #0d40c6);
+  border: 1px solid #6e7a40;
+  background-color: #6e7a40;
+  background-image: linear-gradient(#6e7a40, #6e7a40);
   color: #fff;
-  border-color: #137dba;
+  border-color: #6e7a40;
   cursor: pointer;
   font-size: 20px;
   font-weight: bold;
@@ -139,8 +141,8 @@ input {
 }
 
 .overlay {
-  background-color: #2a2a72;
-  background-image: linear-gradient(315deg, #2a2a72 0%, #009ffd 74%);
+  background-color: #6e7a40;
+  background-image: linear-gradient(315deg, #6e7a40 0%, #8d8958 74%);
   background-repeat: no-repeat;
   background-size: cover;
   background-position: 0 0;
