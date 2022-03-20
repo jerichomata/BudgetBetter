@@ -1,41 +1,3 @@
-import {
-  getDatabase,
-  child,
-  ref,
-  get,
-} from "https://www.gstatic.com/firebasejs/9.6.9/firebase-database.js";
-import {
-  getAuth,
-  onAuthStateChanged,
-} from "https://www.gstatic.com/firebasejs/9.6.9/firebase-auth.js";
-
-var g_name;
-
-const auth = getAuth();
-const dbRef = ref(getDatabase());
-onAuthStateChanged(auth, (user) => {
-  if (user) {
-    // User is signed in, see docs for a list of available properties
-    // https://firebase.google.com/docs/reference/js/firebase.User
-    const uid = user.uid;
-    get(child(dbRef, `users/${user.uid}`)).then((snapshot) => {
-      if (snapshot.exists()) {
-        console.log(snapshot.val());
-        g_name = snapshot.val().firstName + ' ' + snapshot.val().lastName;
-        configurePage();
-      } else {
-        console.log("No data available");
-      }
-    }).catch((error) => {
-      console.error(error);
-    });
-    // ...
-  } else {
-    // User is signed out
-    // ...
-    console.log('not logged in')
-  }
-});
 //carousel nav buttons chagning slides
 document.querySelectorAll(".carousel").forEach((carousel) => {
   const items = carousel.querySelectorAll(".carousel__item");
@@ -195,14 +157,3 @@ const myChart = new Chart(
   carousels[0],
   config
 );
-
-function configurePage()
-{
-  configureName();
-}
-
-function configureName()
-{
-  var nameTag = document.querySelector('.info b');
-  nameTag.innerHTML = g_name;
-}
