@@ -130,10 +130,10 @@ const data = {
   labels: labels,
   datasets: [
     {
-      label: "My First dataset",
+      label: "Account Balance",
       backgroundColor: "rgb(255, 99, 132)",
       borderColor: "rgb(255, 99, 132)",
-      data: [0, 10, 5, 2, 20, 30, 45],
+      data: [0, 10000, 5000, 2000, 20000, 30000],
     },
   ],
 };
@@ -146,17 +146,56 @@ const config = {
 
 const myChart = new Chart(carousels[0], config);
 
+const data2 = {
+  labels: labels,
+  datasets: [
+    {
+      label: "Credit Score",
+      backgroundColor: "rgb(255, 99, 132)",
+      borderColor: "rgb(255, 99, 132)",
+      data: [0, 600, 620, 660, 740, 680],
+    },
+  ],
+};
+
+const config2 = {
+  type: "line",
+  data: data2,
+  options: {},
+};
+
+const myChart2 = new Chart(carousels[1], config2);
+
+const data3 = {
+  labels: labels,
+  datasets: [
+    {
+      label: "Income",
+      backgroundColor: "rgb(255, 99, 132)",
+      borderColor: "rgb(255, 99, 132)",
+      data: [0, 5000, 6200, 6200, 8400, 8800],
+    },
+  ],
+};
+
+const config3 = {
+  type: "line",
+  data: data3,
+  options: {},
+};
+
+const myChart3 = new Chart(carousels[2], config3);
+
 // User data
 const userSettings = document.querySelectorAll(".profile-section-box");
 const userName = document.querySelector(".profile b");
 
 function configureUser(userData) {
   var bankAccount;
-  userData["User"]["accounts"].forEach( function( account )
-  {
-    if( account['subtype'] == 'checking' || account['subtype'] == 'Checking' )
+  userData["User"]["accounts"].forEach(function (account) {
+    if (account["subtype"] == "checking" || account["subtype"] == "Checking")
       bankAccount = account;
-  })
+  });
   const user = bankAccount["owners"][0];
   console.log(user);
   userSettings.forEach(function (settings) {
@@ -188,13 +227,11 @@ const accountBalance = document.getElementById("account-balance-num");
 
 function retrieveBalance(balanceData) {
   var bankAccount;
-  balanceData["Balance"]["accounts"].forEach( function( account )
-  {
-    if( account['subtype'] == 'checking' || account['subtype'] == 'Checking' )
+  balanceData["Balance"]["accounts"].forEach(function (account) {
+    if (account["subtype"] == "checking" || account["subtype"] == "Checking")
       bankAccount = account;
-  })
-  if( bankAccount )
-  {
+  });
+  if (bankAccount) {
     var balance = bankAccount["balances"]["current"];
     console.log(balance);
     accountBalance.innerHTML = `$${balance}`;
@@ -205,13 +242,11 @@ const availableCredit = document.getElementById("available-credit");
 
 function getAvailableCredit(balanceData) {
   var bankAccount;
-  balanceData["Balance"]["accounts"].forEach( function( account )
-  {
-    if( account['subtype'] == 'credit' || account['subtype'] == 'Credit' )
+  balanceData["Balance"]["accounts"].forEach(function (account) {
+    if (account["subtype"] == "credit" || account["subtype"] == "Credit")
       bankAccount = account;
-  })
-  if( bankAccount )
-  {
+  });
+  if (bankAccount) {
     var balance = bankAccount["balances"]["current"];
     var limit = bankAccount["balances"]["limit"];
     console.log(balance);
