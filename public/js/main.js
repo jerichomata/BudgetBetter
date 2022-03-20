@@ -160,6 +160,7 @@ const myChart = new Chart(
 
 // User data
 const userSettings = document.querySelectorAll(".profile-section-box");
+const userName = document.querySelector(".profile b")
 
 function configureUser(userData)
 {
@@ -183,6 +184,7 @@ function configureUser(userData)
     if( settingName == 'Name:' )
     {
       settingData.innerHTML = user['names'][0]
+      userName.innerHTML = user['names'][0]
     }
     if( settingName == 'Phone:' )
     {
@@ -191,6 +193,8 @@ function configureUser(userData)
         if( number['primary'] )
           settingData.innerHTML = number['data']
       })
+      if( settingData.innerHTML == '' )
+        settingData.innerHTML = user['phone_numbers'][0]['data']
     }
   })
 }
