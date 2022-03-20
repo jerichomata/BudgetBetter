@@ -133,7 +133,7 @@ const data = {
       label: "Account Balance",
       backgroundColor: "rgb(255, 99, 132)",
       borderColor: "rgb(255, 99, 132)",
-      data: [0, 10000, 5000, 2000, 20000, 30000],
+      data: [0, 3000, 5000, 2000, 8000, 1500],
     },
   ],
 };
@@ -153,7 +153,7 @@ const data2 = {
       label: "Credit Score",
       backgroundColor: "rgb(255, 99, 132)",
       borderColor: "rgb(255, 99, 132)",
-      data: [0, 600, 620, 660, 740, 680],
+      data: [580, 600, 620, 660, 740, 680],
     },
   ],
 };
@@ -173,7 +173,7 @@ const data3 = {
       label: "Income",
       backgroundColor: "rgb(255, 99, 132)",
       borderColor: "rgb(255, 99, 132)",
-      data: [0, 5000, 6200, 6200, 8400, 8800],
+      data: [3200, 3500, 4000, 4600, 5200, 5500],
     },
   ],
 };
