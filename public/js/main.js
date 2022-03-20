@@ -235,8 +235,7 @@ function retrieveBalance(balanceData) {
     console.log(transactions);
     var expenses = 0;
     transactions.forEach(function (transaction) {
-      if (transaction["balances"]["limit"] < 0)
-        expenses += transaction["balances"]["limit"];
+      expenses += transaction["balances"]["limit"];
     });
     var balance = bankAccount["balances"]["current"];
     console.log(balance);
