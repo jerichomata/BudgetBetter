@@ -83,4 +83,5 @@ app.get("/api/is_account_connected", async (req, res, next) => {
   return (req.session.access_token ? res.json({ status: true }) : res.json({ status: false}));
 });
 
+app.use(express.static('public'));
 app.listen(process.env.PORT || 8080);
