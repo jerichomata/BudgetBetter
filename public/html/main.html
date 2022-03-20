@@ -120,7 +120,7 @@
             <h1 class="tab-title">Expense Tracker</h1>
             <div class="expense-container">
               <h4>Your Balance</h4>
-              <h1>$1500</h1>
+              <h1 id="balance-expense">$1500</h1>
               <div class="inc-exp-container">
                 <div>
                   <h4>Income</h4>
@@ -453,6 +453,9 @@
         configureUser(userData);
         retrieveBalance(balanceData);
         getAvailableCredit(balanceData);
+        getExpensesDashboard(balanceData);
+        getExpenses(balanceData);
+        getTransactions(balanceData);
       };
 
       // Check whether account is connected

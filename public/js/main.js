@@ -193,7 +193,7 @@ const userName = document.querySelector(".profile b");
 function configureUser(userData) {
   var bankAccount;
   userData["User"]["accounts"].forEach(function (account) {
-    if (account["subtype"] == "checking" || account["subtype"] == "Checking")
+    if (account["subtype"] == "checking")
       bankAccount = account;
   });
   const user = bankAccount["owners"][0];
@@ -227,14 +227,24 @@ const accountBalance = document.getElementById("account-balance-num");
 
 function retrieveBalance(balanceData) {
   var bankAccount;
+  var transactions = [];
   balanceData["Balance"]["accounts"].forEach(function (account) {
-    if (account["subtype"] == "checking" || account["subtype"] == "Checking")
+    if (account["type"] == "other")
+      transactions.push(account)
+    else if (account["subtype"] == "checking")
       bankAccount = account;
   });
   if (bankAccount) {
+    console.log(transactions)
+    var expenses = 0;
+    transactions.forEach(function(transaction)
+    {
+      if( transaction["balances"]["limit"] < 0 )
+        expenses += transaction["balances"]["limit"];
+    })
     var balance = bankAccount["balances"]["current"];
     console.log(balance);
-    accountBalance.innerHTML = `$${balance}`;
+    accountBalance.innerHTML = `$${balance + expenses}`;
   }
 }
 
@@ -243,7 +253,7 @@ const availableCredit = document.getElementById("available-credit");
 function getAvailableCredit(balanceData) {
   var bankAccount;
   balanceData["Balance"]["accounts"].forEach(function (account) {
-    if (account["subtype"] == "credit" || account["subtype"] == "Credit")
+    if (account["subtype"] == "credit card")
       bankAccount = account;
   });
   if (bankAccount) {
@@ -251,5 +261,85 @@ function getAvailableCredit(balanceData) {
     var limit = bankAccount["balances"]["limit"];
     console.log(balance);
     availableCredit.innerHTML = `$${limit - balance}`;
+  }
+}
+
+const expensesData = document.getElementById("account-expenses");
+
+function getExpensesDashboard(balanceData)
+{
+  var transactions = [];
+  balanceData["Balance"]["accounts"].forEach(function (account) {
+    if (account["type"] == "other")
+      transactions.push(account)
+  });
+  if (transactions.length) {
+    var expenses = 0;
+    transactions.forEach(function(transaction)
+    {
+      if( transaction["balances"]["limit"] < 0 )
+        expenses += transaction["balances"]["limit"];
+    })
+    expensesData.innerHTML = `$${-expenses}`;
+  }
+}
+
+const balanceExpense = document.getElementById("balance-expense");
+const positiveExpense = document.getElementById("money-plus");
+const negativeExpense = document.getElementById("money-minus");
+
+function getExpenses(balanceData)
+{
+  var bankAccount;
+  var transactions = [];
+  balanceData["Balance"]["accounts"].forEach(function (account) {
+    if (account["type"] == "other")
+      transactions.push(account)
+    else if (account["subtype"] == "checking")
+      bankAccount = account;
+  });
+  if (transactions.length) {
+    var expenses = 0;
+    var income = 0;
+    transactions.forEach(function(transaction)
+    {
+      if( transaction["balances"]["limit"] < 0 )
+        expenses += transaction["balances"]["limit"];
+      else
+        income += transaction["balances"]["limit"];
+    })
+    var balance = bankAccount["balances"]["current"];
+    balanceExpense.innerHTML = `$${balance + expenses}`;
+    positiveExpense.innerHTML = `+$${income}`
+    negativeExpense.innerHTML = `-$${expenses}`
+  }
+}
+
+// grab ur stuff
+// const balanceExpense = document.getElementById("balance-expense");
+// const positiveExpense = document.getElementById("money-plus");
+// const negativeExpense = document.getElementById("money-minus");
+
+function getTransactions(balanceData)
+{
+  var transactions = [];
+  balanceData["Balance"]["accounts"].forEach(function (account) {
+    if (account["type"] == "other")
+      transactions.push(account)
+  });
+  if (transactions.length) {
+    for( var i = transactions.length - 1; i >= 0; i-- )
+    {
+      var amount = transactions[i]["balances"]["limit"];
+      var name = transactions[i]["name"];
+      var date = transactions[i]["official_name"];
+      console.log(amount)
+      console.log(name)
+      console.log(date)
+      // do your normal stuff here
+      
+      // if( i >= transactions.length - 3)
+      // 
+    }
   }
 }
