@@ -1,0 +1,80 @@
+{
+    "seed": "my-seed-string-3",
+    "override_accounts": [
+      {
+        "type": "depository",
+        "subtype": "checking",
+        "starting_balance":1500,
+        "transactions": [
+          {
+            "date_transacted": "2022-01-01",
+            "date_posted": "2022-10-03",
+            "amount": 120,
+            "description": "1 year Netflix subscription",
+            "currency": "USD"
+          },
+          {
+            "date_transacted": "2022-01-01",
+            "date_posted": "2022-01-02",
+            "amount": 100,
+            "description": "1 year mobile subscription",
+            "currency": "USD"
+          },
+          {
+            "date_transacted": "2022-03-15",
+            "date_posted": "2022-03-15",
+            "amount": 20,
+            "description": "ATM Withdrawal",
+            "currency": "USD"
+          },
+          {
+            "date_transacted": "2022-04-01",
+            "date_posted": "2022-04-02",
+            "amount": 80,
+            "description": "1 year Spotify subscription",
+            "currency": "USD"
+          }
+        ],
+        "identity": {
+          "names": [
+            "John Doe"
+          ],
+          "phone_numbers": [
+            {
+              "primary": true,
+              "type": "home",
+              "data": "4673956022"
+            }
+          ],
+          "emails": [
+            {
+              "primary": true,
+              "type": "primary",
+              "data": "johndoe@example.com"
+            }
+          ]
+        }
+      },
+      {
+        "type": "loan",
+        "subtype": "student",
+        "liability": {
+          "type": "student",
+          "origination_date": "2020-01-01",
+          "principal": 10000,
+          "nominal_apr": 6.25,
+          "loan_name": "Plaid Student Loan",
+          "repayment_model": {
+            "type": "standard",
+            "non_repayment_months": 12,
+            "repayment_months": 120
+          }
+        }
+      }
+      // {
+      //   "type": "credit",
+      //   "subtype": "credit card",
+      //   "starting_balance": 800
+      // }
+    ]
+  }
