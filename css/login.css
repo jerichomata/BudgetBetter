@@ -94,8 +94,12 @@ input {
   z-index: 2;
 }
 
-.no-account {
+.demo-container {
   margin-top: 50px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
 }
 
 .register-container {
