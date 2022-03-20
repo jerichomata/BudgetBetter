@@ -298,7 +298,7 @@ function getExpenses(balanceData) {
     var balance = bankAccount["balances"]["current"];
     balanceExpense.innerHTML = `$${balance + expenses}`;
     positiveExpense.innerHTML = `+$${income}`;
-    negativeExpense.innerHTML = `-$${expenses}`;
+    negativeExpense.innerHTML = `$${expenses}`;
   }
 }
 
@@ -306,6 +306,9 @@ function getExpenses(balanceData) {
 // const balanceExpense = document.getElementById("balance-expense");
 // const positiveExpense = document.getElementById("money-plus");
 // const negativeExpense = document.getElementById("money-minus");
+const table = document.querySelector("recent-transaction-table");
+const tableBody = document.getElementById("table-body");
+
 const firstRecent = document.getElementById("first-recent-transaction");
 const secondRecent = document.getElementById("second-recent-transaction");
 const thirdRecent = document.getElementById("third-recent-transaction");
@@ -328,6 +331,16 @@ function getTransactions(balanceData) {
       console.log(name);
       console.log(date);
       console.log(i);
+
+      tableBody.innerHTML += `
+      <tr>
+        <td>${name}</td>
+        <td>${date}</td>
+        <td>${amount}</td>
+        <td class='success'> Processed </td>
+      </tr>
+      `;
+
       // do your normal stuff here
 
       // if( i >= transactions.length - 3)
