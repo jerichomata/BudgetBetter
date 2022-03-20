@@ -151,7 +151,13 @@ const userSettings = document.querySelectorAll(".profile-section-box");
 const userName = document.querySelector(".profile b");
 
 function configureUser(userData) {
-  const user = userData["User"]["accounts"][0]["owners"][0];
+  var bankAccount;
+  userData["User"]["accounts"].forEach( function( account )
+  {
+    if( account['subtype'] == 'checking' || account['subtype'] == 'Checking' )
+      bankAccount = account;
+  })
+  const user = bankAccount["owners"][0];
   console.log(user);
   userSettings.forEach(function (settings) {
     console.log(settings);
@@ -180,8 +186,35 @@ function configureUser(userData) {
 
 const accountBalance = document.getElementById("account-balance-num");
 
-function retrieveBalance(userData) {
-  let balanceAmount = userData["User"]["accounts"][0]["balances"]["current"];
-  console.log(balanceAmount);
-  accountBalance.innerHTML = `$${balanceAmount}`;
+function retrieveBalance(balanceData) {
+  var bankAccount;
+  balanceData["Balance"]["accounts"].forEach( function( account )
+  {
+    if( account['subtype'] == 'checking' || account['subtype'] == 'Checking' )
+      bankAccount = account;
+  })
+  if( bankAccount )
+  {
+    var balance = bankAccount["balances"]["current"];
+    console.log(balance);
+    accountBalance.innerHTML = `$${balance}`;
+  }
+}
+
+const availableCredit = document.getElementById("available-credit");
+
+function getAvailableCredit(balanceData) {
+  var bankAccount;
+  balanceData["Balance"]["accounts"].forEach( function( account )
+  {
+    if( account['subtype'] == 'credit' || account['subtype'] == 'Credit' )
+      bankAccount = account;
+  })
+  if( bankAccount )
+  {
+    var balance = bankAccount["balances"]["current"];
+    var limit = bankAccount["balances"]["limit"];
+    console.log(balance);
+    availableCredit.innerHTML = `$${limit - balance}`;
+  }
 }

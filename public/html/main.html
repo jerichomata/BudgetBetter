@@ -70,9 +70,9 @@
               <div class="credit">
                 <span class="material-icons-sharp"> analytics </span>
                 <div class="middle">
-                  <h3>Credit Score</h3>
-                  <h1>800</h1>
-                  <small class="text-muted"> All Time </small>
+                  <h3>Available Credit</h3>
+                  <h1 id="available-credit">N/A</h1>
+                  <small class="text-muted"> This Month </small>
                 </div>
               </div>
               <!-- Credit End -->
@@ -81,7 +81,7 @@
                 <span class="material-icons-sharp"> account_balance </span>
                 <div class="middle">
                   <h3>Account Balance</h3>
-                  <h1 id="account-balance-num"></h1>
+                  <h1 id="account-balance-num">N/A</h1>
                   <small class="text-muted"> All Time </small>
                 </div>
               </div>
@@ -91,8 +91,8 @@
                 <span class="material-icons-sharp"> bar_chart </span>
                 <div class="middle">
                   <h3>Expenses</h3>
-                  <h1>$14,160</h1>
-                  <small class="text-muted"> Last 24 Hours </small>
+                  <h1 id="account-expenses">N/A</h1>
+                  <small class="text-muted"> This Month </small>
                 </div>
               </div>
               <!-- Expenses End -->
@@ -424,8 +424,9 @@
         console.log(balanceData)
         // configureBalance(balanceData)
         console.log(userData)
-        configureUser(userData)
-        retrieveBalance(userData)
+        configureUser(userData);
+        retrieveBalance(balanceData);
+        getAvailableCredit(balanceData);
       };
 
       // Check whether account is connected
