@@ -295,7 +295,7 @@ function getExpenses(balanceData) {
       else income += transaction["balances"]["limit"];
     });
     var balance = bankAccount["balances"]["current"];
-    balanceExpense.innerHTML = `$${balance + expenses}`;
+    balanceExpense.innerHTML = `$${balance + expenses + income}`;
     positiveExpense.innerHTML = `+$${income}`;
     negativeExpense.innerHTML = `$${expenses}`;
   }
