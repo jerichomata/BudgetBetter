@@ -157,3 +157,40 @@ const myChart = new Chart(
   carousels[0],
   config
 );
+
+// User data
+const userSettings = document.querySelectorAll(".profile-section-box");
+
+function configureUser(userData)
+{
+  const user = userData['User']['accounts'][0]['owners'][0]
+  console.log(user)
+  userSettings.forEach( function( settings )
+  {
+    console.log(settings)
+    var settingName = settings.querySelector("h5").innerHTML;
+    console.log(settingName);
+    var settingData = settings.querySelector("p")
+    console.log(settingData)
+    if( settingName == 'Email:' )
+    {
+      user['emails'].forEach( function( email )
+      {
+        if( email['primary'] )
+          settingData.innerHTML = email['data']
+      })
+    }
+    if( settingName == 'Name:' )
+    {
+      settingData.innerHTML = user['names'][0]
+    }
+    if( settingName == 'Phone:' )
+    {
+      user['phone_numbers'].forEach( function( number )
+      {
+        if( number['primary'] )
+          settingData.innerHTML = number['data']
+      })
+    }
+  })
+}

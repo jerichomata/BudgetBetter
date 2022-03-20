@@ -77,6 +77,14 @@ app.get("/api/data", async (req, res, next) => {
   });
 });
 
+app.get("/api/user", async (req, res, next) => {
+  const access_token = req.session.access_token;
+  const userResponse = await client.identityGet({ access_token });
+  res.json({
+    User: userResponse.data,
+  });
+});
+
 // Checks whether the user's account is connected, called
 // in index.html when redirected from oauth.html
 app.get("/api/is_account_connected", async (req, res, next) => {

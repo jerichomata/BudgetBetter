@@ -615,7 +615,7 @@ main .recent-orders a {
 
 .profile-info .edit-button {
   background: var(--color-white);
-  color: black;
+  color: var(--color-dark);
   cursor: pointer;
 }
 

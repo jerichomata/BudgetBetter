@@ -20,8 +20,9 @@
         <div class="register-container">
           <div class="demo-container">
             <p class="demo-info">For Demo Purposes:</p>
-            <p class="demo-info">Username: user_good</p>
+            <p class="demo-info">Username: custom_one</p>
             <p class="demo-info">Password: pass_good</p>
+            <p class="demo-info">Authentication: 1234</p>
           </div>
         </div>
       </div>
@@ -63,7 +64,6 @@
                 "Content-Type": "application/json",
               },
             });
-            await getBalance();
           },
           onEvent: (eventName, metadata) => {
             console.log("Event:", eventName);
@@ -82,16 +82,5 @@
           handler.open();
         });
       })(jQuery);
-
-      // Check whether account is connected
-      const getStatus = async function () {
-        const account = await fetch("/api/is_account_connected");
-        const connected = await account.json();
-        if (connected.status == true) {
-          getBalance();
-        }
-      };
-
-      getStatus();
     </script>
 </html>
