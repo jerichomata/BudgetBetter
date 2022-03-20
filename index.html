@@ -4,7 +4,7 @@
     <meta charset="UTF-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <link rel="stylesheet" href="./css/login.css" />
+    <link rel="stylesheet" href="css/login.css" />
     <title>Document</title>
   </head>
   <body>
@@ -13,7 +13,7 @@
       <div class="form-container sign-in-container">
         <h1>Bank Analyzer</h1>
         <div class="form__input-group">
-          <button type="submit" class="form__button" id="login">
+          <button type="button" class="form__button" id="link-account">
             Get Started
           </button>
         </div>
@@ -29,7 +29,7 @@
       <div class="overlay-container">
         <div class="overlay">
           <div class="overlay-panel overlay-right">
-            <h1>Keeping You Financially Stable</h1>
+            <h1>Keeping You Financially Stable...</h1>
             <p>
               SaveSmart is here to make visualizing your financial trends a
               reality.
@@ -68,6 +68,8 @@
           onEvent: (eventName, metadata) => {
             console.log("Event:", eventName);
             console.log("Metadata:", metadata);
+            if( eventName == 'HANDOFF' )
+              window.location.href = 'html/main.html'
           },
           onExit: (error, metadata) => {
             console.log(error, metadata);
@@ -80,19 +82,6 @@
           handler.open();
         });
       })(jQuery);
-
-      // Retrieves balance information
-      const getBalance = async function () {
-        const response = await fetch("/api/data", {
-          method: "GET",
-        });
-        const data = await response.json();
-
-        //Render response data
-        const pre = document.getElementById("response");
-        pre.textContent = JSON.stringify(data, null, 2);
-        pre.style.background = "#F6F6F6";
-      };
 
       // Check whether account is connected
       const getStatus = async function () {
