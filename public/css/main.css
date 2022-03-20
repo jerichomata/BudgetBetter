@@ -11,7 +11,7 @@
   --color-white: ##e7e7ef;
   --color-primary: #318ce7;
   --color-success: #118c4f;
-  --color-warning: #ffbb55;
+  --color-warning: #f50909;
   --color-info-dark: #7d8da1;
   --color-info-light: #dce1eb;
   --color-light: rgba(132, 139, 200, 0.18);
@@ -434,7 +434,7 @@ main .visuals h2 {
 }
 
 .money.minus {
-  color: #c0392b;
+  color: #f01d0e;
 }
 
 main .recent-orders {

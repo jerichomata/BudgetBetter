@@ -331,14 +331,28 @@ function getTransactions(balanceData) {
       console.log(date);
       console.log(i);
 
-      tableBody.innerHTML += `
-      <tr>
-        <td>${name}</td>
-        <td>${date}</td>
-        <td>${amount}</td>
-        <td class='success'> Processed </td>
-      </tr>
-      `;
+      if(amount > 0)
+      {
+        tableBody.innerHTML += `
+        <tr>
+          <td>${name}</td>
+          <td>${date}</td>
+          <td>${amount}</td>
+          <td class='success'> Income </td>
+        </tr>
+        `;
+      }
+      else
+      {
+        tableBody.innerHTML += `
+        <tr>
+          <td>${name}</td>
+          <td>${date}</td>
+          <td>${amount}</td>
+          <td class='warning'> Expense </td>
+        </tr>
+        `;
+      }
 
       // do your normal stuff here
 
