@@ -1,0 +1,157 @@
+{
+    "seed": "my-seed-string-3",
+    "override_accounts": [
+      {
+        "type": "depository",
+        "subtype": "checking",
+        "starting_balance":8000,
+        "identity": {
+          "names": [
+            "John Doe"
+          ],
+          "phone_numbers": [
+            {
+              "primary": true,
+              "type": "home",
+              "data": "4673956022"
+            }
+          ],
+          "emails": [
+            {
+              "primary": true,
+              "type": "primary",
+              "data": "johndoe@example.com"
+            }
+          ]
+        }
+      },
+      {
+        "type": "credit",
+        "subtype": "credit card",
+        "starting_balance": 1000,
+        "inflow_model": {
+          "type": "monthly-interest-only-payment",
+          "payment_day_of_month": 15,
+          "statement_day_of_month": 13,
+          "transaction_name": "Interest Payment"
+        }
+      },
+      {
+        "type": "other",
+        "subtype": "other",
+        "meta": {
+          "name": "Netflix subscription",
+          "official_name": "2021-11-01",
+          "limit": -120
+        }
+      },
+      {
+        "type": "other",
+        "subtype": "other",
+        "meta": {
+          "name": "Amazon Order",
+          "official_name": "2021-01-01",
+          "limit": -50
+        }
+      },
+      {
+        "type": "other",
+        "subtype": "other",
+        "meta": {
+          "name": "Income",
+          "official_name": "2022-01-09",
+          "limit": 800
+        }
+      },
+      {
+        "type": "other",
+        "subtype": "other",
+        "meta": {
+          "name": "Wingstop",
+          "official_name": "2022-01-10",
+          "limit": -25
+        }
+      },
+      {
+        "type": "other",
+        "subtype": "other",
+        "meta": {
+          "name": "Books",
+          "official_name": "2022-01-23",
+          "limit": -15
+        }
+      },
+      {
+        "type": "other",
+        "subtype": "other",
+        "meta": {
+          "name": "Income",
+          "official_name": "2022-02-16",
+          "limit": 800
+        }
+      },
+      {
+        "type": "other",
+        "subtype": "other",
+        "meta": {
+          "name": "Hair Subscription",
+          "official_name": "2022-02-03",
+          "limit": -90
+        }
+      },
+      {
+        "type": "other",
+        "subtype": "other",
+        "meta": {
+          "name": "Income",
+          "official_name": "2022-02-23",
+          "limit": 800
+        }
+      },
+      {
+        "type": "other",
+        "subtype": "other",
+        "meta": {
+          "name": "Spotify Subscription",
+          "official_name": "2022-02-27",
+          "limit": -80
+        }
+      },
+      {
+        "type": "other",
+        "subtype": "other",
+        "meta": {
+          "name": "Income",
+          "official_name": "2022-03-02",
+          "limit": 800
+        }
+      },
+      {
+        "type": "other",
+        "subtype": "other",
+        "meta": {
+          "name": "Ice Skating",
+          "official_name": "2022-03-03",
+          "limit": -40
+        }
+      },
+      {
+        "type": "other",
+        "subtype": "other",
+        "meta": {
+          "name": "Mobile Payament",
+          "official_name": "2022-03-11",
+          "limit": -100
+        }
+      },
+      {
+        "type": "other",
+        "subtype": "other",
+        "meta": {
+          "name": "Income",
+          "official_name": "2022-03-16",
+          "limit": 800
+        }
+      }  
+    ]
+  }
