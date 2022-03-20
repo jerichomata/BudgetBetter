@@ -8,7 +8,7 @@
         "transactions": [
           {
             "date_transacted": "2022-01-01",
-            "date_posted": "2022-10-03",
+            "date_posted": "2022-01-03",
             "amount": 120,
             "description": "1 year Netflix subscription",
             "currency": "USD"
@@ -32,6 +32,13 @@
             "date_posted": "2022-04-02",
             "amount": 80,
             "description": "1 year Spotify subscription",
+            "currency": "USD"
+          },
+          {
+            "date_transacted": "2022-05-01",
+            "date_posted": "2022-05-01",
+            "amount": 30,
+            "description": "Hair subscription",
             "currency": "USD"
           }
         ],
@@ -70,11 +77,91 @@
             "repayment_months": 120
           }
         }
-      }
-      // {
-      //   "type": "credit",
-      //   "subtype": "credit card",
-      //   "starting_balance": 800
-      // }
+      },
+      {
+        "type": "credit",
+        "subtype": "credit card",
+        "starting_balance": 3000,
+        "transactions": [
+          {
+            "date_transacted": "2022-01-15",
+            "date_posted": "2022-01-15",
+            "amount": 28,
+            "description": "Wingstop Davis, CA",
+            "currency": "USD"
+          },
+          {
+            "date_transacted": "2022-01-22",
+            "date_posted": "2022-01-22",
+            "amount": 800,
+            "description": "Amazon Macbook Air",
+            "currency": "USD"
+          },
+          {
+            "date_transacted": "2022-03-21",
+            "date_posted": "2022-03-21",
+            "amount": 120,
+            "description": "Restaurant Dine In",
+            "currency": "USD"
+          },
+          {
+            "date_transacted": "2022-04-17",
+            "date_posted": "2022-04-17",
+            "amount": 300,
+            "description": "BestBuy Nintendo Switch",
+            "currency": "USD"
+          },
+          {
+            "date_transacted": "2022-05-12",
+            "date_posted": "2022-05-12",
+            "amount": 150,
+            "description": "Philips Three Blade Shaver",
+            "currency": "USD"
+          }
+        ],
+        "inflow_model": {
+          "type": "monthly-interest-only-payment",
+          "payment_day_of_month": 15,
+          "statement_day_of_month": 13,
+          "transaction_name": "Interest Payment"
+        }
+      },
+      {
+        "type": "payroll",
+        "subtype": "payroll",
+        "income": {
+          "paystubs": [
+            {
+              "employer": {
+                "name": "Heartland Software Company"
+              },
+              "employee": {
+                "name": "Chip Hazard",
+                "address": {
+                  "city": "Burbank",
+                  "region": "NY",
+                  "street": "411 N Hollywood Way",
+                  "postal_code": "91505",
+                  "country": "US"
+                }
+              },
+              "income_breakdown": [
+                {
+                  "type": "regular",
+                  "rate": 42,
+                  "hours": 40,
+                  "total": 1680
+                }
+              ],
+              "pay_period_details": {
+                "start_date": "2021-05-04",
+                "end_date": "2021-05-18",
+                "gross_earnings": 5000,
+                "check_amount": 2800
+              }
+            }
+          ]
+        }
+      }    
     ]
   }
