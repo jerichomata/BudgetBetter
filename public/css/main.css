@@ -1,3 +1,5 @@
+/* Referenced a dashboard template, used its basic layout, and expanded greatly on it. */
+
 @import url("https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&display=swap");
 
 :root {
@@ -688,7 +690,7 @@ main .recent-orders a {
 }
 
 .right .recent-updates h2 {
-  margin-bottom: 0/8rem;
+  margin-bottom: 0.8rem;
 }
 
 .right .recent-updates .updates {
