@@ -81,7 +81,7 @@
                 <span class="material-icons-sharp"> account_balance </span>
                 <div class="middle">
                   <h3>Account Balance</h3>
-                  <h1>$20,000</h1>
+                  <h1 id="account-balance-num"></h1>
                   <small class="text-muted"> All Time </small>
                 </div>
               </div>
@@ -283,7 +283,7 @@
                     <h5 class="account-info">Phone:</h5>
                     <p></p>
                   </div>
-                  <span class="material-icons-sharp edit-button">edit</span> 
+                  <span class="material-icons-sharp edit-button">edit</span>
                 </div>
               </div>
 
@@ -425,6 +425,7 @@
         // configureBalance(balanceData)
         console.log(userData)
         configureUser(userData)
+        retrieveBalance(userData)
       };
 
       // Check whether account is connected

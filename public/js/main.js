@@ -21,9 +21,7 @@ document.querySelectorAll(".carousel").forEach((carousel) => {
   buttons.forEach((button, i) => {
     button.addEventListener("click", () => {
       // un-select all the items
-      items.forEach((item) =>
-        item.style.display = "none"
-      );
+      items.forEach((item) => (item.style.display = "none"));
       buttons.forEach((button) =>
         button.classList.remove("carousel__button--selected")
       );
@@ -35,32 +33,26 @@ document.querySelectorAll(".carousel").forEach((carousel) => {
   });
 
   carousel.querySelector(".left-arrow").addEventListener("click", () => {
-    items.forEach((item) =>
-      item.style.display = "none"
-    );
+    items.forEach((item) => (item.style.display = "none"));
     buttons.forEach((button) =>
       button.classList.remove("carousel__button--selected")
     );
-    currentCarousel --;
-    if( currentCarousel == -1 )
-      currentCarousel = maxCarousel;
+    currentCarousel--;
+    if (currentCarousel == -1) currentCarousel = maxCarousel;
 
-    items[currentCarousel].style.display = "block"
+    items[currentCarousel].style.display = "block";
     buttons[currentCarousel].classList.add("carousel__button--selected");
   });
 
   carousel.querySelector(".right-arrow").addEventListener("click", () => {
-    items.forEach((item) =>
-      item.style.display = "none"
-    );
+    items.forEach((item) => (item.style.display = "none"));
     buttons.forEach((button) =>
       button.classList.remove("carousel__button--selected")
     );
-    currentCarousel ++;
-    if( currentCarousel > maxCarousel )
-      currentCarousel = 0;
+    currentCarousel++;
+    if (currentCarousel > maxCarousel) currentCarousel = 0;
 
-    items[currentCarousel].style.display = "block"
+    items[currentCarousel].style.display = "block";
     buttons[currentCarousel].classList.add("carousel__button--selected");
   });
 
@@ -97,104 +89,99 @@ themeToggler.addEventListener("click", () => {
   themeToggler.querySelector("span:nth-child(2)").classList.toggle("active");
 });
 
-sideBar.forEach( function( sideTab, index )
-{
-  if( index != 7 )
-  {
+sideBar.forEach(function (sideTab, index) {
+  if (index != 7) {
     sideTab.addEventListener("click", () => {
-      sideBar.forEach( function( tab )
-      {
+      sideBar.forEach(function (tab) {
         tab.classList.remove("active");
-      })
-      mainMenu.forEach( function( menu )
-      {
+      });
+      mainMenu.forEach(function (menu) {
         menu.style.display = "none";
-      })
+      });
       mainMenu[index].style.display = "block";
       sideTab.classList.add("active");
-    })
+    });
   }
-})
+});
 
-newsArticles.forEach( function( article, index )
-{
+newsArticles.forEach(function (article, index) {
   article.addEventListener("click", () => {
-    if( index == 0 )
-      window.open('https://www.nytimes.com/2022/03/18/obituaries/don-young-obituary-alaska.html', '_blank');
-    else if( index == 1 )
-      window.open('https://www.cnbc.com/2022/03/15/why-the-federal-reserve-raises-interest-rates-to-combat-inflation-.html', '_blank');
+    if (index == 0)
+      window.open(
+        "https://www.nytimes.com/2022/03/18/obituaries/don-young-obituary-alaska.html",
+        "_blank"
+      );
+    else if (index == 1)
+      window.open(
+        "https://www.cnbc.com/2022/03/15/why-the-federal-reserve-raises-interest-rates-to-combat-inflation-.html",
+        "_blank"
+      );
     else
-      window.open('https://www.cnbc.com/2022/03/11/federal-reserve-expected-to-raise-interest-rates-in-week-ahead.html', '_blank');
-  })
-})
+      window.open(
+        "https://www.cnbc.com/2022/03/11/federal-reserve-expected-to-raise-interest-rates-in-week-ahead.html",
+        "_blank"
+      );
+  });
+});
 
-const labels = [
-  'January',
-  'February',
-  'March',
-  'April',
-  'May',
-  'June',
-];
+const labels = ["January", "February", "March", "April", "May", "June"];
 
 const data = {
   labels: labels,
-  datasets: [{
-    label: 'My First dataset',
-    backgroundColor: 'rgb(255, 99, 132)',
-    borderColor: 'rgb(255, 99, 132)',
-    data: [0, 10, 5, 2, 20, 30, 45],
-  }]
+  datasets: [
+    {
+      label: "My First dataset",
+      backgroundColor: "rgb(255, 99, 132)",
+      borderColor: "rgb(255, 99, 132)",
+      data: [0, 10, 5, 2, 20, 30, 45],
+    },
+  ],
 };
 
 const config = {
-  type: 'line',
+  type: "line",
   data: data,
-  options: {}
+  options: {},
 };
 
-const myChart = new Chart(  
-  carousels[0],
-  config
-);
+const myChart = new Chart(carousels[0], config);
 
 // User data
 const userSettings = document.querySelectorAll(".profile-section-box");
-const userName = document.querySelector(".profile b")
+const userName = document.querySelector(".profile b");
 
-function configureUser(userData)
-{
-  const user = userData['User']['accounts'][0]['owners'][0]
-  console.log(user)
-  userSettings.forEach( function( settings )
-  {
-    console.log(settings)
+function configureUser(userData) {
+  const user = userData["User"]["accounts"][0]["owners"][0];
+  console.log(user);
+  userSettings.forEach(function (settings) {
+    console.log(settings);
     var settingName = settings.querySelector("h5").innerHTML;
     console.log(settingName);
-    var settingData = settings.querySelector("p")
-    console.log(settingData)
-    if( settingName == 'Email:' )
-    {
-      user['emails'].forEach( function( email )
-      {
-        if( email['primary'] )
-          settingData.innerHTML = email['data']
-      })
+    var settingData = settings.querySelector("p");
+    console.log(settingData);
+    if (settingName == "Email:") {
+      user["emails"].forEach(function (email) {
+        if (email["primary"]) settingData.innerHTML = email["data"];
+      });
     }
-    if( settingName == 'Name:' )
-    {
-      settingData.innerHTML = user['names'][0]
-      userName.innerHTML = user['names'][0]
+    if (settingName == "Name:") {
+      settingData.innerHTML = user["names"][0];
+      userName.innerHTML = user["names"][0];
     }
-    if( settingName == 'Phone:' )
-    {
-      user['phone_numbers'].forEach( function( number )
-      {
-        if( number['primary'] )
-          settingData.innerHTML = number['data']
-      })
-      if( settingData.innerHTML == '' )
-        settingData.innerHTML = user['phone_numbers'][0]['data']
+    if (settingName == "Phone:") {
+      user["phone_numbers"].forEach(function (number) {
+        if (number["primary"]) settingData.innerHTML = number["data"];
+      });
+      if (settingData.innerHTML == "")
+        settingData.innerHTML = user["phone_numbers"][0]["data"];
     }
-  })
+  });
+}
+
+const accountBalance = document.getElementById("account-balance-num");
+
+function retrieveBalance(userData) {
+  const balance = userData["User"]["accounts"][0]["balances"]["current"];
+  console.log(balance);
+  accountBalance.innerHTML = `$${balance}`;
 }
