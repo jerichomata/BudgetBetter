@@ -193,8 +193,7 @@ const userName = document.querySelector(".profile b");
 function configureUser(userData) {
   var bankAccount;
   userData["User"]["accounts"].forEach(function (account) {
-    if (account["subtype"] == "checking")
-      bankAccount = account;
+    if (account["subtype"] == "checking") bankAccount = account;
   });
   const user = bankAccount["owners"][0];
   console.log(user);
@@ -229,19 +228,16 @@ function retrieveBalance(balanceData) {
   var bankAccount;
   var transactions = [];
   balanceData["Balance"]["accounts"].forEach(function (account) {
-    if (account["type"] == "other")
-      transactions.push(account)
-    else if (account["subtype"] == "checking")
-      bankAccount = account;
+    if (account["type"] == "other") transactions.push(account);
+    else if (account["subtype"] == "checking") bankAccount = account;
   });
   if (bankAccount) {
-    console.log(transactions)
+    console.log(transactions);
     var expenses = 0;
-    transactions.forEach(function(transaction)
-    {
-      if( transaction["balances"]["limit"] < 0 )
+    transactions.forEach(function (transaction) {
+      if (transaction["balances"]["limit"] < 0)
         expenses += transaction["balances"]["limit"];
-    })
+    });
     var balance = bankAccount["balances"]["current"];
     console.log(balance);
     accountBalance.innerHTML = `$${balance + expenses}`;
@@ -253,8 +249,7 @@ const availableCredit = document.getElementById("available-credit");
 function getAvailableCredit(balanceData) {
   var bankAccount;
   balanceData["Balance"]["accounts"].forEach(function (account) {
-    if (account["subtype"] == "credit card")
-      bankAccount = account;
+    if (account["subtype"] == "credit card") bankAccount = account;
   });
   if (bankAccount) {
     var balance = bankAccount["balances"]["current"];
@@ -266,20 +261,17 @@ function getAvailableCredit(balanceData) {
 
 const expensesData = document.getElementById("account-expenses");
 
-function getExpensesDashboard(balanceData)
-{
+function getExpensesDashboard(balanceData) {
   var transactions = [];
   balanceData["Balance"]["accounts"].forEach(function (account) {
-    if (account["type"] == "other")
-      transactions.push(account)
+    if (account["type"] == "other") transactions.push(account);
   });
   if (transactions.length) {
     var expenses = 0;
-    transactions.forEach(function(transaction)
-    {
-      if( transaction["balances"]["limit"] < 0 )
+    transactions.forEach(function (transaction) {
+      if (transaction["balances"]["limit"] < 0)
         expenses += transaction["balances"]["limit"];
-    })
+    });
     expensesData.innerHTML = `$${-expenses}`;
   }
 }
@@ -288,30 +280,25 @@ const balanceExpense = document.getElementById("balance-expense");
 const positiveExpense = document.getElementById("money-plus");
 const negativeExpense = document.getElementById("money-minus");
 
-function getExpenses(balanceData)
-{
+function getExpenses(balanceData) {
   var bankAccount;
   var transactions = [];
   balanceData["Balance"]["accounts"].forEach(function (account) {
-    if (account["type"] == "other")
-      transactions.push(account)
-    else if (account["subtype"] == "checking")
-      bankAccount = account;
+    if (account["type"] == "other") transactions.push(account);
+    else if (account["subtype"] == "checking") bankAccount = account;
   });
   if (transactions.length) {
     var expenses = 0;
     var income = 0;
-    transactions.forEach(function(transaction)
-    {
-      if( transaction["balances"]["limit"] < 0 )
+    transactions.forEach(function (transaction) {
+      if (transaction["balances"]["limit"] < 0)
         expenses += transaction["balances"]["limit"];
-      else
-        income += transaction["balances"]["limit"];
-    })
+      else income += transaction["balances"]["limit"];
+    });
     var balance = bankAccount["balances"]["current"];
     balanceExpense.innerHTML = `$${balance + expenses}`;
-    positiveExpense.innerHTML = `+$${income}`
-    negativeExpense.innerHTML = `-$${expenses}`
+    positiveExpense.innerHTML = `+$${income}`;
+    negativeExpense.innerHTML = `-$${expenses}`;
   }
 }
 
@@ -319,27 +306,47 @@ function getExpenses(balanceData)
 // const balanceExpense = document.getElementById("balance-expense");
 // const positiveExpense = document.getElementById("money-plus");
 // const negativeExpense = document.getElementById("money-minus");
+const firstRecent = document.getElementById("first-recent-transaction");
+const secondRecent = document.getElementById("second-recent-transaction");
+const thirdRecent = document.getElementById("third-recent-transaction");
 
-function getTransactions(balanceData)
-{
+const firstRecentAmount = document.getElementById("first-recent-amount");
+const secondRecentAmount = document.getElementById("second-recent-amount");
+const thirdRecentAmount = document.getElementById("third-recent-amount");
+
+function getTransactions(balanceData) {
   var transactions = [];
   balanceData["Balance"]["accounts"].forEach(function (account) {
-    if (account["type"] == "other")
-      transactions.push(account)
+    if (account["type"] == "other") transactions.push(account);
   });
   if (transactions.length) {
-    for( var i = transactions.length - 1; i >= 0; i-- )
-    {
+    for (var i = transactions.length - 1; i >= 0; i--) {
       var amount = transactions[i]["balances"]["limit"];
       var name = transactions[i]["name"];
       var date = transactions[i]["official_name"];
-      console.log(amount)
-      console.log(name)
-      console.log(date)
+      console.log(amount);
+      console.log(name);
+      console.log(date);
+      console.log(i);
       // do your normal stuff here
-      
+
       // if( i >= transactions.length - 3)
-      // 
+      //
+
+      if (i === transactions.length - 1) {
+        firstRecent.innerHTML = name;
+        firstRecentAmount.innerHTML = `$${amount}`;
+      }
+
+      if (i === transactions.length - 2) {
+        secondRecent.innerHTML = name;
+        secondRecentAmount.innerHTML = `$${amount}`;
+      }
+
+      if (i === transactions.length - 3) {
+        thirdRecent.innerHTML = name;
+        thirdRecentAmount.innerHTML = `$${amount}`;
+      }
     }
   }
 }
