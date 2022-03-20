@@ -4,10 +4,10 @@
   /* color variables */
   --color-background: #f6f6f9;
   --color-dark: #363949;
-  --color-danger: #ff7782;
+  --color-danger: #c21e56;
   --color-white: #fff;
-  --color-primary: #7380ec;
-  --color-success: #41f1b6;
+  --color-primary: rgb(0, 82, 255);
+  --color-success: #118c4f;
   --color-warning: #ffbb55;
   --color-info-dark: #7d8da1;
   --color-info-light: #dce1eb;

@@ -181,7 +181,7 @@ function configureUser(userData) {
 const accountBalance = document.getElementById("account-balance-num");
 
 function retrieveBalance(userData) {
-  const balance = userData["User"]["accounts"][0]["balances"]["current"];
-  console.log(balance);
-  accountBalance.innerHTML = `$${balance}`;
+  let balanceAmount = userData["User"]["accounts"][0]["balances"]["current"];
+  console.log(balanceAmount);
+  accountBalance.innerHTML = `$${balanceAmount}`;
 }
