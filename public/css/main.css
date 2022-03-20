@@ -5,8 +5,9 @@
   --color-background: #f6f6f9;
   --color-dark: #363949;
   --color-danger: #c21e56;
-  --color-white: #fff;
-  --color-primary: rgb(0, 82, 255);
+  /* --color-white: #f8f8ff; */
+  --color-white: ##e7e7ef;
+  --color-primary: #318ce7;
   --color-success: #118c4f;
   --color-warning: #ffbb55;
   --color-info-dark: #7d8da1;
