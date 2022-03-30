@@ -11,3 +11,7 @@ You can run npm install in order to install the needed dependencies. From there,
 ### Using the app
 
 After clicking get started, you can enter the provided login information from the get started page in order to login to the Plaid API.
+
+### Demo Video
+
+https://youtu.be/vL9GGl9hwSg
