@@ -76,6 +76,12 @@
       const linkAccountButton = document.getElementById("link-account");
       linkAccountButton.addEventListener("click", (event) => {
         handler.open();
+        window.onload = function() {
+          if(!window.location.hash) {
+          window.location = window.location + '#loaded';
+          window.location.reload();
+          }
+        }
       });
     })(jQuery);
   </script>
