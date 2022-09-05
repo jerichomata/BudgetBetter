@@ -1,19 +1,31 @@
 import React from "react";
-import { NavLink } from "react-router-dom";
+import { NavLink, useHistory } from "react-router-dom";
+import { logout } from "../../store/session";
+import { useDispatch } from "react-redux";
 import GridViewSharpIcon from "@mui/icons-material/GridViewSharp";
 import ReceiptLongSharpIcon from "@mui/icons-material/ReceiptLongSharp";
 import MailOutlineSharpIcon from "@mui/icons-material/MailOutlineSharp";
 import NewspaperSharpIcon from "@mui/icons-material/NewspaperSharp";
 import SettingsSharpIcon from "@mui/icons-material/SettingsSharp";
 import LogoutSharpIcon from "@mui/icons-material/LogoutSharp";
+import "./DashboardLeft.css";
 
 function DashboardLeft() {
+  const dispatch = useDispatch();
+  const history = useHistory();
+
+  async function handleLogout() {
+    await dispatch(logout());
+    history.push("/");
+  }
+
   return (
     <div className="sidebar">
       <NavLink to="/dashboard">
         <GridViewSharpIcon />
         <h3>Dashboard</h3>
       </NavLink>
+
       <NavLink to="/expenses">
         <ReceiptLongSharpIcon />
         <h3>Expenses</h3>
@@ -23,6 +35,7 @@ function DashboardLeft() {
         <MailOutlineSharpIcon />
         <h3>Notifications</h3>
       </NavLink>
+
       <NavLink to="/news">
         <NewspaperSharpIcon />
         <h3>News</h3>
@@ -33,10 +46,10 @@ function DashboardLeft() {
         <h3>Settings</h3>
       </NavLink>
 
-      <NavLink to="/">
+      <div className="logout-btn" onClick={handleLogout}>
         <LogoutSharpIcon />
         <h3>Logout</h3>
-      </NavLink>
+      </div>
     </div>
   );
 }
