@@ -2,16 +2,13 @@
   box-sizing: border-box;
 }
 
-body {
+.landing-page-container {
   display: flex;
   justify-content: center;
   align-items: center;
   flex-direction: column;
   font-family: "Montserrat", sans-serif;
   height: 100vh;
-  margin: 0 auto;
-  /* background-size: 600px 600px;
-  background-position: top; */
 }
 
 img {
@@ -64,79 +61,26 @@ input {
   width: 100%;
 }
 
-.container {
-  background-color: #fff;
+.landing-page-center-container {
+  display: flex;
   border-radius: 10px;
   box-shadow: 0 14px 28px rgba(0, 0, 0, 0.25), 0 10px 10px rgba(0, 0, 0, 0.22);
-  position: relative;
-  overflow: hidden;
   width: 850px;
-  max-width: 100%;
-  min-height: 480px;
+  height: 480px;
 }
 
 .form-container {
-  position: absolute;
-  top: 0;
-  height: 100%;
-  transition: all 0.6s ease-in-out;
+  width: 50%;
+  height: 480px;
   background-color: #ffffff;
   display: flex;
   align-items: center;
   justify-content: center;
   flex-direction: column;
-  padding: 0 50px;
-  height: 100%;
-  text-align: center;
-}
-
-.sign-in-container {
-  left: 0;
-  width: 50%;
-  z-index: 2;
-}
-
-.demo-container {
-  margin-top: 25px;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-}
-
-.demo-info {
-  margin-top: 5px;
-  margin-bottom: 5px;
-  color: grey;
-}
-
-.register-container {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-}
-
-.register-button {
-  margin-left: 10px;
-  padding: 8px 10px;
-  background-color: #fff;
-  color: #27408b;
-  border-color: #27408b;
 }
 
 .overlay-container {
-  position: absolute;
-  top: 0;
-  left: 50%;
-  width: 50%;
   height: 100%;
-  overflow: hidden;
-  transition: transform 0.6s ease-in-out;
-  z-index: 100;
-}
-
-.container.right-panel-active .overlay-container {
-  transform: translateX(-100%);
 }
 
 .overlay {
@@ -146,40 +90,26 @@ input {
   background-size: cover;
   background-position: 0 0;
   color: #ffffff;
-  position: relative;
-  left: -100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
   height: 100%;
-  width: 200%;
-  transform: translateX(0);
-  transition: transform 0.6s ease-in-out;
-}
-
-.container.right-panel-active .overlay {
-  transform: translateX(50%);
+  width: 50%;
 }
 
 .overlay-panel {
-  position: absolute;
   display: flex;
   align-items: center;
   justify-content: center;
   flex-direction: column;
   padding: 0 40px;
   text-align: center;
-  top: 0;
   height: 100%;
-  width: 50%;
-  transform: translateX(0);
-  transition: transform 0.6s ease-in-out;
+  width: 100%;
 }
 
-.overlay-right {
-  right: 0;
-  transform: translateX(0);
-}
-
-.container.right-panel-active .overlay-right {
-  transform: translateX(20%);
+.overlay-panel > h1 {
+  width: 100%;
 }
 
 .budget-better-title {

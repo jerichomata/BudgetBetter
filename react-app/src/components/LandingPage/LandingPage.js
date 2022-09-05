@@ -5,35 +5,26 @@ import "./LandingPage.css";
 function LandingPage() {
   return (
     <div
-      className="landing-page"
+      className="landing-page-container"
       style={{
         backgroundImage: `url(${backgroundImage})`,
-        backgroundPosition: "center",
-        backgroundSize: "cover",
-        backgroundRepeat: "no-repeat",
+        backgroundPosition: "top",
+        backgroundSize: "600px 600px",
       }}
     >
-      <div class="container" id="container">
-        <div class="form-container sign-in-container">
-          <h1 class="budget-better-title">BudgetBetter</h1>
-          <div class="form__input-group">
-            <button type="button" class="form__button" id="link-account">
-              Get Started
-            </button>
-          </div>
-          <div class="register-container">
-            <div class="demo-container">
-              <p class="demo-info">For Demo Purposes:</p>
-              <p class="demo-info">Username: custom_two</p>
-              <p class="demo-info">Password: pass_good</p>
-              <p class="demo-info">Authentication: 1234</p>
+      <div className="landing-page">
+        <div class="landing-page-center-container">
+          <div class="form-container">
+            <h1 class="budget-better-title">BudgetBetter</h1>
+            <div class="form__input-group">
+              <button type="button" class="form__button" id="link-account">
+                Demo
+              </button>
             </div>
           </div>
-        </div>
 
-        <div class="overlay-container">
           <div class="overlay">
-            <div class="overlay-panel overlay-right">
+            <div class="overlay-panel">
               <h1>Keeping You Financially Stable</h1>
               <p>BudgetBetter is here to visualize your financial trends.</p>
             </div>
