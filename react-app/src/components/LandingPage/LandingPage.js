@@ -1,5 +1,6 @@
 import React from "react";
 import backgroundImage from "../../assets/bb2.jpg";
+import LoginFormModal from "../LoginModal/LoginModal";
 import "./LandingPage.css";
 
 function LandingPage() {
@@ -20,6 +21,7 @@ function LandingPage() {
               <button type="button" class="form__button" id="link-account">
                 Demo
               </button>
+              <LoginFormModal />
             </div>
           </div>
 
