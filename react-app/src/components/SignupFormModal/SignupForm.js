@@ -1,22 +1,20 @@
 import React, { useState } from "react";
-import { login } from "../../store/session";
 import { useDispatch } from "react-redux";
+import { signUp } from "../../store/session";
 import { useHistory } from "react-router-dom";
-import "./LoginForm.css";
+import "./SignupForm.css";
 
-function LoginForm() {
-  const dispatch = useDispatch();
-  const history = useHistory();
+function SignupForm() {
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
   const [errors, setErrors] = useState([]);
+  const history = useHistory();
+
+  const dispatch = useDispatch();
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-    setErrors([]);
-
-    //if there are errors when trying to log in, set the errors, so we can display them
-    const data = await dispatch(login(username, password));
+    const data = await dispatch(signUp(username, password));
     if (data) {
       setErrors(data);
     } else history.push("/dashboard");
@@ -30,13 +28,14 @@ function LoginForm() {
           <li key={idx}>{error}</li>
         ))}
       </ul>
-      <h1 className="login-form__title">Log in</h1>
+      <h1 className="login-form__title">Sign Up</h1>
       <label className="login-form__email__label">
         Username
         <input
           type="text"
           value={username}
           onChange={(e) => setUsername(e.target.value)}
+          maxLength="40"
           // required
         />
       </label>
@@ -50,10 +49,10 @@ function LoginForm() {
         />
       </label>
       <button type="submit" className="login-form__log-in">
-        Log In
+        Sign Up
       </button>
     </form>
   );
 }
 
-export default LoginForm;
+export default SignupForm;

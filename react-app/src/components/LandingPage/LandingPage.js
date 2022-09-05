@@ -1,6 +1,7 @@
 import React from "react";
 import backgroundImage from "../../assets/bb2.jpg";
 import LoginFormModal from "../LoginFormModal/LoginFormModal";
+import SignupFormModal from "../SignupFormModal/SignupFormModal";
 import "./LandingPage.css";
 
 function LandingPage() {
@@ -14,19 +15,22 @@ function LandingPage() {
       }}
     >
       <div className="landing-page">
-        <div class="landing-page-center-container">
-          <div class="form-container">
-            <h1 class="budget-better-title">BudgetBetter</h1>
-            <div class="form__input-group">
-              <button type="button" class="form__button" id="link-account">
+        <div className="landing-page-center-container">
+          <div className="form-container">
+            <h1 className="budget-better-title">BudgetBetter</h1>
+            <div className="landing-page-btn-container">
+              <button type="button" className="form__button" id="link-account">
                 Demo
               </button>
-              <LoginFormModal />
+              <div className="signup-login-btn-container">
+                <LoginFormModal />
+                <SignupFormModal />
+              </div>
             </div>
           </div>
 
-          <div class="overlay">
-            <div class="overlay-panel">
+          <div className="overlay">
+            <div className="overlay-panel">
               <h1>Keeping You Financially Stable</h1>
               <p>BudgetBetter is here to visualize your financial trends.</p>
             </div>

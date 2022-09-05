@@ -928,11 +928,6 @@ main .settings h3 {
     height: 3.4rem;
   }
 
-  aside .sidebar a:last-child {
-    position: absolute;
-    bottom: 5rem;
-  }
-
   aside .close {
     display: inline-block;
     cursor: pointer;
