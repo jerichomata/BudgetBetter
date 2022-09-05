@@ -1,6 +1,6 @@
 import React from "react";
 import backgroundImage from "../../assets/bb2.jpg";
-import LoginFormModal from "../LoginModal/LoginModal";
+import LoginFormModal from "../LoginFormModal/LoginFormModal";
 import "./LandingPage.css";
 
 function LandingPage() {
