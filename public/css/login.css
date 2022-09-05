@@ -2,7 +2,7 @@
   box-sizing: border-box;
 }
 
-body {
+.landing-page {
   display: flex;
   justify-content: center;
   align-items: center;
@@ -10,7 +10,6 @@ body {
   font-family: "Montserrat", sans-serif;
   height: 100vh;
   margin: 0 auto;
-  background-image: url(bb2.jpg);
   background-size: 600px 600px;
   background-position: top;
 }
