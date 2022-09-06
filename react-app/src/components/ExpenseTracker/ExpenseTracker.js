@@ -3,6 +3,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { loadTransactions } from "../../store/transactions";
 import DashboardLeft from "../Dashboard/DashboardLeft";
 import DashboardRight from "../Dashboard/DashboardRight";
+import AddTransactionFormModal from "../AddTransactionModal/AddTransactionFormModal";
 import AccountBalanceSharpIcon from "@mui/icons-material/AccountBalanceSharp";
 import CreditCardSharpIcon from "@mui/icons-material/CreditCardSharp";
 import TrendingDownSharpIcon from "@mui/icons-material/TrendingDownSharp";
@@ -64,6 +65,7 @@ function ExpenseTracker() {
                     <h3>History</h3>
                     <div className="recent-orders">
                       <h2>Recent Transactions</h2>
+                      <AddTransactionFormModal />
                       <table className="recent-transaction-table">
                         <thead>
                           <tr>
