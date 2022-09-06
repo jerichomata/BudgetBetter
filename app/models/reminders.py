@@ -1,23 +1,22 @@
 from .db import db
 from datetime import datetime
 
-
-class Transaction(db.Model):
-    __tablename__ = 'transactions'
+class Reminder(db.Model):
+    __tablename__ = 'reminders'
 
     id = db.Column(db.Integer, primary_key=True)
-    outgoing = db.Column(db.Boolean, nullable=False)
-    amount = db.Column(db.Integer, nullable=False)
+    title = db.Column(db.String(35), nullable=False)
+    description = db.Column(db.String(255), nullable=False)
     date = db.Column(db.DateTime, default=datetime.utcnow)
     user_id = db.Column(db.Integer, db.ForeignKey("users.id"), nullable=False)
 
-    user = db.relationship("User", back_populates='transactions')
+    user = db.relationship("User", back_populates='reminders')
 
     def to_dict(self):
         return {
             'id': self.id,
-            'outgoing': self.outgoing,
-            'amount': self.amount,
+            'title': self.title,
+            'description': self.description,
             'date': self.date,
             'userId': self.user_id,
             'user': self.user.to_dict_no_additions()
@@ -26,8 +25,8 @@ class Transaction(db.Model):
     def to_dict_no_user(self):
         return {
             'id': self.id,
-            'outgoing': self.outgoing,
-            'amount': self.amount,
+            'title': self.title,
+            'description': self.description,
             'date': self.date,
             'userId': self.user_id,
         }

@@ -12,6 +12,7 @@ class User(db.Model, UserMixin):
     account_balance = db.Column(db.Integer, default=0)
 
     transactions = db.relationship('Transaction', back_populates='user', cascade='all, delete')
+    reminders = db.relationship('Reminder', back_populates='user', cascade='all, delete')
 
     @property
     def password(self):
@@ -29,7 +30,8 @@ class User(db.Model, UserMixin):
             'id': self.id,
             'username': self.username,
             'accountBalance': self.account_balance,
-            'transactions': [transaction.to_dict_no_user() for transaction in self.transactions]
+            'transactions': [transaction.to_dict_no_user() for transaction in self.transactions],
+            'reminders': [reminder.to_dict_no_user() for reminder in self.reminders],
         }
 
     def to_dict_no_additions(self):
