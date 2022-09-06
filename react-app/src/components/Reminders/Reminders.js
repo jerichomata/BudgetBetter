@@ -4,6 +4,7 @@ import { loadReminders } from "../../store/reminders";
 import DashboardLeft from "../Dashboard/DashboardLeft";
 import DashboardRight from "../Dashboard/DashboardRight";
 import AddReminderModal from "../AddReminderModal/AddReminderModal";
+import EditReminderModal from "../EditReminderModal/EditReminderModal";
 import AccountBalanceSharpIcon from "@mui/icons-material/AccountBalanceSharp";
 
 function Reminders() {
@@ -57,9 +58,7 @@ function Reminders() {
                             </p>
                             <p className="msg-description">{reminder.date}</p>
                           </div>
-                          <span className="material-icons-sharp">
-                            open_in_new
-                          </span>
+                          <EditReminderModal reminderId={reminder.id} />
                         </div>
                         <hr className="separation-line-inbox" />
                       </div>
