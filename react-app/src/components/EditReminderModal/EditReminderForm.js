@@ -1,22 +1,21 @@
 import React, { useState, useEffect } from "react";
-import { updateTransaction } from "../../store/transactions";
+import { updateReminder } from "../../store/reminders";
 import { useDispatch, useSelector } from "react-redux";
 import { dateToISOStr } from "../../util/date";
-import { useHistory } from "react-router-dom";
-import "./EditTransactionForm.css";
+import "./EditReminderForm.css";
 
-function EditTransactionForm({ closeModal, transactionId }) {
+function EditReminderForm({ closeModal, reminderId }) {
   const user = useSelector((state) => state.session.user);
-
-  // prettier-ignore
-  const transaction = useSelector((state) =>Object.values(state.transactions).filter((transaction) => transaction.id === transactionId)[0]);
-
-  let oldDate = dateToISOStr(transaction?.date);
-
   const dispatch = useDispatch();
-  const [title, setTitle] = useState(transaction?.title);
+
+  //   prettier-ignore
+  const reminder = useSelector((state) =>Object.values(state.reminders).filter((reminder) => reminder.id === reminderId)[0]);
+
+  let oldDate = dateToISOStr(reminder?.date);
+
+  const [title, setTitle] = useState(reminder?.title);
   const [date, setDate] = useState(oldDate);
-  const [amount, setAmount] = useState(transaction?.amount);
+  const [description, setDescription] = useState(reminder?.description);
   const [errors, setErrors] = useState([]);
   const [hasSubmitted, setHasSubmitted] = useState(false);
 
@@ -24,8 +23,9 @@ function EditTransactionForm({ closeModal, transactionId }) {
     const errors = [];
     if (title.length < 1) errors.push("Please enter a title");
     if (!date) errors.push("Please enter a date");
+    if (description.length < 1) errors.push("Please enter a description");
     setErrors(errors);
-  }, [title, date, amount]);
+  }, [title, date, description]);
 
   const handleSubmit = async (e) => {
     e.preventDefault();
@@ -38,11 +38,11 @@ function EditTransactionForm({ closeModal, transactionId }) {
     const info = {
       title,
       date,
-      amount,
+      description,
     };
 
-    const editedTransaction = await dispatch(
-      updateTransaction(user.id, transactionId, info)
+    const updatedReminder = await dispatch(
+      updateReminder(user.id, reminderId, info)
     );
 
     closeModal();
@@ -56,7 +56,7 @@ function EditTransactionForm({ closeModal, transactionId }) {
           errors.length > 0 &&
           errors.map((error, idx) => <li key={idx}>{error}</li>)}
       </ul>
-      <h1 className="login-form__title">Edit Transaction</h1>
+      <h1 className="login-form__title">Add Reminder</h1>
       <label className="login-form__email__label">
         Name
         <input
@@ -67,12 +67,11 @@ function EditTransactionForm({ closeModal, transactionId }) {
         />
       </label>
       <label className="login-form__password__label">
-        Amount
+        Description
         <input
-          type="number"
-          step="0.01"
-          value={amount}
-          onChange={(e) => setAmount(e.target.value)}
+          type="text"
+          value={description}
+          onChange={(e) => setDescription(e.target.value)}
           required
         />
       </label>
@@ -92,4 +91,4 @@ function EditTransactionForm({ closeModal, transactionId }) {
   );
 }
 
-export default EditTransactionForm;
+export default EditReminderForm;
