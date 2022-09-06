@@ -107,13 +107,7 @@ export default function reducer(state = initialState, action) {
 
     case DELETE_TRANSACTION: {
       const newState = global.structuredClone(state);
-
-      for (let i = 0; i < newState.transactions.length; i++) {
-        if (newState.transactions[i].id === action.payload) {
-          newState.transactions.splice(i, 1);
-        }
-      }
-
+      delete newState[action.payload];
       return newState;
     }
 

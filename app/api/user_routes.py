@@ -103,6 +103,8 @@ def delete_transaction(id, transaction_id):
 
     transaction = Transaction.query.get(transaction_id)
 
+    user.account_balance -= transaction.amount
+
     db.session.delete(transaction)
     db.session.commit()
 
