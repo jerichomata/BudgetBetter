@@ -1,14 +1,13 @@
 from .db import db
 from datetime import datetime
 
-
 class Transaction(db.Model):
     __tablename__ = 'transactions'
 
     id = db.Column(db.Integer, primary_key=True)
-    outgoing = db.Column(db.Boolean, nullable=False)
+    title = db.Column(db.String(25), nullable=False)
     amount = db.Column(db.Integer, nullable=False)
-    date = db.Column(db.DateTime, default=datetime.utcnow)
+    date = db.Column(db.DateTime, nullable=False)
     user_id = db.Column(db.Integer, db.ForeignKey("users.id"), nullable=False)
 
     user = db.relationship("User", back_populates='transactions')
@@ -16,7 +15,7 @@ class Transaction(db.Model):
     def to_dict(self):
         return {
             'id': self.id,
-            'outgoing': self.outgoing,
+            'title': self.title,
             'amount': self.amount,
             'date': self.date,
             'userId': self.user_id,
@@ -26,7 +25,7 @@ class Transaction(db.Model):
     def to_dict_no_user(self):
         return {
             'id': self.id,
-            'outgoing': self.outgoing,
+            'title': self.title,
             'amount': self.amount,
             'date': self.date,
             'userId': self.user_id,
