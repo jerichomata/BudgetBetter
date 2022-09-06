@@ -9,6 +9,9 @@ class User(db.Model, UserMixin):
     id = db.Column(db.Integer, primary_key=True)
     username = db.Column(db.String(40), nullable=False, unique=True)
     hashed_password = db.Column(db.String(255), nullable=False)
+    account_balance = db.Column(db.Integer, default=0)
+
+    transactions = db.relationship('Transaction', back_populates='user', cascade='all, delete')
 
     @property
     def password(self):
@@ -25,4 +28,13 @@ class User(db.Model, UserMixin):
         return {
             'id': self.id,
             'username': self.username,
+            'accountBalance': self.account_balance,
+            'transactions': [transaction.to_dict_no_user() for transaction in self.transactions]
+        }
+
+    def to_dict_no_additions(self):
+        return {
+            'id': self.id,
+            'username': self.username,
+            'accountBalance': self.account_balance,
         }
