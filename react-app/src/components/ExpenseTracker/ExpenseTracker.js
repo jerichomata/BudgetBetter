@@ -4,16 +4,29 @@ import { loadTransactions } from "../../store/transactions";
 import DashboardLeft from "../Dashboard/DashboardLeft";
 import DashboardRight from "../Dashboard/DashboardRight";
 import AddTransactionFormModal from "../AddTransactionModal/AddTransactionFormModal";
-import EditTransactionForm from "../EditTransactionModal/EditTransactionForm";
-import AccountBalanceSharpIcon from "@mui/icons-material/AccountBalanceSharp";
 import EditTransactionModal from "../EditTransactionModal/EditTransactionModal";
+import { removeTransaction } from "../../store/transactions";
+import AccountBalanceSharpIcon from "@mui/icons-material/AccountBalanceSharp";
 
 function ExpenseTracker() {
   const user = useSelector((state) => state.session.user);
   const transactions = useSelector((state) =>
     Object.values(state.transactions)
   );
-  console.log("TRANSACTIONS", transactions);
+
+  let income = 0;
+  let expenses = 0;
+
+  if (transactions?.length > 0) {
+    for (let transaction of transactions) {
+      if (transaction?.amount >= 0) {
+        income += transaction?.amount;
+      } else {
+        expenses += transaction?.amount;
+      }
+    }
+  }
+
   const dispatch = useDispatch();
 
   useEffect(() => {
@@ -23,6 +36,10 @@ function ExpenseTracker() {
 
     initializePage();
   }, []);
+
+  async function handleDelete(transactionId) {
+    await dispatch(removeTransaction(user.id, transactionId));
+  }
 
   return (
     <div className="dashboard-container">
@@ -57,13 +74,13 @@ function ExpenseTracker() {
                       <div>
                         <h4>Income</h4>
                         <p id="money-plus" className="money plus">
-                          +$5500
+                          +${income}
                         </p>
                       </div>
                       <div>
                         <h4>Expenses</h4>
                         <p id="money-minus" className="money minus">
-                          -$2124
+                          -${Math.abs(expenses)}
                         </p>
                       </div>
                     </div>
@@ -78,6 +95,7 @@ function ExpenseTracker() {
                             <th>Date</th>
                             <th>Payment Amount</th>
                             <th></th>
+                            <th></th>
                           </tr>
                         </thead>
                         <tbody id="table-body">
@@ -87,11 +105,19 @@ function ExpenseTracker() {
                               <tr key={transaction?.id}>
                                 <td>{transaction?.title}</td>
                                 <td>{transaction?.date}</td>
-                                <td>{transaction?.amount}</td>
+                                <td>${transaction?.amount}</td>
                                 <td>
                                   <EditTransactionModal
                                     transactionId={transaction?.id}
                                   />
+                                </td>
+                                <td>
+                                  <i
+                                    class="fa-regular fa-trash-can"
+                                    onClick={() =>
+                                      handleDelete(transaction?.id)
+                                    }
+                                  ></i>
                                 </td>
                               </tr>
                             ))}
