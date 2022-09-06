@@ -87,7 +87,11 @@ const initialState = { transactions: null };
 export default function reducer(state = initialState, action) {
   switch (action.type) {
     case LOAD_TRANSACTIONS:
-      return { ...state, transactions: action.payload };
+      const transactions = [];
+      for (let transaction of action.payload.Transactions) {
+        transactions.push(transaction);
+      }
+      return { ...transactions };
 
     case ADD_TRANSACTION: {
       const newState = global.structuredClone(state);
@@ -112,14 +116,12 @@ export default function reducer(state = initialState, action) {
     case DELETE_TRANSACTION: {
       const newState = global.structuredClone(state);
 
-      const transaction = newState.transactions.find(
-        (transaction) => transaction.id === action.payload
-      );
+      for (let i = 0; i < newState.transactions.length; i++) {
+        if (newState.transactions[i].id === action.payload) {
+          newState.transactions.splice(i, 1);
+        }
+      }
 
-      newState.transactions.splice(
-        newState.transactions.indexOf(transaction),
-        1
-      );
       return newState;
     }
 
