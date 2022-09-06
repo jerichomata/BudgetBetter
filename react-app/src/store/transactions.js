@@ -87,9 +87,9 @@ const initialState = { transactions: null };
 export default function reducer(state = initialState, action) {
   switch (action.type) {
     case LOAD_TRANSACTIONS:
-      const transactions = [];
+      const transactions = {};
       for (let transaction of action.payload.Transactions) {
-        transactions.push(transaction);
+        transactions[transaction.id] = transaction;
       }
       return { ...transactions };
 
@@ -101,15 +101,7 @@ export default function reducer(state = initialState, action) {
 
     case EDIT_TRANSACTION: {
       const newState = global.structuredClone(state);
-
-      const transaction = newState.transactions.find(
-        (transaction) => transaction.id === action.payload.id
-      );
-
-      transaction.title = action.payload.title;
-      transaction.amount = action.payload.amount;
-      transaction.date = action.payload.date;
-
+      newState[action.payload.id] = action.payload;
       return newState;
     }
 

@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import { editTransaction } from "../../store/transactions";
+import { updateTransaction } from "../../store/transactions";
 import { useDispatch, useSelector } from "react-redux";
 import { dateToISOStr } from "../../util/date";
 import { useHistory } from "react-router-dom";
@@ -44,7 +44,9 @@ function EditTransactionForm({ closeModal, transactionId }) {
       amount,
     };
 
-    // const createdTransaction = await dispatch(createTransaction(user.id, info));
+    const editedTransaction = await dispatch(
+      updateTransaction(user.id, transactionId, info)
+    );
 
     closeModal();
   };

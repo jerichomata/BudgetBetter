@@ -71,14 +71,16 @@ def edit_transaction(id, transaction_id):
 
         user = current_user
 
+        print('FORM DATAAA', form.data)
+
         # if amount is greater than previous amount, add the difference to the account balance, else subtract
         if form.data['amount'] > transaction.amount:
-            user.account_balance += form.data['amount'] - transaction.amount
+            user.account_balance += float(round(form.data['amount'], 2)) - transaction.amount
         else:
             # check if there is enough money in the account after the edit
-            if user.account_balance < abs(form.data['amount'] - transaction.amount):
+            if user.account_balance < abs(float(round(form.data['amount'], 2)) - transaction.amount):
                 return {'errors': ['Not enough money in account']}, 400
-            user.account_balance -= transaction.amount - form.data['amount']
+            user.account_balance -= transaction.amount - float(round(form.data['amount'], 2))
 
 
         transaction.date = form.data['date']
