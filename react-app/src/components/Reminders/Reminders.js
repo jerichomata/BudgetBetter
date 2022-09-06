@@ -1,6 +1,6 @@
 import React, { useEffect } from "react";
 import { useSelector, useDispatch } from "react-redux";
-import { loadReminders } from "../../store/reminders";
+import { loadReminders, removeReminder } from "../../store/reminders";
 import DashboardLeft from "../Dashboard/DashboardLeft";
 import DashboardRight from "../Dashboard/DashboardRight";
 import AddReminderModal from "../AddReminderModal/AddReminderModal";
@@ -19,6 +19,10 @@ function Reminders() {
 
     initializePage();
   }, [dispatch]);
+
+  async function handleDelete(reminderId) {
+    await dispatch(removeReminder(user.id, reminderId));
+  }
 
   return (
     <div className="dashboard-container">
@@ -59,6 +63,10 @@ function Reminders() {
                             <p className="msg-description">{reminder.date}</p>
                           </div>
                           <EditReminderModal reminderId={reminder.id} />
+                          <i
+                            className="fa-regular fa-trash-can"
+                            onClick={() => handleDelete(reminder.id)}
+                          ></i>
                         </div>
                         <hr className="separation-line-inbox" />
                       </div>
