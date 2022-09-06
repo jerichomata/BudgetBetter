@@ -38,7 +38,6 @@ def post_transaction(id):
     user = current_user
 
     if form.validate_on_submit():
-
         # if amount is negative, check if there is enough money in the account
         if form.data['amount'] < 0:
             if user.account_balance < abs(form.data['amount']):
@@ -50,8 +49,6 @@ def post_transaction(id):
             amount=form.data['amount'],
             date=form.data['date'],
         )
-
-        print('USER ACCOUNT BALANCE', user.account_balance, 'TRANSACTION AMOUNT', transaction.amount)
 
         user.account_balance += float(round(transaction.amount, 2))
 

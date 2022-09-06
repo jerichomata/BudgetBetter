@@ -4,13 +4,16 @@ import { loadTransactions } from "../../store/transactions";
 import DashboardLeft from "../Dashboard/DashboardLeft";
 import DashboardRight from "../Dashboard/DashboardRight";
 import AddTransactionFormModal from "../AddTransactionModal/AddTransactionFormModal";
+import EditTransactionForm from "../EditTransactionModal/EditTransactionForm";
 import AccountBalanceSharpIcon from "@mui/icons-material/AccountBalanceSharp";
-import CreditCardSharpIcon from "@mui/icons-material/CreditCardSharp";
-import TrendingDownSharpIcon from "@mui/icons-material/TrendingDownSharp";
+import EditTransactionModal from "../EditTransactionModal/EditTransactionModal";
 
 function ExpenseTracker() {
   const user = useSelector((state) => state.session.user);
-  const transactions = useSelector((state) => state.transactions);
+  const transactions = useSelector((state) =>
+    Object.values(state.transactions)
+  );
+  console.log("TRANSACTIONS", transactions);
   const dispatch = useDispatch();
 
   useEffect(() => {
@@ -47,7 +50,9 @@ function ExpenseTracker() {
                   <h1 className="tab-title">Expense Tracker</h1>
                   <div className="expense-container">
                     <h4>Your Balance</h4>
-                    <h1 id="balance-expense">$1500</h1>
+                    <h1 id="balance-expense">
+                      ${user ? user.accountBalance : 0.0}
+                    </h1>
                     <div className="inc-exp-container">
                       <div>
                         <h4>Income</h4>
@@ -72,10 +77,25 @@ function ExpenseTracker() {
                             <th>Transaction Origin</th>
                             <th>Date</th>
                             <th>Payment Amount</th>
-                            <th>Status</th>
+                            <th></th>
                           </tr>
                         </thead>
-                        <tbody id="table-body"></tbody>
+                        <tbody id="table-body">
+                          {transactions &&
+                            transactions.length > 0 &&
+                            transactions.map((transaction) => (
+                              <tr key={transaction?.id}>
+                                <td>{transaction?.title}</td>
+                                <td>{transaction?.date}</td>
+                                <td>{transaction?.amount}</td>
+                                <td>
+                                  <EditTransactionModal
+                                    transactionId={transaction?.id}
+                                  />
+                                </td>
+                              </tr>
+                            ))}
+                        </tbody>
                       </table>
                       <a href="#">Show All</a>
                     </div>
