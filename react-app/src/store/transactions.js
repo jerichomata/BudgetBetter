@@ -95,7 +95,7 @@ export default function reducer(state = initialState, action) {
 
     case ADD_TRANSACTION: {
       const newState = global.structuredClone(state);
-      newState.transactions.push(action.payload);
+      newState[action.payload.id] = action.payload;
       return newState;
     }
 

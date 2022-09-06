@@ -51,7 +51,9 @@ def post_transaction(id):
             date=form.data['date'],
         )
 
-        user.account_balance += transaction.amount
+        print('USER ACCOUNT BALANCE', user.account_balance, 'TRANSACTION AMOUNT', transaction.amount)
+
+        user.account_balance += float(round(transaction.amount, 2))
 
         db.session.add(transaction)
         db.session.commit()
