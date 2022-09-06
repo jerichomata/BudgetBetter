@@ -76,7 +76,7 @@ export const removeReminder = (userId, reminderId) => async (dispatch) => {
 
 const initialState = {};
 
-export default function remindersReducer(state = initialState, action) {
+export default function reducer(state = initialState, action) {
   switch (action.type) {
     case LOAD_REMINDERS: {
       const allReminders = [];
@@ -88,15 +88,15 @@ export default function remindersReducer(state = initialState, action) {
 
     case ADD_REMINDER: {
       const newState = global.structuredClone(state);
-      newState.push(action.payload);
+      newState.reminders.push(action.payload);
       return newState;
     }
 
     case EDIT_REMINDER: {
       const newState = global.structuredClone(state);
-      for (let i = 0; i < newState.reminders.length; i++) {
-        if (newState.reminders[i].id === action.payload.id) {
-          newState.reminders[i] = action.payload;
+      for (let i = 0; i < newState.length; i++) {
+        if (newState[i].id === action.payload.id) {
+          newState[i] = action.payload;
           break;
         }
       }
@@ -105,9 +105,9 @@ export default function remindersReducer(state = initialState, action) {
 
     case DELETE_REMINDER: {
       const newState = global.structuredClone(state);
-      for (let i = 0; i < newState.reminders.length; i++) {
-        if (newState.reminders[i].id === action.payload) {
-          newState.reminders.splice(i, 1);
+      for (let i = 0; i < newState.length; i++) {
+        if (newState[i].id === action.payload) {
+          newState.splice(i, 1);
           break;
         }
       }
