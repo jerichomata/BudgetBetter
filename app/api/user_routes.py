@@ -1,9 +1,9 @@
 from flask import Blueprint, jsonify, session, request
 from flask_login import login_required
-from app.models import User, Transaction, Reminder, db
+from app.models import User, Transaction, Reminder, Goal, db
 from flask_login import current_user
 from .auth_routes import validation_errors_to_error_messages
-from ..forms import AddTransactionForm, EditTransactionForm, AddReminderForm, EditReminderForm
+from ..forms import AddTransactionForm, EditTransactionForm, AddReminderForm, EditReminderForm, AddGoalForm, EditGoalForm
 
 user_routes = Blueprint('users', __name__)
 
@@ -171,3 +171,66 @@ def delete_reminder(id, reminder_id):
         db.session.commit()
 
         return {'message': 'Reminder deleted'}
+
+# Route to get all goals for a user
+@user_routes.route('/<int:id>/goals')
+@login_required
+def user_goals(id):
+    goals = Goal.query.filter(Goal.user_id == id).all()
+    return {'Goals': [goal.to_dict() for goal in goals]}
+
+# Route to post a goal for a user
+@user_routes.route('/<int:id>/goals', methods=['POST'])
+@login_required
+def post_goal(id):
+    form = AddGoalForm()
+    form['csrf_token'].data = request.cookies['csrf_token']
+
+    user = current_user
+
+    if form.validate_on_submit():
+        goal = Goal(
+            user_id=user.id,
+            name=form.data['name'],
+            date=form.data['date'],
+        )
+
+        db.session.add(goal)
+        db.session.commit()
+        return goal.to_dict()
+
+    else:
+        return {'errors': validation_errors_to_error_messages(form.errors)}, 401
+
+# Route to edit a goal for a user
+@user_routes.route('/<int:id>/goals/<int:goal_id>', methods=['PUT'])
+@login_required
+def edit_goal(id, goal_id):
+    form = EditGoalForm()
+    form['csrf_token'].data = request.cookies['csrf_token']
+
+    if form.validate_on_submit():
+        goal = Goal.query.get(goal_id)
+
+        goal.name = form.data['name']
+        goal.date = form.data['date']
+
+        db.session.commit()
+        return goal.to_dict()
+
+    return {'errors': validation_errors_to_error_messages(form.errors)}, 401
+
+# Route to delete a goal for a user
+@user_routes.route('/<int:id>/goals/<int:goal_id>', methods=['DELETE'])
+@login_required
+def delete_goal(id, goal_id):
+        user = current_user
+        if user.id != id:
+            return {'errors': 'Unauthorized'}, 401
+
+        goal = Goal.query.get(goal_id)
+
+        db.session.delete(goal)
+        db.session.commit()
+
+        return {'message': 'Goal deleted'}
