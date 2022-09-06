@@ -38,11 +38,20 @@ def post_transaction(id):
     user = current_user
 
     if form.validate_on_submit():
+
+        # if amount is negative, check if there is enough money in the account
+        if form.data['amount'] < 0:
+            if user.account_balance < abs(form.data['amount']):
+                return {'errors': ['Not enough money in account']}, 400
+
         transaction = Transaction(
             user_id=user.id,
-            outgoing=form.data['outgoing'],
+            title=form.data['title'],
             amount=form.data['amount'],
+            date=form.data['date'],
         )
+
+        user.account_balance += transaction.amount
 
         db.session.add(transaction)
         db.session.commit()
@@ -61,7 +70,20 @@ def edit_transaction(id, transaction_id):
     if form.validate_on_submit():
         transaction = Transaction.query.get(transaction_id)
 
-        transaction.outgoing = form.data['outgoing']
+        user = current_user
+
+        # if amount is greater than previous amount, add the difference to the account balance, else subtract
+        if form.data['amount'] > transaction.amount:
+            user.account_balance += form.data['amount'] - transaction.amount
+        else:
+            # check if there is enough money in the account after the edit
+            if user.account_balance < abs(form.data['amount'] - transaction.amount):
+                return {'errors': ['Not enough money in account']}, 400
+            user.account_balance -= transaction.amount - form.data['amount']
+
+
+        transaction.date = form.data['date']
+        transaction.title = form.data['title']
         transaction.amount = form.data['amount']
 
         db.session.commit()
