@@ -8,7 +8,6 @@ import Notifications from "./components/Notifications/Notifications";
 import News from "./components/News/News";
 import Settings from "./components/SettingsTab/Settings";
 import ProtectedRoute from "./components/auth/ProtectedRoute";
-import User from "./components/User";
 import { authenticate } from "./store/session";
 
 function App() {
@@ -32,21 +31,21 @@ function App() {
         <Route path="/" exact={true}>
           <LandingPage />
         </Route>
-        <Route path="/dashboard">
+        <ProtectedRoute path="/dashboard">
           <Dashboard />
-        </Route>
-        <Route path="/expenses">
+        </ProtectedRoute>
+        <ProtectedRoute path="/expenses">
           <ExpenseTracker />
-        </Route>
-        <Route path="/notifications">
+        </ProtectedRoute>
+        <ProtectedRoute path="/notifications">
           <Notifications />
-        </Route>
-        <Route path="/news">
+        </ProtectedRoute>
+        <ProtectedRoute path="/news">
           <News />
-        </Route>
-        <Route path="/settings">
+        </ProtectedRoute>
+        <ProtectedRoute path="/settings">
           <Settings />
-        </Route>
+        </ProtectedRoute>
       </Switch>
     </BrowserRouter>
   );
