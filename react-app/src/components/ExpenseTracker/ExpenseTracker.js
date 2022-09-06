@@ -1,4 +1,6 @@
-import React from "react";
+import React, { useEffect } from "react";
+import { useDispatch, useSelector } from "react-redux";
+import { loadTransactions } from "../../store/transactions";
 import DashboardLeft from "../Dashboard/DashboardLeft";
 import DashboardRight from "../Dashboard/DashboardRight";
 import AccountBalanceSharpIcon from "@mui/icons-material/AccountBalanceSharp";
@@ -6,6 +8,18 @@ import CreditCardSharpIcon from "@mui/icons-material/CreditCardSharp";
 import TrendingDownSharpIcon from "@mui/icons-material/TrendingDownSharp";
 
 function ExpenseTracker() {
+  const user = useSelector((state) => state.session.user);
+  const transactions = useSelector((state) => state.transactions);
+  const dispatch = useDispatch();
+
+  useEffect(() => {
+    const initializePage = async () => {
+      await dispatch(loadTransactions(user.id));
+    };
+
+    initializePage();
+  }, []);
+
   return (
     <div className="dashboard-container">
       <div className="container">
