@@ -1,21 +1,22 @@
+from datetime import date
 from .db import db
 
-class Transaction(db.Model):
-    __tablename__ = 'transactions'
+class Goal(db.Model):
+    __tablename__ = 'goals'
 
     id = db.Column(db.Integer, primary_key=True)
-    title = db.Column(db.String(25), nullable=False)
-    amount = db.Column(db.Float(precision=2, asdecimal=False), nullable=False)
+    name = db.Column(db.String(50), nullable=False)
+    completed = db.Column(db.Boolean, default=False)
     date = db.Column(db.DateTime, nullable=False)
     user_id = db.Column(db.Integer, db.ForeignKey("users.id"), nullable=False)
 
-    user = db.relationship("User", back_populates='transactions')
+    user = db.relationship("User", back_populates='goals')
 
     def to_dict(self):
         return {
             'id': self.id,
-            'title': self.title,
-            'amount': self.amount,
+            'name': self.name,
+            'completed': self.completed,
             'date': self.date,
             'userId': self.user_id,
             'user': self.user.to_dict_no_additions()
@@ -24,8 +25,8 @@ class Transaction(db.Model):
     def to_dict_no_user(self):
         return {
             'id': self.id,
-            'title': self.title,
-            'amount': self.amount,
+            'name': self.name,
+            'completed': self.completed,
             'date': self.date,
             'userId': self.user_id,
         }
