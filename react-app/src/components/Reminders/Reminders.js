@@ -8,8 +8,11 @@ import EditReminderModal from "../EditReminderModal/EditReminderModal";
 import AccountBalanceSharpIcon from "@mui/icons-material/AccountBalanceSharp";
 
 function Reminders() {
-  const reminders = useSelector((state) => Object.values(state.reminders));
   const user = useSelector((state) => state.session.user);
+  const reminders = useSelector((state) =>
+    state.reminders ? Object.values(state.reminders) : null
+  );
+
   const dispatch = useDispatch();
 
   useEffect(() => {

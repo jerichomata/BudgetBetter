@@ -11,7 +11,7 @@ import AccountBalanceSharpIcon from "@mui/icons-material/AccountBalanceSharp";
 function ExpenseTracker() {
   const user = useSelector((state) => state.session.user);
   const transactions = useSelector((state) =>
-    Object.values(state.transactions)
+    state.transactions ? Object.values(state.transactions) : null
   );
 
   let income = 0;
