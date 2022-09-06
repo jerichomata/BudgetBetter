@@ -74,13 +74,13 @@ function ExpenseTracker() {
                       <div>
                         <h4>Income</h4>
                         <p id="money-plus" className="money plus">
-                          +${income}
+                          +${income.toFixed(2)}
                         </p>
                       </div>
                       <div>
                         <h4>Expenses</h4>
                         <p id="money-minus" className="money minus">
-                          -${Math.abs(expenses)}
+                          -${Math.abs(expenses.toFixed(2))}
                         </p>
                       </div>
                     </div>

@@ -79,38 +79,28 @@ const initialState = {};
 export default function reducer(state = initialState, action) {
   switch (action.type) {
     case LOAD_REMINDERS: {
-      const allReminders = [];
+      const allReminders = {};
       for (let reminder of action.payload.Reminders) {
-        allReminders.push(reminder);
+        allReminders[reminder.id] = reminder;
       }
       return { ...allReminders };
     }
 
     case ADD_REMINDER: {
       const newState = global.structuredClone(state);
-      newState.reminders.push(action.payload);
+      newState[action.payload.id] = action.payload;
       return newState;
     }
 
     case EDIT_REMINDER: {
       const newState = global.structuredClone(state);
-      for (let i = 0; i < newState.length; i++) {
-        if (newState[i].id === action.payload.id) {
-          newState[i] = action.payload;
-          break;
-        }
-      }
+      newState[action.payload.id] = action.payload;
       return newState;
     }
 
     case DELETE_REMINDER: {
       const newState = global.structuredClone(state);
-      for (let i = 0; i < newState.length; i++) {
-        if (newState[i].id === action.payload) {
-          newState.splice(i, 1);
-          break;
-        }
-      }
+      delete newState[action.payload];
       return newState;
     }
 
