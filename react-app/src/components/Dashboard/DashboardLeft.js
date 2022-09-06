@@ -33,12 +33,12 @@ function DashboardLeft() {
 
       <NavLink to="/notifications">
         <MailOutlineSharpIcon />
-        <h3>Notifications</h3>
+        <h3>Reminders</h3>
       </NavLink>
 
       <NavLink to="/news">
         <NewspaperSharpIcon />
-        <h3>News</h3>
+        <h3>Goals</h3>
       </NavLink>
 
       <NavLink to="/settings">

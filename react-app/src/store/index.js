@@ -3,11 +3,13 @@ import thunk from "redux-thunk";
 import session from "./session";
 import transactions from "./transactions";
 import reminders from "./reminders";
+import goals from "./goals";
 
 const rootReducer = combineReducers({
   session,
   transactions,
   reminders,
+  goals,
 });
 
 let enhancer;

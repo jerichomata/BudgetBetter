@@ -77,10 +77,10 @@ const initialState = {};
 export default function reducer(state = initialState, action) {
   switch (action.type) {
     case LOAD_GOALS: {
-      const newState = [];
+      const newState = {};
 
       for (let goal of action.payload.Goals) {
-        newState.push(goal);
+        newState[goal.id] = goal;
       }
 
       return { ...newState };
@@ -88,32 +88,19 @@ export default function reducer(state = initialState, action) {
 
     case ADD_GOAL: {
       const newState = global.structuredClone(state);
-      newState.push(action.payload);
+      newState[action.payload.id] = action.payload;
       return newState;
     }
 
     case EDIT_GOAL: {
       const newState = global.structuredClone(state);
-
-      for (let i = 0; i < newState.length; i++) {
-        if (newState[i].id === action.payload.id) {
-          newState[i] = action.payload;
-          break;
-        }
-      }
-
+      newState[action.payload.id] = action.payload;
       return newState;
     }
 
     case DELETE_GOAL: {
       const newState = global.structuredClone(state);
-      for (let i = 0; i < newState.length; i++) {
-        if (newState[i].id === action.payload) {
-          newState.splice(i, 1);
-          break;
-        }
-      }
-
+      delete newState[action.payload];
       return newState;
     }
 

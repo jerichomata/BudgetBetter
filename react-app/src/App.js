@@ -5,7 +5,7 @@ import LandingPage from "./components/LandingPage/LandingPage";
 import Dashboard from "./components/Dashboard/Dashboard";
 import ExpenseTracker from "./components/ExpenseTracker/ExpenseTracker";
 import Reminders from "./components/Reminders/Reminders";
-import News from "./components/News/News";
+import Goals from "./components/Goals/Goals";
 import Settings from "./components/SettingsTab/Settings";
 import ProtectedRoute from "./components/auth/ProtectedRoute";
 import { authenticate } from "./store/session";
@@ -41,7 +41,7 @@ function App() {
           <Reminders />
         </ProtectedRoute>
         <ProtectedRoute path="/news">
-          <News />
+          <Goals />
         </ProtectedRoute>
         <ProtectedRoute path="/settings">
           <Settings />
