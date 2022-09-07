@@ -17,8 +17,6 @@ function DashboardRight() {
     initializePage();
   }, []);
 
-  console.log(marketNews);
-
   return (
     <div className="right">
       <div className="top">
