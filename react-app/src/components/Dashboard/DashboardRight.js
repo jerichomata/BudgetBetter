@@ -1,10 +1,23 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import MenuSharpIcon from "@mui/icons-material/MenuSharp";
 import FeedSharpIcon from "@mui/icons-material/FeedSharp";
 import MonetizationOnSharpIcon from "@mui/icons-material/MonetizationOnSharp";
 import SouthSharpIcon from "@mui/icons-material/SouthSharp";
+import { fetchMarketNews } from "../../util/news-api";
 
 function DashboardRight() {
+  const [marketNews, setMarketNews] = useState([]);
+
+  useEffect(() => {
+    const initializePage = async () => {
+      const data = await fetchMarketNews();
+      setMarketNews(data);
+    };
+    initializePage();
+  }, []);
+
+  console.log("MARKET NEWS", marketNews);
+
   return (
     <div className="right">
       <div className="top">

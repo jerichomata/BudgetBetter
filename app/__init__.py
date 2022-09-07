@@ -1,5 +1,4 @@
 import os
-from re import A
 from flask import Flask, render_template, request, session, redirect
 from flask_cors import CORS
 from flask_migrate import Migrate
@@ -10,6 +9,7 @@ from .models import db, User
 from .api.user_routes import user_routes
 from .api.auth_routes import auth_routes
 from .api.goal_routes import goal_routes
+from .api.finnhub_routes import finnhub_routes
 
 from .seeds import seed_commands
 
@@ -34,6 +34,7 @@ app.config.from_object(Config)
 app.register_blueprint(user_routes, url_prefix='/api/users')
 app.register_blueprint(auth_routes, url_prefix='/api/auth')
 app.register_blueprint(goal_routes, url_prefix='/api/goals')
+app.register_blueprint(finnhub_routes, url_prefix='/api/finnhub')
 db.init_app(app)
 Migrate(app, db)
 
