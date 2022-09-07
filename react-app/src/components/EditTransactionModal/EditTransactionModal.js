@@ -13,7 +13,7 @@ function EditTransactionModal({ transactionId }) {
   return (
     <>
       <i
-        className="fa-regular fa-pen-to-square"
+        className="fa-regular fa-pen-to-square edit-transaction-btn"
         onClick={() => setShowModal(true)}
       ></i>
       {showModal && (

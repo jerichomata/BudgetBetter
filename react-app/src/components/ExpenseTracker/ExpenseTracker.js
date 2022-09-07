@@ -1,6 +1,7 @@
-import React, { useEffect } from "react";
+import React, { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { loadTransactions } from "../../store/transactions";
+import { gmtToDate } from "../../util/date";
 import DashboardLeft from "../Dashboard/DashboardLeft";
 import DashboardRight from "../Dashboard/DashboardRight";
 import AddTransactionFormModal from "../AddTransactionModal/AddTransactionFormModal";
@@ -15,11 +16,15 @@ function ExpenseTracker() {
     state.transactions ? Object.values(state.transactions) : null
   );
 
+  const [numToShow, setNumToShow] = useState(5);
+
   transactions.sort(function (a, b) {
     // Turn your strings into dates, and then subtract them
     // to get a value that is either negative, positive, or zero.
     return new Date(b.date) - new Date(a.date);
   });
+
+  let transactionsToShow = transactions.slice(0, numToShow);
 
   let income = 0;
   let expenses = 0;
@@ -46,6 +51,10 @@ function ExpenseTracker() {
 
   async function handleDelete(transactionId) {
     await dispatch(removeTransaction(user.id, transactionId));
+  }
+
+  function loadMore() {
+    setNumToShow((prevNum) => prevNum + 5);
   }
 
   return (
@@ -91,10 +100,12 @@ function ExpenseTracker() {
                         </p>
                       </div>
                     </div>
-                    <h3>History</h3>
+                    <h3></h3>
                     <div className="recent-orders">
                       <div className="recent-transactions-btn-container">
-                        <h2>Recent Transactions</h2>
+                        <h2 id="recent-transactions-header">
+                          Recent Transactions
+                        </h2>
                         <AddTransactionFormModal />
                       </div>
                       <table className="recent-transaction-table">
@@ -108,19 +119,21 @@ function ExpenseTracker() {
                           </tr>
                         </thead>
                         <tbody id="table-body">
-                          {transactions &&
-                            transactions.length > 0 &&
-                            transactions.map((transaction) => (
+                          {transactionsToShow.length > 0 &&
+                            transactionsToShow.map((transaction) => (
                               <tr key={transaction?.id}>
                                 <td>{transaction?.title}</td>
-                                <td>{transaction?.date}</td>
+                                <td>
+                                  {transaction?.date &&
+                                    gmtToDate(transaction?.date)}
+                                </td>
                                 <td>${transaction?.amount}</td>
                                 <td>
                                   <EditTransactionModal
                                     transactionId={transaction?.id}
                                   />
                                 </td>
-                                <td>
+                                <td className="delete-transaction-btn-container">
                                   <i
                                     class="fa-regular fa-trash-can"
                                     onClick={() =>
@@ -132,7 +145,11 @@ function ExpenseTracker() {
                             ))}
                         </tbody>
                       </table>
-                      <a href="#">Show All</a>
+                      {numToShow < transactions.length && (
+                        <button id="expense-load-more" onClick={loadMore}>
+                          Load More
+                        </button>
+                      )}
                     </div>
                   </div>
                 </div>

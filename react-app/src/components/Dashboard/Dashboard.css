@@ -444,6 +444,9 @@ main .visuals h2 {
 
 main .recent-orders {
   margin-top: 2rem;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
 }
 
 main .recent-orders h2 {
