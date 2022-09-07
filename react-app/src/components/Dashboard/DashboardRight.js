@@ -91,13 +91,13 @@ function DashboardRight() {
               </div>
               <div className="right">
                 <div className="info">
-                  <h3 id="first-recent-transaction">{transaction.title}</h3>
-                  <small className="text-muted">{transaction.date}</small>
+                  <h3 id="first-recent-transaction">{transaction?.title}</h3>
+                  <small className="text-muted">{transaction?.date}</small>
                 </div>
                 <h3 id="first-recent-amount">
-                  {transaction.amount >= 0
-                    ? "+$" + transaction.amount.toFixed(2)
-                    : "-$" + Math.abs(transaction.amount.toFixed(2))}
+                  {transaction?.amount >= 0
+                    ? "+$" + transaction?.amount.toFixed(2)
+                    : "-$" + Math.abs(transaction?.amount.toFixed(2))}
                 </h3>
               </div>
             </div>
