@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import { Modal } from "../../context/Modal";
 import AddTransactionForm from "./AddTransactionForm";
-import "./AddTransactionForm.css";
+import "./AddTransactionFormModal.css";
 
 function AddTransactionFormModal() {
   const [showModal, setShowModal] = useState(false);
@@ -12,7 +12,9 @@ function AddTransactionFormModal() {
 
   return (
     <>
-      <button onClick={() => setShowModal(true)}>Add Transaction</button>
+      <button id="add-transaction-btn" onClick={() => setShowModal(true)}>
+        Add Transaction
+      </button>
       {showModal && (
         <Modal onClose={() => setShowModal(false)}>
           <AddTransactionForm closeModal={closeModal} />

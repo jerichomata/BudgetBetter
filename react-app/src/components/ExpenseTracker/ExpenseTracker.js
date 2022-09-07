@@ -7,6 +7,7 @@ import AddTransactionFormModal from "../AddTransactionModal/AddTransactionFormMo
 import EditTransactionModal from "../EditTransactionModal/EditTransactionModal";
 import { removeTransaction } from "../../store/transactions";
 import AccountBalanceSharpIcon from "@mui/icons-material/AccountBalanceSharp";
+import "./ExpenseTracker.css";
 
 function ExpenseTracker() {
   const user = useSelector((state) => state.session.user);
@@ -92,8 +93,10 @@ function ExpenseTracker() {
                     </div>
                     <h3>History</h3>
                     <div className="recent-orders">
-                      <h2>Recent Transactions</h2>
-                      <AddTransactionFormModal />
+                      <div className="recent-transactions-btn-container">
+                        <h2>Recent Transactions</h2>
+                        <AddTransactionFormModal />
+                      </div>
                       <table className="recent-transaction-table">
                         <thead>
                           <tr>
