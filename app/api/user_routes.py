@@ -71,8 +71,6 @@ def edit_transaction(id, transaction_id):
 
         user = current_user
 
-        print('FORM DATAAA', form.data)
-
         # if amount is greater than previous amount, add the difference to the account balance, else subtract
         if form.data['amount'] > transaction.amount:
             user.account_balance += float(round(form.data['amount'], 2)) - transaction.amount

@@ -1,4 +1,4 @@
-import { adjustBalance } from "./session";
+import { adjustBalance, updateBalance } from "./session";
 
 const LOAD_TRANSACTIONS = "transactions/LOAD_TRANSACTIONS";
 const ADD_TRANSACTION = "transactions/ADD_TRANSACTION";
@@ -51,7 +51,7 @@ export const createTransaction = (userId, info) => async (dispatch) => {
 };
 
 export const updateTransaction =
-  (userId, transactionId, info) => async (dispatch) => {
+  (userId, transactionId, info, oldAmount) => async (dispatch) => {
     // prettier-ignore
     const response = await fetch(`/api/users/${userId}/transactions/${transactionId}`, {
         method: "PUT",
@@ -65,6 +65,7 @@ export const updateTransaction =
     if (response.ok) {
       const data = await response.json();
       dispatch(editTransaction(data));
+      dispatch(updateBalance(oldAmount, info.amount));
     }
   };
 
