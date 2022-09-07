@@ -1,11 +1,17 @@
 import React, { useEffect } from "react";
 import { useSelector, useDispatch } from "react-redux";
-import { loadGoals, removeGoal } from "../../store/goals";
+import {
+  loadGoals,
+  removeGoal,
+  checkGoal,
+  removeComplete,
+} from "../../store/goals";
 import DashboardLeft from "../Dashboard/DashboardLeft";
 import DashboardRight from "../Dashboard/DashboardRight";
 import AddGoalModal from "../AddGoalModal/AddGoalModal";
 import EditGoalModal from "../EditGoalModal/EditGoalModal";
 import AccountBalanceSharpIcon from "@mui/icons-material/AccountBalanceSharp";
+import "./Goals.css";
 
 function Goals() {
   const user = useSelector((state) => state.session.user);
@@ -25,6 +31,14 @@ function Goals() {
 
   async function handleDelete(goalId) {
     await dispatch(removeGoal(user.id, goalId));
+  }
+
+  async function handleCheck(goalId) {
+    await dispatch(checkGoal(goalId));
+  }
+
+  async function handleUncheck(goalId) {
+    await dispatch(removeComplete(goalId));
   }
 
   return (
@@ -58,6 +72,16 @@ function Goals() {
                     goals.map((goal) => (
                       <div className="news-article-container">
                         <div className="news-article">
+                          <i
+                            className={`fa-solid fa-circle-check ${
+                              goal.completed && "completed-goal"
+                            }`}
+                            onClick={
+                              goal.completed
+                                ? () => handleUncheck(goal.id)
+                                : () => handleCheck(goal.id)
+                            }
+                          ></i>
                           <div className="news-article-info">
                             <p className="news-article-title">{goal.name}</p>
                           </div>

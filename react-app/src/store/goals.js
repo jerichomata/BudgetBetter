@@ -2,6 +2,8 @@ const LOAD_GOALS = "goals/LOAD_GOALS";
 const ADD_GOAL = "goals/ADD_GOAL";
 const EDIT_GOAL = "goals/EDIT_GOAL";
 const DELETE_GOAL = "goals/DELETE_GOAL";
+const COMPLETE_GOAL = "goals/COMPLETE_GOAL";
+const UNCHECK_GOAL = "goals/UNCHECK_GOAL";
 
 export const loadAllGoals = (goals) => ({
   type: LOAD_GOALS,
@@ -20,6 +22,16 @@ export const editGoal = (goal) => ({
 
 export const deleteGoal = (goalId) => ({
   type: DELETE_GOAL,
+  payload: goalId,
+});
+
+export const completeGoal = (goalId) => ({
+  type: COMPLETE_GOAL,
+  payload: goalId,
+});
+
+export const uncheckGoal = (goalId) => ({
+  type: UNCHECK_GOAL,
   payload: goalId,
 });
 
@@ -72,6 +84,26 @@ export const removeGoal = (userId, goalId) => async (dispatch) => {
   }
 };
 
+export const checkGoal = (goalId) => async (dispatch) => {
+  const response = await fetch(`/api/goals/${goalId}`, {
+    method: "PUT",
+  });
+
+  if (response.ok) {
+    dispatch(completeGoal(goalId));
+  }
+};
+
+export const removeComplete = (goalId) => async (dispatch) => {
+  const response = await fetch(`/api/goals/${goalId}`, {
+    method: "DELETE",
+  });
+
+  if (response.ok) {
+    dispatch(uncheckGoal(goalId));
+  }
+};
+
 const initialState = {};
 
 export default function reducer(state = initialState, action) {
@@ -101,6 +133,18 @@ export default function reducer(state = initialState, action) {
     case DELETE_GOAL: {
       const newState = global.structuredClone(state);
       delete newState[action.payload];
+      return newState;
+    }
+
+    case COMPLETE_GOAL: {
+      const newState = global.structuredClone(state);
+      newState[action.payload].completed = true;
+      return newState;
+    }
+
+    case UNCHECK_GOAL: {
+      const newState = global.structuredClone(state);
+      newState[action.payload].completed = false;
       return newState;
     }
 
