@@ -2,5 +2,37 @@
   display: flex;
   justify-content: space-between;
   align-items: center;
-  /* padding: ; */
+  margin-bottom: 12px;
+}
+
+.recent-transactions-btn-container > h2 {
+  margin-bottom: 0;
+}
+
+.delete-transaction-btn-container {
+  padding-left: 8px;
+}
+
+.fa-trash-can {
+  font-size: 1rem;
+}
+
+.fa-trash-can:hover {
+  cursor: pointer;
+}
+
+#expense-load-more {
+  margin-top: 12px !important;
+  color: #7380ec;
+  width: fit-content;
+  margin: 0 auto;
+  background: transparent;
+}
+
+#expense-load-more:hover {
+  cursor: pointer;
+}
+
+#recent-transactions-header {
+  margin-bottom: 0;
 }
