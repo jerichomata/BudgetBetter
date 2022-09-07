@@ -1,6 +1,7 @@
 // constants
 const SET_USER = "session/SET_USER";
 const REMOVE_USER = "session/REMOVE_USER";
+export const ADJUST_USER_BALANCE = "session/ADJUST_USER_BALANCE";
 
 const setUser = (user) => ({
   type: SET_USER,
@@ -9,6 +10,11 @@ const setUser = (user) => ({
 
 const removeUser = () => ({
   type: REMOVE_USER,
+});
+
+export const adjustBalance = (amount) => ({
+  type: ADJUST_USER_BALANCE,
+  payload: amount,
 });
 
 const initialState = { user: null };
@@ -99,6 +105,11 @@ export default function reducer(state = initialState, action) {
       return { user: action.payload };
     case REMOVE_USER:
       return { user: null };
+    case ADJUST_USER_BALANCE: {
+      let newState = global.structuredClone(state);
+      newState.user.accountBalance += Number(action.payload);
+      return newState;
+    }
     default:
       return state;
   }

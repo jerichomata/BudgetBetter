@@ -1,3 +1,5 @@
+import { adjustBalance } from "./session";
+
 const LOAD_TRANSACTIONS = "transactions/LOAD_TRANSACTIONS";
 const ADD_TRANSACTION = "transactions/ADD_TRANSACTION";
 const EDIT_TRANSACTION = "transactions/EDIT_TRANSACTION";
@@ -44,6 +46,7 @@ export const createTransaction = (userId, info) => async (dispatch) => {
   if (response.ok) {
     const data = await response.json();
     dispatch(addTransaction(data));
+    dispatch(adjustBalance(info.amount));
   }
 };
 
