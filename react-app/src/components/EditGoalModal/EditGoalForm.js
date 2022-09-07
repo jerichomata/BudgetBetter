@@ -1,13 +1,21 @@
 import React, { useState, useEffect } from "react";
-import { createGoal } from "../../store/goals";
+import { updateGoal } from "../../store/goals";
+import { dateToISOStr } from "../../util/date";
 import { useDispatch, useSelector } from "react-redux";
-import "./AddGoalForm.css";
+import "./EditGoalForm.css";
 
-function AddGoalForm({ closeModal }) {
+function EditGoalForm({ closeModal, goalId }) {
   const user = useSelector((state) => state.session.user);
+  const goal = useSelector(
+    (state) =>
+      Object.values(state.goals).filter((goal) => goal.id === goalId)[0]
+  );
+
+  let oldDate = dateToISOStr(goal?.date);
+
   const dispatch = useDispatch();
-  const [name, setName] = useState("");
-  const [date, setDate] = useState("");
+  const [name, setName] = useState(goal?.name);
+  const [date, setDate] = useState(oldDate);
   const [errors, setErrors] = useState([]);
   const [hasSubmitted, setHasSubmitted] = useState(false);
 
@@ -31,7 +39,7 @@ function AddGoalForm({ closeModal }) {
       date,
     };
 
-    const createdGoal = await dispatch(createGoal(user.id, info));
+    const editedGoal = await dispatch(updateGoal(user.id, goalId, info));
 
     closeModal();
   };
@@ -44,7 +52,7 @@ function AddGoalForm({ closeModal }) {
           errors.length > 0 &&
           errors.map((error, idx) => <li key={idx}>{error}</li>)}
       </ul>
-      <h1 className="login-form__title">Create Goal</h1>
+      <h1 className="login-form__title">Edit Goal</h1>
       <label className="login-form__email__label">
         Name
         <input
@@ -70,4 +78,4 @@ function AddGoalForm({ closeModal }) {
   );
 }
 
-export default AddGoalForm;
+export default EditGoalForm;
