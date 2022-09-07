@@ -4,6 +4,7 @@ import FeedSharpIcon from "@mui/icons-material/FeedSharp";
 import MonetizationOnSharpIcon from "@mui/icons-material/MonetizationOnSharp";
 import SouthSharpIcon from "@mui/icons-material/SouthSharp";
 import { fetchMarketNews } from "../../util/news-api";
+import { unixToDate } from "../../util/date";
 
 function DashboardRight() {
   const [marketNews, setMarketNews] = useState([]);
@@ -16,7 +17,7 @@ function DashboardRight() {
     initializePage();
   }, []);
 
-  console.log("MARKET NEWS", marketNews);
+  console.log(marketNews);
 
   return (
     <div className="right">
@@ -39,47 +40,27 @@ function DashboardRight() {
       <div className="recent-updates">
         <h2>Recent News</h2>
         <div className="updates">
-          <div className="update">
-            <div className="profile-photo">
-              <span>
-                <FeedSharpIcon />
-              </span>
-            </div>
-            <div className="message">
-              <p>
-                <b>Elon Musk</b> says invest in Dogecoin! You do not want to
-                miss out!{" "}
-              </p>
-              <small className="text-muted">2 Minutes Ago</small>
-            </div>
-          </div>
-          <div className="update">
-            <div className="profile-photo">
-              <span>
-                <FeedSharpIcon />
-              </span>
-            </div>
-            <div className="message">
-              <p>
-                <b>Bill Gates</b> says buying microsoft products over apple
-                products will save you money!
-              </p>
-              <small className="text-muted">2 Minutes Ago</small>
-            </div>
-          </div>
-          <div className="update last-update">
-            <div className="profile-photo">
-              <span>
-                <FeedSharpIcon />
-              </span>
-            </div>
-            <div className="message">
-              <p>
-                <b>Warren Buffet</b> just invested $2 million into Coca-Cola.
-              </p>
-              <small className="text-muted">2 Minutes Ago</small>
-            </div>
-          </div>
+          {marketNews.length > 0 &&
+            marketNews.map((news) => (
+              <a
+                key={news.id}
+                href={news.url}
+                target="_blank"
+                rel="noopener noreferrer"
+              >
+                <div className="update">
+                  <div className="profile-photo">
+                    <img src={news.image} alt="News cover" />
+                  </div>
+                  <div className="message">
+                    <p>{news.headline}</p>
+                    <small className="text-muted">
+                      {unixToDate(news.datetime)}
+                    </small>
+                  </div>
+                </div>
+              </a>
+            ))}
         </div>
       </div>
 
