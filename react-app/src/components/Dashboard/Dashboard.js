@@ -4,14 +4,33 @@ import { loadTransactions } from "../../store/transactions";
 import DashboardLeft from "./DashboardLeft";
 import DashboardRight from "./DashboardRight";
 import AccountBalanceSharpIcon from "@mui/icons-material/AccountBalanceSharp";
-import CreditCardSharpIcon from "@mui/icons-material/CreditCardSharp";
+import TrendingUpSharpIcon from "@mui/icons-material/TrendingUpSharp";
 import TrendingDownSharpIcon from "@mui/icons-material/TrendingDownSharp";
 import ArrowBackSharpIcon from "@mui/icons-material/ArrowBackSharp";
 import ArrowForwardSharpIcon from "@mui/icons-material/ArrowForwardSharp";
+import MonetizationOnSharpIcon from "@mui/icons-material/MonetizationOnSharp";
 import "./Dashboard.css";
 
 function Dashboard() {
   const user = useSelector((state) => state.session.user);
+  const transactions = useSelector((state) =>
+    Object.values(state.transactions)
+  );
+
+  console.log("transactions", transactions);
+
+  let income = 0;
+  let expenses = 0;
+
+  if (transactions?.length > 0) {
+    for (let transaction of transactions) {
+      if (transaction?.amount >= 0) {
+        income += transaction?.amount;
+      } else {
+        expenses += transaction?.amount;
+      }
+    }
+  }
 
   const dispatch = useDispatch();
 
@@ -46,25 +65,27 @@ function Dashboard() {
               <h1 className="tab-title">Dashboard</h1>
 
               <div className="insights">
-                <div className="credit">
-                  <span>
-                    <CreditCardSharpIcon />
-                  </span>
-                  <div className="middle">
-                    <h3>Available Credit</h3>
-                    <h1 id="available-credit">N/A</h1>
-                    <small className="text-muted"> This Month </small>
-                  </div>
-                </div>
-
                 <div className="balance">
                   <span>
-                    <AccountBalanceSharpIcon />
+                    <MonetizationOnSharpIcon />
                   </span>
                   <div className="middle">
                     <h3>Account Balance</h3>
-                    <h1 id="account-balance-num">N/A</h1>
-                    <small className="text-muted"> Current </small>
+                    <h1 id="account-balance-num">
+                      {user?.accountBalance.toFixed(2)}
+                    </h1>
+                    <small className="text-muted">Current</small>
+                  </div>
+                </div>
+
+                <div className="credit">
+                  <span>
+                    <TrendingUpSharpIcon />
+                  </span>
+                  <div className="middle">
+                    <h3>Income</h3>
+                    <h1 id="available-credit">+${income.toFixed(2)}</h1>
+                    <small className="text-muted">All Time</small>
                   </div>
                 </div>
 
@@ -74,8 +95,10 @@ function Dashboard() {
                   </span>
                   <div className="middle">
                     <h3>Expenses</h3>
-                    <h1 id="account-expenses">N/A</h1>
-                    <small className="text-muted"> This Month </small>
+                    <h1 id="account-expenses">
+                      -${Math.abs(expenses.toFixed(2))}
+                    </h1>
+                    <small className="text-muted">All Time</small>
                   </div>
                 </div>
               </div>

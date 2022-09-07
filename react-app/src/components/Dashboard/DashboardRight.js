@@ -1,13 +1,26 @@
 import React, { useEffect, useState } from "react";
+import { useSelector } from "react-redux";
 import MenuSharpIcon from "@mui/icons-material/MenuSharp";
-import FeedSharpIcon from "@mui/icons-material/FeedSharp";
 import MonetizationOnSharpIcon from "@mui/icons-material/MonetizationOnSharp";
 import SouthSharpIcon from "@mui/icons-material/SouthSharp";
 import { fetchMarketNews } from "../../util/news-api";
 import { unixToDate } from "../../util/date";
 
 function DashboardRight() {
+  const transactions = useSelector((state) =>
+    Object.values(state.transactions)
+  );
+
   const [marketNews, setMarketNews] = useState([]);
+  const [numToShow, setNumToShow] = useState(3);
+
+  transactions.sort(function (a, b) {
+    // Turn your strings into dates, and then subtract them
+    // to get a value that is either negative, positive, or zero.
+    return new Date(b.date) - new Date(a.date);
+  });
+
+  let transactionsToShow = transactions.slice(0, numToShow);
 
   useEffect(() => {
     const initializePage = async () => {
@@ -17,7 +30,9 @@ function DashboardRight() {
     initializePage();
   }, []);
 
-  console.log(marketNews);
+  function showMore() {
+    setNumToShow((prevNum) => prevNum + 3);
+  }
 
   return (
     <div className="right">
@@ -66,54 +81,32 @@ function DashboardRight() {
 
       <div className="sales-analytics">
         <h2>Recent Transactions</h2>
-        <div className="item online">
-          <div className="icon">
-            <span>
-              <MonetizationOnSharpIcon />
-            </span>
-          </div>
-          <div className="right">
-            <div className="info">
-              <h3 id="first-recent-transaction">N/A</h3>
-              <small className="text-muted">24 Hours Ago</small>
+        {transactionsToShow.length > 0 &&
+          transactionsToShow.map((transaction) => (
+            <div className="item online">
+              <div className="icon">
+                <span>
+                  <MonetizationOnSharpIcon />
+                </span>
+              </div>
+              <div className="right">
+                <div className="info">
+                  <h3 id="first-recent-transaction">{transaction.title}</h3>
+                  <small className="text-muted">{transaction.date}</small>
+                </div>
+                <h3 id="first-recent-amount">
+                  {transaction.amount >= 0
+                    ? "+$" + transaction.amount.toFixed(2)
+                    : "-$" + Math.abs(transaction.amount.toFixed(2))}
+                </h3>
+              </div>
             </div>
-            <h3 id="first-recent-amount">N/A</h3>
-          </div>
-        </div>
-        <div className="item offline">
-          <div className="icon">
-            <span>
-              <SouthSharpIcon />
-            </span>
-          </div>
-          <div className="right">
-            <div className="info">
-              <h3 id="second-recent-transaction">N/A</h3>
-              <small className="text-muted">24 Hours Ago</small>
-            </div>
-            <h3 id="second-recent-amount">N/A</h3>
-          </div>
-        </div>
-        <div className="item customers">
-          <div className="icon">
-            <span>
-              <MonetizationOnSharpIcon />
-            </span>
-          </div>
-          <div className="right">
-            <div className="info">
-              <h3 id="third-recent-transaction">N/A</h3>
-              <small className="text-muted">24 Hours Ago</small>
-            </div>
-            <h3 id="third-recent-amount">N/A</h3>
-          </div>
-        </div>
-        <div className="item add-product">
-          <div>
-            <span className="material-icons-sharp">add</span>
-            <h3 className="load-more">Load More</h3>
-          </div>
-        </div>
+          ))}
+        {numToShow < transactions.length && (
+          <button className="load-more" onClick={showMore}>
+            Load More
+          </button>
+        )}
       </div>
     </div>
   );
