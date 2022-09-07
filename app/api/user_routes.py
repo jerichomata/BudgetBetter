@@ -25,7 +25,7 @@ def user(id):
 @user_routes.route('/<int:id>/transactions')
 @login_required
 def user_transactions(id):
-    transactions = Transaction.query.filter(Transaction.user_id == id).all()
+    transactions = Transaction.query.order_by(Transaction.date.desc()).filter(Transaction.user_id == id).all()
     return {'Transactions': [transaction.to_dict() for transaction in transactions]}
 
 # Route to post a transaction for a user

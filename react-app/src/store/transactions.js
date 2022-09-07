@@ -95,6 +95,7 @@ export default function reducer(state = initialState, action) {
       for (let transaction of action.payload.Transactions) {
         transactions[transaction.id] = transaction;
       }
+      console.log("ALLL", transactions);
       return { ...transactions };
 
     case ADD_TRANSACTION: {
