@@ -1,0 +1,123 @@
+* {
+  box-sizing: border-box;
+}
+
+.landing-page-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  font-family: "Montserrat", sans-serif;
+  height: 100vh;
+}
+
+img {
+  object-fit: contain;
+  height: 50px;
+}
+
+h1 {
+  font-weight: bold;
+  margin: 1rem;
+}
+
+p {
+  font-size: 14px;
+  line-height: 1.3rem;
+  letter-spacing: 0.4px;
+  margin: 20px 0 30px;
+}
+
+button {
+  border-radius: 5px;
+  border: 1px solid #6e7a40;
+  background-color: #6e7a40;
+  background-image: linear-gradient(#6e7a40, #6e7a40);
+  color: #fff;
+  border-color: #6e7a40;
+  cursor: pointer;
+  font-size: 16px;
+  font-weight: bold;
+  margin-top: 20px;
+  padding: 12px 45px;
+  letter-spacing: 1.2px;
+  text-transform: uppercase;
+}
+
+button:active {
+  transform: scale(0.96);
+}
+
+button:focus {
+  outline: none;
+}
+
+input {
+  background-color: #eee;
+  border: none;
+  padding: 12px 15px;
+  margin: 8px 0;
+  width: 100%;
+}
+
+.landing-page-center-container {
+  display: flex;
+  border-radius: 10px;
+  box-shadow: 0 14px 28px rgba(0, 0, 0, 0.25), 0 10px 10px rgba(0, 0, 0, 0.22);
+  width: 850px;
+  height: 480px;
+}
+
+.form-container {
+  width: 50%;
+  height: 480px;
+  background-color: #ffffff;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+}
+
+.landing-page-btn-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+.overlay-container {
+  height: 100%;
+}
+
+.overlay {
+  background-color: #6e7a40;
+  background-image: linear-gradient(315deg, #6e7a40 0%, #8d8958 74%);
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position: 0 0;
+  color: #ffffff;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 100%;
+  width: 50%;
+}
+
+.overlay-panel {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  padding: 0 40px;
+  text-align: center;
+  height: 100%;
+  width: 100%;
+}
+
+.overlay-panel > h1 {
+  width: 100%;
+}
+
+.budget-better-title {
+  letter-spacing: 0.5px;
+}
