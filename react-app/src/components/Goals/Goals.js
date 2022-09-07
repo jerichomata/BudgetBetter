@@ -1,6 +1,6 @@
 import React, { useEffect } from "react";
 import { useSelector, useDispatch } from "react-redux";
-import { loadGoals } from "../../store/goals";
+import { loadGoals, removeGoal } from "../../store/goals";
 import DashboardLeft from "../Dashboard/DashboardLeft";
 import DashboardRight from "../Dashboard/DashboardRight";
 import AddGoalModal from "../AddGoalModal/AddGoalModal";
@@ -23,18 +23,22 @@ function Goals() {
     initializePage();
   }, [dispatch]);
 
+  async function handleDelete(goalId) {
+    await dispatch(removeGoal(user.id, goalId));
+  }
+
   return (
     <div className="dashboard-container">
       <div className="container">
         <aside>
-          <div class="top">
-            <div class="logo">
+          <div className="top">
+            <div className="logo">
               <AccountBalanceSharpIcon />
 
               <h2>BudgetBetter</h2>
             </div>
-            <div class="close" id="close-btn">
-              <span class="material-icons-sharp"> close </span>
+            <div className="close" id="close-btn">
+              <span className="material-icons-sharp"> close </span>
             </div>
           </div>
 
@@ -42,25 +46,29 @@ function Goals() {
         </aside>
 
         <main>
-          <div class="tab">
-            <div class="news-tab">
-              <div class="tab">
-                <div class="news-tab">
-                  <h1 class="tab-title">Goals</h1>
-                  <h4 class="recent-news">Your Goals</h4>
+          <div className="tab">
+            <div className="news-tab">
+              <div className="tab">
+                <div className="news-tab">
+                  <h1 className="tab-title">Goals</h1>
+                  <h4 className="recent-news">Your Goals</h4>
                   <AddGoalModal />
                   {goals &&
                     goals?.length > 0 &&
                     goals.map((goal) => (
-                      <div class="news-article-container">
-                        <div class="news-article">
-                          <div class="news-article-info">
-                            <p class="news-article-title">{goal.name}</p>
+                      <div className="news-article-container">
+                        <div className="news-article">
+                          <div className="news-article-info">
+                            <p className="news-article-title">{goal.name}</p>
                           </div>
                           <p>{goal.date}</p>
                           <EditGoalModal goalId={goal.id} />
+                          <i
+                            className="fa-regular fa-trash-can"
+                            onClick={() => handleDelete(goal.id)}
+                          ></i>
                         </div>
-                        <hr class="separation-line" />
+                        <hr className="separation-line" />
                       </div>
                     ))}
                 </div>
