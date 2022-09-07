@@ -4,6 +4,7 @@ import { loadGoals } from "../../store/goals";
 import DashboardLeft from "../Dashboard/DashboardLeft";
 import DashboardRight from "../Dashboard/DashboardRight";
 import AddGoalModal from "../AddGoalModal/AddGoalModal";
+import EditGoalModal from "../EditGoalModal/EditGoalModal";
 import AccountBalanceSharpIcon from "@mui/icons-material/AccountBalanceSharp";
 
 function Goals() {
@@ -57,6 +58,7 @@ function Goals() {
                             <p class="news-article-title">{goal.name}</p>
                           </div>
                           <p>{goal.date}</p>
+                          <EditGoalModal goalId={goal.id} />
                         </div>
                         <hr class="separation-line" />
                       </div>
