@@ -68,7 +68,7 @@ function ExpenseTracker() {
                   <div className="expense-container">
                     <h4>Your Balance</h4>
                     <h1 id="balance-expense">
-                      ${user ? user.accountBalance : 0.0}
+                      ${user ? user.accountBalance.toFixed(2) : 0.0}
                     </h1>
                     <div className="inc-exp-container">
                       <div>

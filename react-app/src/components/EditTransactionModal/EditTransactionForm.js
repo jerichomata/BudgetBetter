@@ -42,7 +42,7 @@ function EditTransactionForm({ closeModal, transactionId }) {
     };
 
     const editedTransaction = await dispatch(
-      updateTransaction(user.id, transactionId, info)
+      updateTransaction(user.id, transactionId, info, transaction?.amount)
     );
 
     closeModal();
