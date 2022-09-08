@@ -58,3 +58,12 @@
 #delete-goal-btn {
   font-size: 16px;
 }
+
+.overdue {
+  color: red;
+}
+
+.no-goals {
+  margin: 0 auto;
+  margin-top: 32px;
+}

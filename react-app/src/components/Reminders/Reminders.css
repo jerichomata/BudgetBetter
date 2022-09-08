@@ -18,3 +18,8 @@
   align-items: center;
   gap: 16px;
 }
+
+.no-reminders {
+  margin: 0 auto;
+  margin-top: 16px;
+}
