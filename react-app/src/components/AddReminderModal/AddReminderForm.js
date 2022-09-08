@@ -75,7 +75,7 @@ function AddReminderForm({ closeModal }) {
           required
         />
       </label>
-      <button type="submit" className="login-form__log-in">
+      <button type="submit" className="form-modal-btn">
         Submit
       </button>
     </form>

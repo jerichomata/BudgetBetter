@@ -12,7 +12,9 @@ function AddReminderModal() {
 
   return (
     <>
-      <button onClick={() => setShowModal(true)}>Add Reminder</button>
+      <button onClick={() => setShowModal(true)} id="add-goal-btn">
+        Add Reminder
+      </button>
       {showModal && (
         <Modal onClose={() => setShowModal(false)}>
           <AddReminderForm closeModal={closeModal} />
