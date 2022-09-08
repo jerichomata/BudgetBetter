@@ -33,8 +33,6 @@ BudgetBetter is a financial application created to help individuals manage their
 
 ## Expense Tracker
 
-![cracking-leetcode-prob-description](https://user-images.githubusercontent.com/95510710/188289410-ab65f57d-527f-4740-9f46-d55bda059d29.png)
-
 ## Run Locally
 
 - Clone the repo
