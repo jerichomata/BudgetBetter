@@ -1,4 +1,4 @@
-import React, { useEffect } from "react";
+import React, { useEffect, useState } from "react";
 import { useSelector, useDispatch } from "react-redux";
 import {
   loadGoals,
@@ -6,6 +6,7 @@ import {
   checkGoal,
   removeComplete,
 } from "../../store/goals";
+import { gmtToDate } from "../../util/date";
 import DashboardLeft from "../Dashboard/DashboardLeft";
 import DashboardRight from "../Dashboard/DashboardRight";
 import AddGoalModal from "../AddGoalModal/AddGoalModal";
@@ -20,6 +21,10 @@ function Goals() {
   );
 
   const dispatch = useDispatch();
+
+  const [numToShow, setNumToShow] = useState(3);
+
+  const goalsToShow = goals?.slice(0, numToShow);
 
   useEffect(() => {
     const initializePage = async () => {
@@ -39,6 +44,10 @@ function Goals() {
 
   async function handleUncheck(goalId) {
     await dispatch(removeComplete(goalId));
+  }
+
+  function loadMore() {
+    setNumToShow((prevNum) => prevNum + 3);
   }
 
   return (
@@ -63,38 +72,51 @@ function Goals() {
           <div className="tab">
             <div className="news-tab">
               <div className="tab">
-                <div className="news-tab">
+                <div className="news-tab" id="goals-content-container">
                   <h1 className="tab-title">Goals</h1>
-                  <h4 className="recent-news">Your Goals</h4>
-                  <AddGoalModal />
-                  {goals &&
-                    goals?.length > 0 &&
-                    goals.map((goal) => (
+                  <div className="add-goal-modal-container">
+                    <h4>Your Goals</h4>
+                    <AddGoalModal />
+                  </div>
+                  {goalsToShow?.length > 0 &&
+                    goalsToShow.map((goal) => (
                       <div className="news-article-container">
-                        <div className="news-article">
-                          <i
-                            className={`fa-solid fa-circle-check ${
-                              goal.completed && "completed-goal"
-                            }`}
-                            onClick={
-                              goal.completed
-                                ? () => handleUncheck(goal.id)
-                                : () => handleCheck(goal.id)
-                            }
-                          ></i>
-                          <div className="news-article-info">
-                            <p className="news-article-title">{goal.name}</p>
+                        <div className="news-article" id="default-cursor">
+                          <div className="goal-title-complete-container">
+                            <i
+                              className={`fa-solid fa-circle-check ${
+                                goal.completed && "completed-goal"
+                              }`}
+                              onClick={
+                                goal.completed
+                                  ? () => handleUncheck(goal.id)
+                                  : () => handleCheck(goal.id)
+                              }
+                            ></i>
+                            <div
+                              className="news-article-info"
+                              id="goal-title-container"
+                            >
+                              <p className="news-article-title">{goal.name}</p>
+                            </div>
                           </div>
-                          <p>{goal.date}</p>
-                          <EditGoalModal goalId={goal.id} />
-                          <i
-                            className="fa-regular fa-trash-can"
-                            onClick={() => handleDelete(goal.id)}
-                          ></i>
+                          <div id="goal-date-edit-container">
+                            <p id="goal-date">{gmtToDate(goal.date)}</p>
+                            <EditGoalModal goalId={goal.id} />
+                            <i
+                              className="fa-regular fa-trash-can"
+                              id="delete-goal-btn"
+                              onClick={() => handleDelete(goal.id)}
+                            ></i>
+                          </div>
                         </div>
-                        <hr className="separation-line" />
                       </div>
                     ))}
+                  {numToShow < goals.length && (
+                    <button id="expense-load-more" onClick={loadMore}>
+                      Load More
+                    </button>
+                  )}
                 </div>
               </div>
             </div>
