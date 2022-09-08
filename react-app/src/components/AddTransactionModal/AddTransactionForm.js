@@ -54,6 +54,7 @@ function AddTransactionForm({ closeModal }) {
           type="text"
           value={title}
           onChange={(e) => setTitle(e.target.value)}
+          maxlength="25"
           required
         />
       </label>
@@ -76,7 +77,7 @@ function AddTransactionForm({ closeModal }) {
           required
         />
       </label>
-      <button type="submit" className="login-form__log-in">
+      <button type="submit" className="form-modal-btn">
         Submit
       </button>
     </form>

@@ -54,6 +54,7 @@ function AddReminderForm({ closeModal }) {
           type="text"
           value={title}
           onChange={(e) => setTitle(e.target.value)}
+          maxlength="35"
           required
         />
       </label>
@@ -63,6 +64,7 @@ function AddReminderForm({ closeModal }) {
           type="text"
           value={description}
           onChange={(e) => setDescription(e.target.value)}
+          maxlength="75"
           required
         />
       </label>
@@ -75,7 +77,7 @@ function AddReminderForm({ closeModal }) {
           required
         />
       </label>
-      <button type="submit" className="login-form__log-in">
+      <button type="submit" className="form-modal-btn">
         Submit
       </button>
     </form>

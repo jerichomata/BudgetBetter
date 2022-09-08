@@ -59,6 +59,7 @@ function EditGoalForm({ closeModal, goalId }) {
           type="text"
           value={name}
           onChange={(e) => setName(e.target.value)}
+          maxlength="50"
           required
         />
       </label>

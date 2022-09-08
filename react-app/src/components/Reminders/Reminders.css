@@ -1,0 +1,29 @@
+.notifications-tab .add-goal-modal-container {
+  margin-bottom: 16px;
+}
+
+.reminders-container {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  gap: 20px;
+}
+
+#reminder-date-view {
+  margin-top: 8px;
+}
+
+.edit-delete-reminder-container {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+}
+
+.no-reminders {
+  margin: 0 auto;
+  margin-top: 16px;
+}
+
+.reminder-overflow {
+  overflow: auto;
+}

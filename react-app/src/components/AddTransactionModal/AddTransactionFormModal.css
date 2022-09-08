@@ -1,0 +1,14 @@
+#add-transaction-btn {
+  border: 1px solid green;
+  background-image: none;
+  background-color: transparent;
+  color: #000000;
+  margin-top: 0;
+  padding: 8px 16px;
+  border-radius: 8px;
+  font-weight: bold;
+}
+
+#add-transaction-btn:hover {
+  cursor: pointer;
+}

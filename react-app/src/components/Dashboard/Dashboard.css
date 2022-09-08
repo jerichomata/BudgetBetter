@@ -444,6 +444,9 @@ main .visuals h2 {
 
 main .recent-orders {
   margin-top: 2rem;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
 }
 
 main .recent-orders h2 {
@@ -498,7 +501,6 @@ main .recent-orders a {
 .notifications-tab .inbox-message {
   height: 150px;
   width: 85%;
-  /* margin-top: 20px; */
   background-color: #fff;
   box-shadow: var(--box-shadow);
   padding: 20px;
@@ -512,18 +514,23 @@ main .recent-orders a {
 .notifications-tab .msg-info {
   display: flex;
   flex-direction: column;
+  justify-content: space-between;
   width: 80%;
+  height: 100%;
 }
 
 .notifications-tab .msg-title {
-  margin-top: 10px;
   color: black;
   font-weight: bold;
   font-size: 20px;
+  margin: 0;
+  padding: 0;
+  padding-top: 12px;
 }
 
 .notifications-tab .msg-description {
-  margin-top: 10px;
+  margin: 0;
+  margin-top: 20px;
 }
 
 .notifications-tab .separation-line-inbox {
@@ -644,9 +651,7 @@ main .recent-orders a {
 
 .settings .themes {
   display: flex;
-  flex-direction: column;
-  /* align-items: center;
-  justify-content: center; */
+  gap: 8px;
 }
 
 .settings .theme-toggler span {
@@ -721,6 +726,11 @@ main .recent-orders a {
 
 .right .sales-analytics {
   margin-top: 2rem;
+}
+
+.no-recent-transactions {
+  margin: 0 auto;
+  font-weight: bold;
 }
 
 .right .sales-analytics h2 {
@@ -841,7 +851,7 @@ main .settings {
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  margin-top: 5rem;
+  margin-top: 40px;
 }
 
 main .settings > div {

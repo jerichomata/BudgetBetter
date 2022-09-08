@@ -1,0 +1,7 @@
+.edit-transaction-btn {
+  font-size: 1rem;
+}
+
+.edit-transaction-btn:hover {
+  cursor: pointer;
+}

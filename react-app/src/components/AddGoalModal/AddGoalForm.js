@@ -51,6 +51,7 @@ function AddGoalForm({ closeModal }) {
           type="text"
           value={name}
           onChange={(e) => setName(e.target.value)}
+          maxlength="50"
           required
         />
       </label>
@@ -63,7 +64,7 @@ function AddGoalForm({ closeModal }) {
           required
         />
       </label>
-      <button type="submit" className="login-form__log-in">
+      <button type="submit" className="form-modal-btn">
         Submit
       </button>
     </form>

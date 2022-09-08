@@ -63,6 +63,7 @@ function EditTransactionForm({ closeModal, transactionId }) {
           type="text"
           value={title}
           onChange={(e) => setTitle(e.target.value)}
+          maxlength="25"
           required
         />
       </label>
@@ -85,7 +86,7 @@ function EditTransactionForm({ closeModal, transactionId }) {
           required
         />
       </label>
-      <button type="submit" className="login-form__log-in">
+      <button type="submit" className="form-modal-btn">
         Submit
       </button>
     </form>

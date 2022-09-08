@@ -1,7 +1,82 @@
+.add-goal-modal-container {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding-bottom: 12px;
+  border-bottom: 1px solid #bbb;
+}
+
+#goals-content-container {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.add-goal-modal-container > h4 {
+  margin: 0;
+}
+
 .fa-circle-check {
-  font-size: 1rem;
+  font-size: 20px;
+  color: gray;
+}
+
+.fa-circle-check:hover {
+  cursor: pointer;
 }
 
 .completed-goal {
   color: green;
+}
+
+#goal-title-container {
+  width: 90%;
+}
+
+.goal-name {
+  line-height: 24px;
+}
+
+#goal-title-container .news-article-title {
+  margin: 0;
+  margin-left: 16px;
+}
+
+#default-cursor {
+  cursor: auto;
+}
+
+.goal-title-complete-container {
+  display: flex;
+  align-items: center;
+  width: 60%;
+}
+
+.goal-name {
+  width: fit-content;
+}
+
+#goal-date-edit-container {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  width: fit-content;
+}
+
+#goal-date {
+  margin: 0;
+}
+
+#delete-goal-btn {
+  font-size: 16px;
+}
+
+.overdue {
+  color: red;
+}
+
+.no-goals {
+  margin: 0 auto;
+  margin-top: 32px;
 }

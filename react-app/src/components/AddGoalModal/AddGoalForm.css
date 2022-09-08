@@ -1,0 +1,11 @@
+.form-modal-btn {
+  border-radius: 8px;
+  cursor: pointer;
+  color: #ffffff;
+  background-color: #4daf7c;
+  font-weight: 600;
+  padding: 8px 12px;
+  font-size: 1.25rem;
+  height: 3rem;
+  margin-top: 1.5rem;
+}

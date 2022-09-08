@@ -1,11 +1,14 @@
-import React, { useEffect } from "react";
+import React, { useEffect, useState } from "react";
 import { useSelector, useDispatch } from "react-redux";
 import { loadReminders, removeReminder } from "../../store/reminders";
+import { loadTransactions } from "../../store/transactions";
+import { gmtToDate } from "../../util/date";
 import DashboardLeft from "../Dashboard/DashboardLeft";
 import DashboardRight from "../Dashboard/DashboardRight";
 import AddReminderModal from "../AddReminderModal/AddReminderModal";
 import EditReminderModal from "../EditReminderModal/EditReminderModal";
 import AccountBalanceSharpIcon from "@mui/icons-material/AccountBalanceSharp";
+import "./Reminders.css";
 
 function Reminders() {
   const user = useSelector((state) => state.session.user);
@@ -13,11 +16,22 @@ function Reminders() {
     state.reminders ? Object.values(state.reminders) : null
   );
 
+  reminders.sort(function (a, b) {
+    // Turn your strings into dates, and then subtract them
+    // to get a value that is either negative, positive, or zero.
+    return new Date(a.date) - new Date(b.date);
+  });
+
+  const [numToShow, setNumToShow] = useState(3);
+
+  const remindersToShow = reminders?.slice(0, numToShow);
+
   const dispatch = useDispatch();
 
   useEffect(() => {
     const initializePage = async () => {
       await dispatch(loadReminders(user.id));
+      await dispatch(loadTransactions(user.id));
     };
 
     initializePage();
@@ -25,6 +39,10 @@ function Reminders() {
 
   async function handleDelete(reminderId) {
     await dispatch(removeReminder(user.id, reminderId));
+  }
+
+  function loadMore() {
+    setNumToShow((prevNum) => prevNum + 3);
   }
 
   return (
@@ -51,29 +69,52 @@ function Reminders() {
               <div className="tab">
                 <div className="notifications-tab">
                   <h1 className="tab-title">Reminders</h1>
-                  <h4 className="inbox">Inbox</h4>
-                  <AddReminderModal />
-                  {reminders &&
-                    reminders.length > 0 &&
-                    reminders.map((reminder) => (
-                      <div className="message-container">
-                        <div className="inbox-message">
-                          <div className="msg-info">
-                            <p className="msg-title">{reminder.title}</p>
-                            <p className="msg-description">
-                              {reminder.description}
-                            </p>
-                            <p className="msg-description">{reminder.date}</p>
+                  <div className="add-goal-modal-container">
+                    <h4>Inbox</h4>
+                    <AddReminderModal />
+                  </div>
+                  <div className="reminders-container">
+                    {remindersToShow.length > 0 ? (
+                      remindersToShow.map((reminder) => (
+                        <div className="message-container">
+                          <div className="inbox-message reminder-overflow">
+                            <div className="msg-info">
+                              <p className="msg-title">{reminder.title}</p>
+                              <div>
+                                <p className="msg-description">
+                                  {reminder.description}
+                                </p>
+                                <p
+                                  className={`msg-description ${
+                                    new Date(reminder?.date) < new Date() &&
+                                    "overdue"
+                                  }`}
+                                  id="reminder-date-view"
+                                >
+                                  {gmtToDate(reminder?.date)}
+                                </p>
+                              </div>
+                            </div>
+                            <div className="edit-delete-reminder-container">
+                              <EditReminderModal reminderId={reminder.id} />
+                              <i
+                                className="fa-regular fa-trash-can"
+                                id="delete-goal-btn"
+                                onClick={() => handleDelete(reminder.id)}
+                              ></i>
+                            </div>
                           </div>
-                          <EditReminderModal reminderId={reminder.id} />
-                          <i
-                            className="fa-regular fa-trash-can"
-                            onClick={() => handleDelete(reminder.id)}
-                          ></i>
                         </div>
-                        <hr className="separation-line-inbox" />
-                      </div>
-                    ))}
+                      ))
+                    ) : (
+                      <h2 className="no-reminders">You have no reminders</h2>
+                    )}
+                    {numToShow < reminders.length && (
+                      <button id="expense-load-more" onClick={loadMore}>
+                        Load More
+                      </button>
+                    )}
+                  </div>
                 </div>
               </div>
             </div>

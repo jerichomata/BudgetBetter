@@ -14,6 +14,7 @@ function EditReminderModal({ reminderId }) {
     <>
       <i
         className="fa-regular fa-pen-to-square"
+        id="edit-goal-pen"
         onClick={() => setShowModal(true)}
       ></i>
       {showModal && (
