@@ -54,6 +54,7 @@ function AddTransactionForm({ closeModal }) {
           type="text"
           value={title}
           onChange={(e) => setTitle(e.target.value)}
+          maxlength="25"
           required
         />
       </label>

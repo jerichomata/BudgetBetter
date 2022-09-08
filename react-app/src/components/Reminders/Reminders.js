@@ -77,7 +77,7 @@ function Reminders() {
                     {remindersToShow.length > 0 ? (
                       remindersToShow.map((reminder) => (
                         <div className="message-container">
-                          <div className="inbox-message">
+                          <div className="inbox-message reminder-overflow">
                             <div className="msg-info">
                               <p className="msg-title">{reminder.title}</p>
                               <div>

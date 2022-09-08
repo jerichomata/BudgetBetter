@@ -63,6 +63,7 @@ function EditReminderForm({ closeModal, reminderId }) {
           type="text"
           value={title}
           onChange={(e) => setTitle(e.target.value)}
+          maxlength="35"
           required
         />
       </label>
@@ -72,6 +73,7 @@ function EditReminderForm({ closeModal, reminderId }) {
           type="text"
           value={description}
           onChange={(e) => setDescription(e.target.value)}
+          maxlength="75"
           required
         />
       </label>

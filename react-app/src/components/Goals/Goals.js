@@ -105,7 +105,9 @@ function Goals() {
                               className="news-article-info"
                               id="goal-title-container"
                             >
-                              <p className="news-article-title">{goal.name}</p>
+                              <p className="news-article-title goal-name">
+                                {goal.name}
+                              </p>
                             </div>
                           </div>
                           <div id="goal-date-edit-container">
