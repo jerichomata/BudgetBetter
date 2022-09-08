@@ -3,6 +3,8 @@ const SET_USER = "session/SET_USER";
 const REMOVE_USER = "session/REMOVE_USER";
 export const ADJUST_USER_BALANCE = "session/ADJUST_USER_BALANCE";
 export const UPDATE_USER_BALANCE = "session/UPDATE_USER_BALANCE";
+export const DELETE_TRANSACTION_USER_BALANCE =
+  "session/DELETE_TRANSACTION_USER_BALANCE";
 
 const setUser = (user) => ({
   type: SET_USER,
@@ -23,7 +25,10 @@ export const updateBalance = (oldAmount, newAmount) => ({
   payload: { oldAmount, newAmount },
 });
 
-const initialState = { user: null };
+export const deleteTransactionBalance = (amount) => ({
+  type: DELETE_TRANSACTION_USER_BALANCE,
+  payload: amount,
+});
 
 export const authenticate = () => async (dispatch) => {
   const response = await fetch("/api/auth/", {
@@ -105,6 +110,8 @@ export const signUp = (username, password) => async (dispatch) => {
   }
 };
 
+const initialState = { user: null };
+
 export default function reducer(state = initialState, action) {
   switch (action.type) {
     case SET_USER:
@@ -127,6 +134,11 @@ export default function reducer(state = initialState, action) {
           action.payload.oldAmount - action.payload.newAmount
         );
       }
+      return newState;
+    }
+    case DELETE_TRANSACTION_USER_BALANCE: {
+      let newState = global.structuredClone(state);
+      newState.user.accountBalance -= Number(action.payload);
       return newState;
     }
     default:

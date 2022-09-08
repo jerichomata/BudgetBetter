@@ -49,8 +49,8 @@ function ExpenseTracker() {
     initializePage();
   }, []);
 
-  async function handleDelete(transactionId) {
-    await dispatch(removeTransaction(user.id, transactionId));
+  async function handleDelete(transactionId, amount) {
+    await dispatch(removeTransaction(user.id, transactionId, amount));
   }
 
   function loadMore() {
@@ -137,7 +137,10 @@ function ExpenseTracker() {
                                   <i
                                     class="fa-regular fa-trash-can"
                                     onClick={() =>
-                                      handleDelete(transaction?.id)
+                                      handleDelete(
+                                        transaction?.id,
+                                        transaction?.amount
+                                      )
                                     }
                                   ></i>
                                 </td>
