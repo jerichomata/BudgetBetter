@@ -1,4 +1,8 @@
-import { adjustBalance, updateBalance } from "./session";
+import {
+  adjustBalance,
+  updateBalance,
+  deleteTransactionBalance,
+} from "./session";
 
 const LOAD_TRANSACTIONS = "transactions/LOAD_TRANSACTIONS";
 const ADD_TRANSACTION = "transactions/ADD_TRANSACTION";
@@ -70,7 +74,7 @@ export const updateTransaction =
   };
 
 export const removeTransaction =
-  (userId, transactionId) => async (dispatch) => {
+  (userId, transactionId, amount) => async (dispatch) => {
     const response = await fetch(
       `/api/users/${userId}/transactions/${transactionId}`,
       {
@@ -83,6 +87,7 @@ export const removeTransaction =
 
     if (response.ok) {
       dispatch(deleteTransaction(transactionId));
+      dispatch(deleteTransactionBalance(amount));
     }
   };
 
