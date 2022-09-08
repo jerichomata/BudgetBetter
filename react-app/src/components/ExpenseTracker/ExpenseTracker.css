@@ -27,6 +27,8 @@
   width: fit-content;
   margin: 0 auto;
   background: transparent;
+  font-weight: bold;
+  letter-spacing: 0.1px;
 }
 
 #expense-load-more:hover {

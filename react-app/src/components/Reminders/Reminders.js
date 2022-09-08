@@ -71,7 +71,6 @@ function Reminders() {
                             onClick={() => handleDelete(reminder.id)}
                           ></i>
                         </div>
-                        <hr className="separation-line-inbox" />
                       </div>
                     ))}
                 </div>

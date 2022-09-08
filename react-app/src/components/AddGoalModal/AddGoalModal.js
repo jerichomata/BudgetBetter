@@ -12,7 +12,9 @@ function AddGoalModal() {
 
   return (
     <>
-      <button onClick={() => setShowModal(true)}>Add Goal</button>
+      <button onClick={() => setShowModal(true)} id="add-goal-btn">
+        Add Goal
+      </button>
       {showModal && (
         <Modal onClose={() => setShowModal(false)}>
           <AddGoalForm closeModal={closeModal} />
