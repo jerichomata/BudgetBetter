@@ -728,6 +728,11 @@ main .recent-orders a {
   margin-top: 2rem;
 }
 
+.no-recent-transactions {
+  margin: 0 auto;
+  font-weight: bold;
+}
+
 .right .sales-analytics h2 {
   margin-bottom: 0.8rem;
 }

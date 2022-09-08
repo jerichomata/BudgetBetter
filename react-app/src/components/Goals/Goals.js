@@ -6,6 +6,7 @@ import {
   checkGoal,
   removeComplete,
 } from "../../store/goals";
+import { loadTransactions } from "../../store/transactions";
 import { gmtToDate } from "../../util/date";
 import DashboardLeft from "../Dashboard/DashboardLeft";
 import DashboardRight from "../Dashboard/DashboardRight";
@@ -20,6 +21,12 @@ function Goals() {
     state.goals ? Object.values(state.goals) : null
   );
 
+  goals.sort(function (a, b) {
+    // Turn your strings into dates, and then subtract them
+    // to get a value that is either negative, positive, or zero.
+    return new Date(b.date) - new Date(a.date);
+  });
+
   const dispatch = useDispatch();
 
   const [numToShow, setNumToShow] = useState(3);
@@ -29,6 +36,7 @@ function Goals() {
   useEffect(() => {
     const initializePage = async () => {
       await dispatch(loadGoals(user.id));
+      await dispatch(loadTransactions(user.id));
     };
 
     initializePage();
@@ -78,9 +86,9 @@ function Goals() {
                     <h4>Your Goals</h4>
                     <AddGoalModal />
                   </div>
-                  {goalsToShow?.length > 0 &&
+                  {goalsToShow?.length > 0 ? (
                     goalsToShow.map((goal) => (
-                      <div className="news-article-container">
+                      <div className={`news-article-container`}>
                         <div className="news-article" id="default-cursor">
                           <div className="goal-title-complete-container">
                             <i
@@ -101,7 +109,14 @@ function Goals() {
                             </div>
                           </div>
                           <div id="goal-date-edit-container">
-                            <p id="goal-date">{gmtToDate(goal.date)}</p>
+                            <p
+                              id="goal-date"
+                              className={`${
+                                new Date(goal?.date) < new Date() && "overdue"
+                              }`}
+                            >
+                              {gmtToDate(goal.date)}
+                            </p>
                             <EditGoalModal goalId={goal.id} />
                             <i
                               className="fa-regular fa-trash-can"
@@ -111,7 +126,10 @@ function Goals() {
                           </div>
                         </div>
                       </div>
-                    ))}
+                    ))
+                  ) : (
+                    <h2 className="no-goals">You have no goals</h2>
+                  )}
                   {numToShow < goals.length && (
                     <button id="expense-load-more" onClick={loadMore}>
                       Load More

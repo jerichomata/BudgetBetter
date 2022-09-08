@@ -10,6 +10,7 @@ function DashboardRight() {
   const transactions = useSelector((state) =>
     Object.values(state.transactions)
   );
+  const user = useSelector((state) => state.session.user);
 
   const [marketNews, setMarketNews] = useState([]);
   const [numToShow, setNumToShow] = useState(3);
@@ -46,7 +47,7 @@ function DashboardRight() {
         <div className="profile">
           <div className="info">
             <p>
-              Hey, <b>Name</b>
+              Hey, <b>{user?.username}</b>
             </p>
           </div>
         </div>
@@ -81,7 +82,7 @@ function DashboardRight() {
 
       <div className="sales-analytics">
         <h2>Recent Transactions</h2>
-        {transactionsToShow.length > 0 &&
+        {transactionsToShow.length > 0 ? (
           transactionsToShow.map((transaction) => (
             <div className="item online">
               <div className="icon">
@@ -101,7 +102,14 @@ function DashboardRight() {
                 </h3>
               </div>
             </div>
-          ))}
+          ))
+        ) : (
+          <div className="item online">
+            <span className="no-recent-transactions">
+              No recent transactions
+            </span>
+          </div>
+        )}
         {numToShow < transactions.length && (
           <button className="load-more" onClick={showMore}>
             Load More
