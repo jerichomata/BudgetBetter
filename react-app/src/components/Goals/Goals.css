@@ -30,6 +30,14 @@
   color: green;
 }
 
+#goal-title-container {
+  width: 90%;
+}
+
+.goal-name {
+  line-height: 24px;
+}
+
 #goal-title-container .news-article-title {
   margin: 0;
   margin-left: 16px;
@@ -42,6 +50,11 @@
 .goal-title-complete-container {
   display: flex;
   align-items: center;
+  width: 60%;
+}
+
+.goal-name {
+  width: fit-content;
 }
 
 #goal-date-edit-container {
