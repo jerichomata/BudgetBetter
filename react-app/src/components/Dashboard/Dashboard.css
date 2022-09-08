@@ -651,9 +651,7 @@ main .recent-orders a {
 
 .settings .themes {
   display: flex;
-  flex-direction: column;
-  /* align-items: center;
-  justify-content: center; */
+  gap: 8px;
 }
 
 .settings .theme-toggler span {
@@ -848,7 +846,7 @@ main .settings {
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  margin-top: 5rem;
+  margin-top: 40px;
 }
 
 main .settings > div {

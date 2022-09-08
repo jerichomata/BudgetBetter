@@ -1,4 +1,5 @@
 import React from "react";
+import { useSelector } from "react-redux";
 import DashboardLeft from "../Dashboard/DashboardLeft";
 import DashboardRight from "../Dashboard/DashboardRight";
 import AccountBalanceSharpIcon from "@mui/icons-material/AccountBalanceSharp";
@@ -6,6 +7,7 @@ import LightModeSharpIcon from "@mui/icons-material/LightModeSharp";
 import DarkModeSharpIcon from "@mui/icons-material/DarkModeSharp";
 
 function Settings() {
+  const user = useSelector((state) => state.session.user);
   return (
     <div className="dashboard-container">
       <div className="container">
@@ -37,20 +39,9 @@ function Settings() {
                       </h2>
                       <div className="profile-section-box">
                         <div className="account-info-container">
-                          <h5 className="account-info">Email:</h5>
-                          <p></p>
-                        </div>
-                      </div>
-                      <div className="profile-section-box">
-                        <div className="account-info-container">
-                          <h5 className="account-info">Name:</h5>
-                          <p></p>
-                        </div>
-                      </div>
-                      <div className="profile-section-box">
-                        <div className="account-info-container">
-                          <h5 className="account-info">Phone:</h5>
-                          <p></p>
+                          <h5 className="account-info">
+                            Username: {user?.username}
+                          </h5>
                         </div>
                       </div>
                     </div>
