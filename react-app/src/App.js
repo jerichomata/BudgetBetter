@@ -1,7 +1,6 @@
 import React, { useState, useEffect } from "react";
 import { BrowserRouter, Route, Switch } from "react-router-dom";
 import { useDispatch } from "react-redux";
-import LandingPage from "./components/LandingPage/LandingPage";
 import Dashboard from "./components/Dashboard/Dashboard";
 import ExpenseTracker from "./components/ExpenseTracker/ExpenseTracker";
 import Reminders from "./components/Reminders/Reminders";
@@ -30,7 +29,6 @@ function App() {
     <BrowserRouter>
       <Switch>
         <Route path="/" exact={true}>
-          {/* <LandingPage /> */}
           <HomePage />
         </Route>
         <ProtectedRoute path="/dashboard">

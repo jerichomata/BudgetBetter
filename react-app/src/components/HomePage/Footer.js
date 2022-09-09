@@ -1,6 +1,7 @@
 import React from "react";
 import LoginFormModal from "../LoginFormModal/LoginFormModal";
 import SignupFormModal from "../SignupFormModal/SignupFormModal";
+import bbLogo from "../../assets/bbLogo.png";
 import "./Footer.css";
 
 function Footer() {
@@ -10,6 +11,7 @@ function Footer() {
         {/* Name and info */}
         <div className="budget-better-footer-info-container">
           <div className="footer-logo-name-container">
+            <img src={bbLogo} alt="bb Logo" />
             <h4>BudgetBetter</h4>
           </div>
           <p>
@@ -34,7 +36,7 @@ function Footer() {
               <span>Alex Zelinsky</span>
             </div>
             <a
-              href=""
+              href="https://www.linkedin.com/in/alex-zelinsky-2505ba203/"
               target="_blank"
               rel="noopener noreferrer"
               className="social-icon-container"
@@ -42,7 +44,7 @@ function Footer() {
               <i className="fa-brands fa-linkedin"></i>
             </a>
             <a
-              href=""
+              href="https://github.com/AZensky"
               target="_blank"
               rel="noopener noreferrer"
               className="social-icon-container"
@@ -63,7 +65,7 @@ function Footer() {
               <i className="fa-brands fa-linkedin"></i>
             </a>
             <a
-              href=""
+              href="https://github.com/Justynooi"
               target="_blank"
               rel="noopener noreferrer"
               className="social-icon-container"
@@ -76,7 +78,7 @@ function Footer() {
               <span>Jericho Mata</span>
             </div>
             <a
-              href=""
+              href="https://www.linkedin.com/in/jerichomata/"
               target="_blank"
               rel="noopener noreferrer"
               className="social-icon-container"
@@ -84,7 +86,7 @@ function Footer() {
               <i className="fa-brands fa-linkedin"></i>
             </a>
             <a
-              href=""
+              href="https://github.com/jerichomata"
               target="_blank"
               rel="noopener noreferrer"
               className="social-icon-container"

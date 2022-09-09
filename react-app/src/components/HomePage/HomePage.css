@@ -3,7 +3,6 @@
 .home-page-container {
   display: flex;
   flex-direction: column;
-  /* align-items: center; */
   justify-content: center;
   width: 100%;
   height: 100%;
@@ -13,30 +12,36 @@
   height: 100vh;
   width: 100%;
   background-color: #3734a9;
-  position: relative;
+}
+
+.home-page-content {
+  display: flex;
+  justify-content: center;
+  width: 100%;
+  height: 90%;
 }
 
 .home-page-title-container {
   display: flex;
   flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  width: 100%;
+  /* justify-content: center; */
+  margin-top: 140px;
+  width: 50%;
   color: #ffffff;
-  margin-top: 48px;
+  padding-left: 10%;
 }
 
 .home-page-title-container > h1 {
   font-size: 52px;
+  margin: 0;
 }
 
 .home-page-title-2 {
-  margin-top: 0;
+  margin: 0;
 }
 
 .home-page-title-container > .home-page-subheading {
-  width: 50%;
-  text-align: center;
+  width: 100%;
 }
 
 .home-page-title-container > .home-page-subheading > p {
@@ -49,8 +54,7 @@
 .home-page-video-container {
   display: flex;
   align-items: center;
-  justify-content: center;
-  width: 100%;
+  width: fit-content;
 }
 
 .home-page-video {
@@ -63,6 +67,8 @@
 
 .play-svg {
   cursor: pointer;
+  position: relative;
+  z-index: 1;
 }
 
 .home-page-video > p {
@@ -72,6 +78,8 @@
   letter-spacing: -0.2px;
   padding: 0;
   margin: 0;
+  position: relative;
+  z-index: 1;
 }
 
 .home-page-video > p:hover {
@@ -79,9 +87,22 @@
   text-decoration: underline;
 }
 
+.home-page-image-container {
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  width: 50%;
+  height: 80%;
+  margin-top: 48px;
+}
+
+.home-page-image-container > img {
+  height: 100%;
+  width: auto;
+}
+
 .light-blur-1 {
   position: absolute;
-  left: -10%;
 }
 
 .red-circle-home {
@@ -90,22 +111,50 @@
   top: 200px;
 }
 
-.home-page-image-container {
+* {
+  box-sizing: border-box;
+}
+
+.landing-page-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  font-family: "Montserrat", sans-serif;
+  height: 100vh;
+}
+
+img {
+  object-fit: contain;
+  height: 50px;
+}
+
+h1 {
+  font-weight: bold;
+  margin: 1rem;
+}
+
+p {
+  font-size: 14px;
+  line-height: 1.3rem;
+  letter-spacing: 0.4px;
+  margin: 20px 0 30px;
+}
+
+input {
+  background-color: #eee;
+  border: none;
+  padding: 12px 15px;
+  margin: 8px 0;
+  width: 100%;
+}
+
+.form-container {
+  width: 50%;
+  height: 480px;
+  background-color: #ffffff;
   display: flex;
   align-items: center;
   justify-content: center;
-  width: 100%;
-  margin-top: -250px;
-  position: relative;
-  z-index: 1;
-}
-
-.home-page-image-container > img {
-  width: 80%;
-  height: 80%;
-}
-
-.footer-logo-name-container {
-  display: flex;
   flex-direction: column;
 }
