@@ -4,6 +4,7 @@ import { useHistory } from "react-router-dom";
 import { login } from "../../store/session";
 import LoginFormModal from "../LoginFormModal/LoginFormModal";
 import SignupFormModal from "../SignupFormModal/SignupFormModal";
+import bbLogo from "../../assets/bbLogo.png";
 import "./Navbar.css";
 
 function Navbar() {
@@ -19,6 +20,7 @@ function Navbar() {
   return (
     <div className="navbar-container">
       <div className="logo-container">
+        <img src={bbLogo} alt="bb Logo" />
         <span>BudgetBetter</span>
       </div>
       <div className="session-links">

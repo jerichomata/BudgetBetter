@@ -1,6 +1,5 @@
 .footer-container {
   display: flex;
-  align-items: center;
   justify-content: center;
   width: 100%;
   margin-top: 48px;
@@ -10,11 +9,26 @@
   display: flex;
   justify-content: space-between;
   gap: 32px;
-  width: 90%;
+  width: 80%;
 }
 
 .budget-better-footer-info-container {
   width: 33%;
+}
+
+.footer-logo-name-container {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  margin-bottom: 12px;
+}
+
+.footer-logo-name-container > img {
+  width: fit-content;
+}
+
+.budget-better-footer-info-container > p {
+  margin-top: 0;
 }
 
 .footer-account-container {
@@ -65,4 +79,8 @@
 .footer-content-container h4 {
   font-size: 20px;
   margin-bottom: 12px;
+}
+
+.footer-logo-name-container > h4 {
+  margin: 0;
 }
