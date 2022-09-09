@@ -16,8 +16,8 @@ function HomePage() {
 
         {/* Title Container */}
         <div className="home-page-title-container">
-          <h1 className="home-page-title">Managing Your Money</h1>
-          <h1 className="home-page-title">Made Easy</h1>
+          <h1>Managing Your Money</h1>
+          <h1 className="home-page-title-2">Made Easy</h1>
           <div className="home-page-subheading">
             <p>
               Helping users realize their financial goals through visual
@@ -29,7 +29,7 @@ function HomePage() {
         {/* Video Container */}
         <div className="home-page-video-container">
           <div className="home-page-video">
-            <PlaySVG />
+            <PlaySVG className="play-svg" />
 
             <p>Watch Demo</p>
           </div>

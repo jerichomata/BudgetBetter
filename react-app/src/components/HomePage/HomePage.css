@@ -29,6 +29,10 @@
   font-size: 52px;
 }
 
+.home-page-title-2 {
+  margin-top: 0;
+}
+
 .home-page-title-container > .home-page-subheading {
   width: 50%;
   text-align: center;
@@ -56,11 +60,22 @@
   gap: 24px;
 }
 
+.play-svg {
+  cursor: pointer;
+}
+
 .home-page-video > p {
   color: #ffffff;
   font-size: 20px;
   line-height: 38px;
   letter-spacing: -0.2px;
+  padding: 0;
+  margin: 0;
+}
+
+.home-page-video > p:hover {
+  cursor: pointer;
+  text-decoration: underline;
 }
 
 .light-blur-1 {
@@ -79,7 +94,7 @@
   align-items: center;
   justify-content: center;
   width: 100%;
-  margin-top: 48px;
+  margin-top: 52px;
 }
 
 .home-page-image-container > img {
