@@ -4,6 +4,7 @@ import { ReactComponent as PlaySVG } from "../../assets/playSvg.svg";
 import { ReactComponent as LightBlur } from "../../assets/homePageLightBlur.svg";
 import { ReactComponent as RedCircle } from "../../assets/redCircleSvg.svg";
 import tempHomeImg from "../../assets/tempHomeImg.png";
+import Footer from "./Footer";
 import "./HomePage.css";
 
 function HomePage() {
@@ -34,12 +35,14 @@ function HomePage() {
             <p>Watch Demo</p>
           </div>
         </div>
-
-        {/* Image Container */}
-        <div className="home-page-image-container">
-          <img src={tempHomeImg} alt="temp-home-img" />
-        </div>
       </div>
+
+      {/* Image Container */}
+      <div className="home-page-image-container">
+        <img src={tempHomeImg} alt="temp-home-img" />
+      </div>
+
+      <Footer />
     </div>
   );
 }

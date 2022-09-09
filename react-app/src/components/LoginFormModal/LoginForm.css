@@ -86,3 +86,15 @@
   text-align: center;
   padding-left: 0;
 }
+
+.auth-modal-btn {
+  border-radius: 8px;
+  cursor: pointer;
+  color: #ffffff;
+  background-color: #4c49c7;
+  font-weight: 600;
+  padding: 8px 12px;
+  font-size: 1.25rem;
+  height: 3rem;
+  margin-top: 1.5rem;
+}

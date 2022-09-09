@@ -2,6 +2,7 @@
 
 .home-page-container {
   display: flex;
+  flex-direction: column;
   /* align-items: center; */
   justify-content: center;
   width: 100%;
@@ -94,10 +95,17 @@
   align-items: center;
   justify-content: center;
   width: 100%;
-  margin-top: 52px;
+  margin-top: -250px;
+  position: relative;
+  z-index: 1;
 }
 
 .home-page-image-container > img {
   width: 80%;
-  height: 500px;
+  height: 80%;
+}
+
+.footer-logo-name-container {
+  display: flex;
+  flex-direction: column;
 }
