@@ -48,7 +48,7 @@ function SignupForm() {
           required
         />
       </label>
-      <button type="submit" className="login-form__log-in">
+      <button type="submit" className="form-modal-btn">
         Sign Up
       </button>
     </form>
