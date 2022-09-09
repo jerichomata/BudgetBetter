@@ -4,6 +4,7 @@ import { ReactComponent as PlaySVG } from "../../assets/playSvg.svg";
 import { ReactComponent as LightBlur } from "../../assets/homePageLightBlur.svg";
 import { ReactComponent as RedCircle } from "../../assets/redCircleSvg.svg";
 import tempHomeImg from "../../assets/tempHomeImg.png";
+import Footer from "./Footer";
 import "./HomePage.css";
 
 function HomePage() {
@@ -16,8 +17,8 @@ function HomePage() {
 
         {/* Title Container */}
         <div className="home-page-title-container">
-          <h1 className="home-page-title">Managing Your Money</h1>
-          <h1 className="home-page-title">Made Easy</h1>
+          <h1>Managing Your Money</h1>
+          <h1 className="home-page-title-2">Made Easy</h1>
           <div className="home-page-subheading">
             <p>
               Helping users realize their financial goals through visual
@@ -29,17 +30,19 @@ function HomePage() {
         {/* Video Container */}
         <div className="home-page-video-container">
           <div className="home-page-video">
-            <PlaySVG />
+            <PlaySVG className="play-svg" />
 
             <p>Watch Demo</p>
           </div>
         </div>
-
-        {/* Image Container */}
-        <div className="home-page-image-container">
-          <img src={tempHomeImg} alt="temp-home-img" />
-        </div>
       </div>
+
+      {/* Image Container */}
+      <div className="home-page-image-container">
+        <img src={tempHomeImg} alt="temp-home-img" />
+      </div>
+
+      <Footer />
     </div>
   );
 }
