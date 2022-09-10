@@ -14,11 +14,13 @@ function Footer() {
             <img src={bbLogo} alt="bb Logo" />
             <h4>BudgetBetter</h4>
           </div>
-          <p>
-            Lorem ipsum dolor sit amet consectetur adipisicing elit. Voluptatem
-            debitis, nesciunt quo deserunt eum quidem porro quas eveniet,
-            impedit dignissimos quaerat vel culpa facilis vero?
-          </p>
+          <div className="footer-info">
+            <p>
+              Lorem ipsum dolor sit amet consectetur adipisicing elit.
+              Voluptatem debitis, nesciunt quo deserunt eum quidem porro quas
+              eveniet, impedit dignissimos quaerat vel culpa facilis vero?
+            </p>
+          </div>
         </div>
 
         {/* Account */}

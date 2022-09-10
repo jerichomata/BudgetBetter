@@ -8,18 +8,17 @@
 .footer-content-container {
   display: flex;
   justify-content: space-between;
-  gap: 32px;
   width: 80%;
 }
 
 .budget-better-footer-info-container {
-  width: 33%;
+  width: 40%;
 }
 
 .footer-logo-name-container {
   display: flex;
   align-items: center;
-  gap: 8px;
+  gap: 32px;
   margin-bottom: 12px;
 }
 
@@ -34,11 +33,11 @@
 .footer-account-container {
   display: flex;
   flex-direction: column;
-  width: 33%;
+  width: 20%;
 }
 
 .footer-contact-container {
-  width: 33%;
+  width: 20%;
   display: flex;
   flex-direction: column;
   gap: 4px;
