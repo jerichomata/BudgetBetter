@@ -5,6 +5,7 @@ import MonetizationOnSharpIcon from "@mui/icons-material/MonetizationOnSharp";
 import SouthSharpIcon from "@mui/icons-material/SouthSharp";
 import { fetchMarketNews } from "../../util/news-api";
 import { unixToDate } from "../../util/date";
+import "./DashboardRight.css";
 
 function DashboardRight() {
   const transactions = useSelector((state) =>
@@ -66,10 +67,14 @@ function DashboardRight() {
               >
                 <div className="update">
                   <div className="profile-photo">
-                    <img src={news.image} alt="News cover" />
+                    <img
+                      src={news.image}
+                      alt="News cover"
+                      id="news-cover-right"
+                    />
                   </div>
                   <div className="message">
-                    <p>{news.headline}</p>
+                    <p id="news-headline-right">{news.headline}</p>
                     <small className="text-muted">
                       {unixToDate(news.datetime)}
                     </small>

@@ -55,8 +55,8 @@ html {
 .dashboard-container {
   /* display: flex;
   flex-direction: column; */
-  height: 100vh;
-  width: 100vw;
+  height: 100%;
+  width: 100%;
   /* background-color: var(--color-background);
   color: var(--color-dark);
   font-family: "Poppins", sans-serif;
@@ -161,7 +161,9 @@ aside .top {
 
 aside .logo {
   display: flex;
+  align-items: center;
   gap: 0.8rem;
+  margin-left: 16px;
 }
 
 aside .logo img {

@@ -9,6 +9,7 @@ import TrendingDownSharpIcon from "@mui/icons-material/TrendingDownSharp";
 import ArrowBackSharpIcon from "@mui/icons-material/ArrowBackSharp";
 import ArrowForwardSharpIcon from "@mui/icons-material/ArrowForwardSharp";
 import MonetizationOnSharpIcon from "@mui/icons-material/MonetizationOnSharp";
+import bbLogo from "../../assets/bbLogo.png";
 import "./Dashboard.css";
 
 function Dashboard() {
@@ -16,8 +17,6 @@ function Dashboard() {
   const transactions = useSelector((state) =>
     Object.values(state.transactions)
   );
-
-  console.log("transactions", transactions);
 
   let income = 0;
   let expenses = 0;
@@ -47,8 +46,7 @@ function Dashboard() {
         <aside>
           <div className="top">
             <div className="logo">
-              <AccountBalanceSharpIcon />
-
+              <img src={bbLogo} alt="logo" />
               <h2>BudgetBetter</h2>
             </div>
             <div className="close" id="close-btn">

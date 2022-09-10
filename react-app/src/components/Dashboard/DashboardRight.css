@@ -1,0 +1,17 @@
+.profile .info p {
+  margin-right: 16px;
+}
+
+.recent-updates .update {
+  display: flex;
+  align-items: center;
+}
+
+#news-cover-right {
+  object-fit: cover;
+  height: 50px;
+}
+
+#news-headline-right {
+  margin: 0;
+}
