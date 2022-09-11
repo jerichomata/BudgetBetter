@@ -28,7 +28,7 @@
   margin-top: 140px;
   width: 50%;
   color: #ffffff;
-  padding-left: 10%;
+  padding-left: 5%;
 }
 
 .home-page-title-container > h1 {
@@ -55,6 +55,7 @@
   display: flex;
   align-items: center;
   width: fit-content;
+  margin-top: 20px;
 }
 
 .home-page-video {
@@ -105,6 +106,7 @@
 
 .light-blur-1 {
   position: absolute;
+  left: -2%;
 }
 
 .red-circle-home {
@@ -129,6 +131,10 @@
 img {
   object-fit: contain;
   height: 50px;
+}
+
+.landing-img {
+  object-fit: cover;
 }
 
 h1 {
