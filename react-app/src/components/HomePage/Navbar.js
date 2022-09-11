@@ -24,7 +24,9 @@ function Navbar() {
         <span>BudgetBetter</span>
       </div>
       <div className="session-links">
-        <button onClick={loginDemoUser}>Demo</button>
+        <button id="demo-user-btn" onClick={loginDemoUser}>
+          Demo
+        </button>
         <LoginFormModal />
         <SignupFormModal />
       </div>

@@ -11,8 +11,10 @@
   width: fit-content;
   background: none;
   margin-bottom: 8px;
+  font-size: 14px;
 }
 
 #footer-login:hover {
   cursor: pointer;
+  opacity: 0.8;
 }

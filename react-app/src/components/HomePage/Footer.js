@@ -16,9 +16,8 @@ function Footer() {
           </div>
           <div className="footer-info">
             <p>
-              Lorem ipsum dolor sit amet consectetur adipisicing elit.
-              Voluptatem debitis, nesciunt quo deserunt eum quidem porro quas
-              eveniet, impedit dignissimos quaerat vel culpa facilis vero?
+              A bank account visualizer that helps you track your spending and
+              budget better.
             </p>
           </div>
         </div>
