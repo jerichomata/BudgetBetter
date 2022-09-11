@@ -17,6 +17,9 @@ function AddTransactionForm({ closeModal }) {
     const errors = [];
     if (title.length < 1) errors.push("Please enter a title");
     if (!date) errors.push("Please enter a date");
+    // if user's account balance is less than the expense
+    if (amount < 0 && user.accountBalance < Math.abs(amount))
+      errors.push("Insufficient funds");
     setErrors(errors);
   }, [title, date, amount]);
 
@@ -54,7 +57,7 @@ function AddTransactionForm({ closeModal }) {
           type="text"
           value={title}
           onChange={(e) => setTitle(e.target.value)}
-          maxlength="25"
+          maxLength="25"
           required
         />
       </label>
