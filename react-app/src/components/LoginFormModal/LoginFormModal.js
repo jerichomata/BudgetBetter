@@ -10,8 +10,6 @@ function LoginFormModal({ styleId }) {
     setShowModal(false);
   }
 
-  console.log("ID", styleId);
-
   return (
     <>
       <button onClick={() => setShowModal(true)} id={styleId}>

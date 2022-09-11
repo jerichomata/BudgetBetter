@@ -64,9 +64,9 @@ function Dashboard() {
 
               <div className="insights">
                 <div className="balance">
-                  <span>
-                    <MonetizationOnSharpIcon />
-                  </span>
+                  {/* <span> */}
+                  <MonetizationOnSharpIcon className="dashboard-icon-styling" />
+                  {/* </span> */}
                   <div className="middle">
                     <h3>Account Balance</h3>
                     <h1 id="account-balance-num">
@@ -77,9 +77,9 @@ function Dashboard() {
                 </div>
 
                 <div className="credit">
-                  <span>
-                    <TrendingUpSharpIcon />
-                  </span>
+                  {/* <span> */}
+                  <TrendingUpSharpIcon className="dashboard-icon-styling dashboard-income-icon" />
+                  {/* </span> */}
                   <div className="middle">
                     <h3>Income</h3>
                     <h1 id="available-credit">+${income.toFixed(2)}</h1>
@@ -88,9 +88,9 @@ function Dashboard() {
                 </div>
 
                 <div className="expenses">
-                  <span>
-                    <TrendingDownSharpIcon />
-                  </span>
+                  {/* <span> */}
+                  <TrendingDownSharpIcon className="dashboard-icon-styling dashboard-expense-icon" />
+                  {/* </span> */}
                   <div className="middle">
                     <h3>Expenses</h3>
                     <h1 id="account-expenses">
