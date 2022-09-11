@@ -15,3 +15,25 @@
 #news-headline-right {
   margin: 0;
 }
+
+.recent-transactions-load-more {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-bottom: 16px;
+  margin-top: 0;
+}
+
+#recent-transactions-load-more-btn {
+  color: #7380ec;
+  width: fit-content;
+  margin-top: 4px;
+  background: transparent;
+  font-weight: bold;
+  letter-spacing: 0.1px;
+}
+
+#recent-transactions-load-more-btn:hover {
+  cursor: pointer;
+}

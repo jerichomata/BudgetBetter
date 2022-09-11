@@ -743,7 +743,7 @@ main .recent-orders a {
   display: flex;
   align-items: center;
   gap: 1rem;
-  margin-bottom: 0.7rem;
+  margin-bottom: 1rem;
   padding: 1.4rem var(--card-padding);
   border-radius: var(--border-radius-3);
   box-shadow: var(--box-shadow);
