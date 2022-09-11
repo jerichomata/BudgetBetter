@@ -680,6 +680,7 @@ main .recent-orders a {
 
 .right {
   margin-top: 1.4rem;
+  margin-right: 16px;
 }
 .right .top {
   display: flex;
