@@ -5,6 +5,8 @@ import MonetizationOnSharpIcon from "@mui/icons-material/MonetizationOnSharp";
 import SouthSharpIcon from "@mui/icons-material/SouthSharp";
 import { fetchMarketNews } from "../../util/news-api";
 import { unixToDate } from "../../util/date";
+import { gmtToDate } from "../../util/date";
+import "./DashboardRight.css";
 
 function DashboardRight() {
   const transactions = useSelector((state) =>
@@ -66,10 +68,14 @@ function DashboardRight() {
               >
                 <div className="update">
                   <div className="profile-photo">
-                    <img src={news.image} alt="News cover" />
+                    <img
+                      src={news.image}
+                      alt="News cover"
+                      id="news-cover-right"
+                    />
                   </div>
                   <div className="message">
-                    <p>{news.headline}</p>
+                    <p id="news-headline-right">{news.headline}</p>
                     <small className="text-muted">
                       {unixToDate(news.datetime)}
                     </small>
@@ -84,16 +90,22 @@ function DashboardRight() {
         <h2>Recent Transactions</h2>
         {transactionsToShow.length > 0 ? (
           transactionsToShow.map((transaction) => (
-            <div className="item online">
+            <div
+              className={
+                transaction?.amount.toFixed(2) > 0
+                  ? `item online`
+                  : `item offline`
+              }
+            >
               <div className="icon">
-                <span>
-                  <MonetizationOnSharpIcon />
-                </span>
+                <MonetizationOnSharpIcon />
               </div>
               <div className="right">
                 <div className="info">
                   <h3 id="first-recent-transaction">{transaction?.title}</h3>
-                  <small className="text-muted">{transaction?.date}</small>
+                  <small className="text-muted">
+                    {gmtToDate(transaction?.date)}
+                  </small>
                 </div>
                 <h3 id="first-recent-amount">
                   {transaction?.amount >= 0
@@ -111,9 +123,15 @@ function DashboardRight() {
           </div>
         )}
         {numToShow < transactions.length && (
-          <button className="load-more" onClick={showMore}>
-            Load More
-          </button>
+          <div className="recent-transactions-load-more">
+            <button
+              id="recent-transactions-load-more-btn"
+              className="recent-transactions-load-more"
+              onClick={showMore}
+            >
+              Load More
+            </button>
+          </div>
         )}
       </div>
     </div>

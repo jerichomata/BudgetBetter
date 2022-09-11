@@ -4,6 +4,10 @@
   position: absolute;
   bottom: 5rem;
   margin-left: 1rem;
+  display: flex;
+  margin-left: 28px;
+  gap: 1rem;
+  color: var(--color-info-dark);
 }
 
 .logout-btn:hover {

@@ -7,7 +7,7 @@ import DashboardRight from "../Dashboard/DashboardRight";
 import AddTransactionFormModal from "../AddTransactionModal/AddTransactionFormModal";
 import EditTransactionModal from "../EditTransactionModal/EditTransactionModal";
 import { removeTransaction } from "../../store/transactions";
-import AccountBalanceSharpIcon from "@mui/icons-material/AccountBalanceSharp";
+import bbLogo from "../../assets/bbLogo.png";
 import "./ExpenseTracker.css";
 
 function ExpenseTracker() {
@@ -63,8 +63,7 @@ function ExpenseTracker() {
         <aside>
           <div className="top">
             <div className="logo">
-              <AccountBalanceSharpIcon />
-
+              <img src={bbLogo} alt="logo" />
               <h2>BudgetBetter</h2>
             </div>
             <div className="close" id="close-btn">

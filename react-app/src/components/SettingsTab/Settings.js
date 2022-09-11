@@ -2,7 +2,7 @@ import React from "react";
 import { useSelector } from "react-redux";
 import DashboardLeft from "../Dashboard/DashboardLeft";
 import DashboardRight from "../Dashboard/DashboardRight";
-import AccountBalanceSharpIcon from "@mui/icons-material/AccountBalanceSharp";
+import bbLogo from "../../assets/bbLogo.png";
 import LightModeSharpIcon from "@mui/icons-material/LightModeSharp";
 import DarkModeSharpIcon from "@mui/icons-material/DarkModeSharp";
 
@@ -14,8 +14,7 @@ function Settings() {
         <aside>
           <div className="top">
             <div className="logo">
-              <AccountBalanceSharpIcon />
-
+              <img src={bbLogo} alt="logo" />
               <h2>BudgetBetter</h2>
             </div>
             <div className="close" id="close-btn">

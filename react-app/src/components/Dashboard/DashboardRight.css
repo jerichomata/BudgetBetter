@@ -1,0 +1,45 @@
+.profile .info p {
+  margin-right: 8px;
+  margin-top: 0;
+  margin-bottom: 40px;
+}
+
+.recent-updates .update {
+  display: flex;
+  align-items: center;
+}
+
+#news-cover-right {
+  object-fit: cover;
+  height: 50px;
+}
+
+#news-headline-right {
+  margin: 0;
+}
+
+.recent-transactions-load-more {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-bottom: 16px;
+  margin-top: 0;
+}
+
+#recent-transactions-load-more-btn {
+  color: #7380ec;
+  width: fit-content;
+  margin-top: 4px;
+  background: transparent;
+  font-weight: bold;
+  letter-spacing: 0.1px;
+}
+
+#recent-transactions-load-more-btn:hover {
+  cursor: pointer;
+}
+
+.recent-updates > h2 {
+  margin-bottom: 0.8rem;
+}

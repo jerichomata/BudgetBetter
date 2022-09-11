@@ -55,8 +55,8 @@ html {
 .dashboard-container {
   /* display: flex;
   flex-direction: column; */
-  height: 100vh;
-  width: 100vw;
+  height: 100%;
+  width: 100%;
   /* background-color: var(--color-background);
   color: var(--color-dark);
   font-family: "Poppins", sans-serif;
@@ -161,7 +161,9 @@ aside .top {
 
 aside .logo {
   display: flex;
+  align-items: center;
   gap: 0.8rem;
+  margin-left: 16px;
 }
 
 aside .logo img {
@@ -678,6 +680,7 @@ main .recent-orders a {
 
 .right {
   margin-top: 1.4rem;
+  margin-right: 16px;
 }
 .right .top {
   display: flex;
@@ -741,7 +744,7 @@ main .recent-orders a {
   display: flex;
   align-items: center;
   gap: 1rem;
-  margin-bottom: 0.7rem;
+  margin-bottom: 1rem;
   padding: 1.4rem var(--card-padding);
   border-radius: var(--border-radius-3);
   box-shadow: var(--box-shadow);

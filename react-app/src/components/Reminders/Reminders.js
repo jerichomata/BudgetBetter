@@ -7,7 +7,7 @@ import DashboardLeft from "../Dashboard/DashboardLeft";
 import DashboardRight from "../Dashboard/DashboardRight";
 import AddReminderModal from "../AddReminderModal/AddReminderModal";
 import EditReminderModal from "../EditReminderModal/EditReminderModal";
-import AccountBalanceSharpIcon from "@mui/icons-material/AccountBalanceSharp";
+import bbLogo from "../../assets/bbLogo.png";
 import "./Reminders.css";
 
 function Reminders() {
@@ -51,8 +51,7 @@ function Reminders() {
         <aside>
           <div className="top">
             <div className="logo">
-              <AccountBalanceSharpIcon />
-
+              <img src={bbLogo} alt="logo" />
               <h2>BudgetBetter</h2>
             </div>
             <div className="close" id="close-btn">
