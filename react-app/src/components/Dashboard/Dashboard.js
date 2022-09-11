@@ -1,13 +1,12 @@
 import React, { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { loadTransactions } from "../../store/transactions";
+import { gmtToDate } from "../../util/date";
 import DashboardLeft from "./DashboardLeft";
 import DashboardRight from "./DashboardRight";
-import AccountBalanceSharpIcon from "@mui/icons-material/AccountBalanceSharp";
+import Chart from "./Chart";
 import TrendingUpSharpIcon from "@mui/icons-material/TrendingUpSharp";
 import TrendingDownSharpIcon from "@mui/icons-material/TrendingDownSharp";
-import ArrowBackSharpIcon from "@mui/icons-material/ArrowBackSharp";
-import ArrowForwardSharpIcon from "@mui/icons-material/ArrowForwardSharp";
 import MonetizationOnSharpIcon from "@mui/icons-material/MonetizationOnSharp";
 import bbLogo from "../../assets/bbLogo.png";
 import "./Dashboard.css";
@@ -20,9 +19,13 @@ function Dashboard() {
 
   let income = 0;
   let expenses = 0;
+  let dates = [];
+  let amounts = [];
 
   if (transactions?.length > 0) {
     for (let transaction of transactions) {
+      dates.push(gmtToDate(transaction?.date));
+      amounts.push(transaction?.amount);
       if (transaction?.amount >= 0) {
         income += transaction?.amount;
       } else {
@@ -70,7 +73,7 @@ function Dashboard() {
                   <div className="middle">
                     <h3>Account Balance</h3>
                     <h1 id="account-balance-num">
-                      {user?.accountBalance.toFixed(2)}
+                      ${user?.accountBalance.toFixed(2)}
                     </h1>
                     <small className="text-muted">Current</small>
                   </div>
@@ -103,22 +106,8 @@ function Dashboard() {
 
               <div className="visuals">
                 <h2>Visual Analytics</h2>
-                <div className="carousel">
-                  <canvas className="carousel__item"></canvas>
-                  <canvas
-                    className="carousel__item"
-                    style={{ display: "none" }}
-                  ></canvas>
-                  <canvas
-                    className="carousel__item"
-                    style={{ display: "none" }}
-                  ></canvas>
-                  <span>
-                    <ArrowBackSharpIcon />
-                  </span>
-                  <span>
-                    <ArrowForwardSharpIcon />
-                  </span>
+                <div className="chart-container">
+                  <Chart dates={dates} amounts={amounts} />
                 </div>
               </div>
             </div>
