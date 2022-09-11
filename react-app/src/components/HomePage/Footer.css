@@ -3,6 +3,7 @@
   justify-content: center;
   width: 100%;
   margin-top: 48px;
+  margin-bottom: 16px;
 }
 
 .footer-content-container {
@@ -15,10 +16,14 @@
   width: 40%;
 }
 
+.footer-info > p {
+  line-height: 20px;
+}
+
 .footer-logo-name-container {
   display: flex;
   align-items: center;
-  gap: 32px;
+  gap: 16px;
   margin-bottom: 12px;
 }
 
@@ -78,6 +83,10 @@
 .footer-content-container h4 {
   font-size: 20px;
   margin-bottom: 12px;
+}
+
+.footer-contact-container > h4 {
+  margin-bottom: 8px;
 }
 
 .footer-logo-name-container > h4 {

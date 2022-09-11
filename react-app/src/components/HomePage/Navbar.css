@@ -35,3 +35,7 @@
   color: #ffffff;
   letter-spacing: 0.1px;
 }
+
+#demo-user-btn {
+  padding-right: 0;
+}
