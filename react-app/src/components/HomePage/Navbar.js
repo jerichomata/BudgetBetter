@@ -21,7 +21,7 @@ function Navbar() {
     <div className="navbar-container">
       <div className="logo-container">
         <img src={bbLogo} alt="bb Logo" />
-        <span>BudgetBetter</span>
+        <span id="home-page-bb-title">BudgetBetter</span>
       </div>
       <div className="session-links">
         <button id="demo-user-btn" onClick={loginDemoUser}>
