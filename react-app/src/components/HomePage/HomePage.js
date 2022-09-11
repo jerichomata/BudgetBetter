@@ -5,6 +5,7 @@ import { Redirect } from "react-router-dom";
 import { ReactComponent as PlaySVG } from "../../assets/playSvg.svg";
 import { ReactComponent as LightBlur } from "../../assets/homePageLightBlur.svg";
 import tempBackgroundImg from "../../assets/tempBackgroundImage.png";
+import landingPagePic from "../../assets/landingPagePic.png";
 import Footer from "./Footer";
 import "./HomePage.css";
 
@@ -46,7 +47,7 @@ function HomePage() {
 
           {/* Image container */}
           <div className="home-page-image-container">
-            <img src={tempBackgroundImg} alt="home page image" />
+            <img src={landingPagePic} alt="home page image" />
           </div>
         </div>
       </div>
