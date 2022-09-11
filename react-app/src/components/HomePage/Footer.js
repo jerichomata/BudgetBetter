@@ -59,7 +59,7 @@ function Footer() {
               <span>Justyn Ooi</span>
             </div>
             <a
-              href=""
+              href="https://www.linkedin.com/in/kwan-tien-ooi/"
               target="_blank"
               rel="noopener noreferrer"
               className="social-icon-container"
