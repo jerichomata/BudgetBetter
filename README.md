@@ -29,9 +29,15 @@ BudgetBetter is a financial application created to help individuals manage their
 
 ## Landing Page
 
+![readme-bb-landing](https://user-images.githubusercontent.com/95510710/189716447-e08afa67-cf72-48a3-b04d-df00597a4c0d.png)
+
 ## Dashboard
 
+![readme-bb-dashboard](https://user-images.githubusercontent.com/95510710/189716480-734814e5-cf5d-4225-86c9-11cbf769f55d.png)
+
 ## Expense Tracker
+
+![readme-bb-expense-tracker](https://user-images.githubusercontent.com/95510710/189716493-ea732380-ff74-4800-af38-f68859b1aac2.png)
 
 ## Run Locally
 
