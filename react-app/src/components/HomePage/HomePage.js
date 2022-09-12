@@ -37,9 +37,20 @@ function HomePage() {
             {/* Video Container */}
             <div className="home-page-video-container">
               <div className="home-page-video">
-                <PlaySVG className="play-svg" />
-
-                <p id="watch-demo">Watch Demo</p>
+                <a
+                  href="https://www.youtube.com/watch?v=ML8jp7Q0cAI"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                >
+                  <PlaySVG className="play-svg" />
+                </a>
+                <a
+                  href="https://www.youtube.com/watch?v=ML8jp7Q0cAI"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                >
+                  <p id="watch-demo">Watch Demo</p>
+                </a>
               </div>
             </div>
           </div>

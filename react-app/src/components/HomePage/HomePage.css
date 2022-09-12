@@ -72,7 +72,7 @@
   z-index: 1;
 }
 
-.home-page-video > p {
+.home-page-video p {
   color: #ffffff;
   font-size: 20px;
   line-height: 38px;
@@ -83,7 +83,7 @@
   z-index: 1;
 }
 
-.home-page-video > p:hover {
+.home-page-video p:hover {
   cursor: pointer;
   text-decoration: underline;
 }
