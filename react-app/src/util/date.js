@@ -30,8 +30,8 @@ export const gmtToDate = (gmtDate) => {
   };
 
   const dateObject = new Date(gmtDate);
-  const date = dateObject.getDate();
-  const month = months[dateObject.getMonth()];
-  const year = dateObject.getFullYear();
+  const date = dateObject.getUTCDate();
+  const month = months[dateObject.getUTCMonth()];
+  const year = dateObject.getUTCFullYear();
   return `${month} ${date}, ${year}`;
 };
