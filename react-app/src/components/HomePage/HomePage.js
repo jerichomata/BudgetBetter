@@ -5,6 +5,7 @@ import { Redirect } from "react-router-dom";
 import { ReactComponent as PlaySVG } from "../../assets/playSvg.svg";
 import { ReactComponent as LightBlur } from "../../assets/homePageLightBlur.svg";
 import landingPagePic from "../../assets/landingPagePic.png";
+import phoneLandingPagePic from "../../assets/landingPagePic2.png";
 import Footer from "./Footer";
 import "./HomePage.css";
 

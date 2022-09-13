@@ -41,10 +41,10 @@ function DashboardLeft() {
         <h3>Goals</h3>
       </NavLink>
 
-      <NavLink to="/settings">
+      {/* <NavLink to="/settings">
         <SettingsSharpIcon />
         <h3>Settings</h3>
-      </NavLink>
+      </NavLink> */}
 
       <div className="logout-btn" onClick={handleLogout}>
         <LogoutSharpIcon />

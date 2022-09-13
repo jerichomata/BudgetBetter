@@ -65,7 +65,9 @@ function Goals() {
           <div className="top">
             <div className="logo">
               <img src={bbLogo} alt="logo" />
-              <h2>BudgetBetter</h2>
+              <h2 className="dashboard-bb-title">
+                Budget<span>Better</span>
+              </h2>
             </div>
             <div className="close" id="close-btn">
               <span className="material-icons-sharp"> close </span>
