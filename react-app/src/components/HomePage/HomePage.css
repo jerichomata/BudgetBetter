@@ -169,8 +169,30 @@ input {
   flex-direction: column;
 }
 
-@media screen and (max-width: 768px) {
+@media screen and (max-device-width: 768px) {
   .home-page-content {
     flex-direction: column;
+    align-items: center;
+    justify-content: flex-start;
+  }
+
+  .home-page-title-container {
+    width: 75%;
+    align-items: center;
+  }
+
+  .home-page-title-container > .home-page-subheading > p {
+    text-align: center;
+  }
+
+  .home-page-image-container {
+    width: 75%;
+    height: 40%;
+    justify-content: center;
+  }
+
+  .home-page-image-container > img {
+    border-radius: 16px;
+    content: url(../../assets/landingPagePic2.png);
   }
 }
