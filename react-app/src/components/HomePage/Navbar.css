@@ -45,3 +45,11 @@
 #demo-user-btn {
   padding-right: 0;
 }
+
+@media screen and (max-device-width: 768px) {
+  .navbar-container {
+    display: -webkit-flex;
+    justify-content: space-between;
+    -webkit-justify-content: space-between;
+  }
+}
