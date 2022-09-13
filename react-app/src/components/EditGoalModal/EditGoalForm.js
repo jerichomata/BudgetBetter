@@ -21,7 +21,7 @@ function EditGoalForm({ closeModal, goalId }) {
 
   useEffect(() => {
     const errors = [];
-    if (name.length < 1) errors.push("Please enter a title");
+    if (name.trim().length < 1) errors.push("Please enter a name");
     if (!date) errors.push("Please enter a date");
     setErrors(errors);
   }, [name, date]);

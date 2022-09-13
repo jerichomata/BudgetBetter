@@ -15,7 +15,7 @@ function AddTransactionForm({ closeModal }) {
 
   useEffect(() => {
     const errors = [];
-    if (title.length < 1) errors.push("Please enter a title");
+    if (title.trim().length < 1) errors.push("Please enter a name");
     if (!date) errors.push("Please enter a date");
     // if user's account balance is less than the expense
     if (amount < 0 && user.accountBalance < Math.abs(amount))

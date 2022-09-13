@@ -21,9 +21,10 @@ function EditReminderForm({ closeModal, reminderId }) {
 
   useEffect(() => {
     const errors = [];
-    if (title.length < 1) errors.push("Please enter a title");
+    if (title.trim().length < 1) errors.push("Please enter a name");
     if (!date) errors.push("Please enter a date");
-    if (description.length < 1) errors.push("Please enter a description");
+    if (description.trim().length < 1)
+      errors.push("Please enter a description");
     setErrors(errors);
   }, [title, date, description]);
 
