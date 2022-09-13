@@ -49,7 +49,8 @@
 @media screen and (max-device-width: 768px) {
   .navbar-container {
     display: -webkit-flex;
-    justify-content: space-between;
+    display: flex;
     -webkit-justify-content: space-between;
+    justify-content: space-between;
   }
 }
