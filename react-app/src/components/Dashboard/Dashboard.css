@@ -534,6 +534,7 @@ main .recent-orders a {
 .notifications-tab .msg-description {
   margin: 0;
   margin-top: 20px;
+  word-break: break-all;
 }
 
 .notifications-tab .separation-line-inbox {
@@ -762,6 +763,7 @@ main .recent-orders a {
   align-items: start;
   margin: 0;
   width: 100%;
+  overflow: hidden;
 }
 
 .right .sales-analytics .item .icon {

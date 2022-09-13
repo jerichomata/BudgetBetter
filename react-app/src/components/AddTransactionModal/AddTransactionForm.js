@@ -67,6 +67,7 @@ function AddTransactionForm({ closeModal }) {
           type="number"
           step="0.01"
           value={amount}
+          max="1000000"
           onChange={(e) => setAmount(e.target.value)}
           required
         />
