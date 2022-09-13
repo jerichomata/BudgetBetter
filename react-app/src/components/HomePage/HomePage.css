@@ -168,3 +168,9 @@ input {
   justify-content: center;
   flex-direction: column;
 }
+
+@media screen and (max-width: 768px) {
+  .home-page-content {
+    flex-direction: column;
+  }
+}
