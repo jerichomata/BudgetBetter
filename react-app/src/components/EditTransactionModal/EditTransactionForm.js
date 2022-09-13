@@ -12,6 +12,7 @@ function EditTransactionForm({ closeModal, transactionId }) {
   const transaction = useSelector((state) =>Object.values(state.transactions).filter((transaction) => transaction.id === transactionId)[0]);
 
   let oldDate = dateToISOStr(transaction?.date);
+  let oldAmount = transaction?.amount;
 
   const dispatch = useDispatch();
   const [title, setTitle] = useState(transaction?.title);
@@ -22,8 +23,12 @@ function EditTransactionForm({ closeModal, transactionId }) {
 
   useEffect(() => {
     const errors = [];
-    if (title.length < 1) errors.push("Please enter a title");
+    if (title.trim().length < 1) errors.push("Please enter a name");
     if (!date) errors.push("Please enter a date");
+    if (amount < 0) {
+      let diff = Math.abs(amount) - Math.abs(oldAmount);
+      if (user.accountBalance < diff) errors.push("Insufficient funds");
+    }
     setErrors(errors);
   }, [title, date, amount]);
 
@@ -73,6 +78,7 @@ function EditTransactionForm({ closeModal, transactionId }) {
           type="number"
           step="0.01"
           value={amount}
+          max="1000000"
           onChange={(e) => setAmount(e.target.value)}
           required
         />
