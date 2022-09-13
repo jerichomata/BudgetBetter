@@ -805,6 +805,14 @@ main .recent-orders a {
   font-weight: 600;
 }
 
+.dashboard-bb-title {
+  color: #232998;
+}
+
+.dashboard-bb-title > span {
+  color: #fd7882;
+}
+
 /* Media Queries Tablets*/
 @media screen and (max-width: 1200px) {
   .container {
