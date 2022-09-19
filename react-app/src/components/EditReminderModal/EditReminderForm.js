@@ -57,7 +57,7 @@ function EditReminderForm({ closeModal, reminderId }) {
           errors.length > 0 &&
           errors.map((error, idx) => <li key={idx}>{error}</li>)}
       </ul>
-      <h1 className="login-form__title">Add Reminder</h1>
+      <h1 className="login-form__title">Edit Reminder</h1>
       <label className="login-form__email__label">
         Name
         <input
