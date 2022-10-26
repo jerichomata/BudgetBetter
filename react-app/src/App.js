@@ -43,9 +43,6 @@ function App() {
         <ProtectedRoute path="/news">
           <Goals />
         </ProtectedRoute>
-        {/* <ProtectedRoute path="/settings">
-          <Settings />
-        </ProtectedRoute> */}
       </Switch>
     </BrowserRouter>
   );
